@@ -24,7 +24,6 @@ export const styles = StyleSheet.create({
     },
     shadowOpacity: 0.65,
     shadowRadius: 2.84,
-    elevation: 5,
     shadowColor: colors.blackChocolate,
   },
   poster: {
