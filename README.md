@@ -27,4 +27,7 @@ For API calls:
 For state handling:
 - reduxjs/toolkit
 - react-native-async-storage/async-storage
-- redux-persist -->
+- redux-persist
+For carousel feature:
+- react-native-snap-carousel
+- @types/react-native-snap-carousel -->
