@@ -29,5 +29,6 @@ For state handling:
 - react-native-async-storage/async-storage
 - redux-persist
 For carousel feature:
-- react-native-snap-carousel
-- @types/react-native-snap-carousel -->
+- react-native-snap-carousel@4.0.0-beta.6
+- @types/react-native-snap-carousel
+- deprecated-react-native-prop-types -->
