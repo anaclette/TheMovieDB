@@ -1,0 +1,85 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/Amatic_SC/AmaticSC-Bold.ttf",
+      "sha1": "845b7ea45a082b12bebd77a16d2cfb671892de1c"
+    },
+    {
+      "path": "src/assets/fonts/Amatic_SC/AmaticSC-Regular.ttf",
+      "sha1": "9aa9f1b9ddbd8340e415b538c513ee2ab92ee2e2"
+    },
+    {
+      "path": "src/assets/fonts/Arvo/Arvo-Bold.ttf",
+      "sha1": "0f5c7895d87238a42e7e1e15396bb46591063a65"
+    },
+    {
+      "path": "src/assets/fonts/Arvo/Arvo-BoldItalic.ttf",
+      "sha1": "70c487c81a8cd53165d4d41abdcfa35dbc9eb7cd"
+    },
+    {
+      "path": "src/assets/fonts/Arvo/Arvo-Italic.ttf",
+      "sha1": "a06e1dda1e20a7a289a943ec45db074db1dfacf2"
+    },
+    {
+      "path": "src/assets/fonts/Arvo/Arvo-Regular.ttf",
+      "sha1": "3857248afcedf01b6e9dc0048f4ca662bc328493"
+    },
+    {
+      "path": "src/assets/fonts/Hind_Siliguri/HindSiliguri-Bold.ttf",
+      "sha1": "30564ccaf590dd3243a3818b7f97d019909ddc9a"
+    },
+    {
+      "path": "src/assets/fonts/Hind_Siliguri/HindSiliguri-Light.ttf",
+      "sha1": "e4ca1e41c4aed08bdf52f6380d0d87f70928f8e3"
+    },
+    {
+      "path": "src/assets/fonts/Hind_Siliguri/HindSiliguri-Medium.ttf",
+      "sha1": "4b7d92e2b43400b2375da8124d247dbb913e4321"
+    },
+    {
+      "path": "src/assets/fonts/Hind_Siliguri/HindSiliguri-Regular.ttf",
+      "sha1": "1aa1c0b58701dc320b48eb98940418a644eea59f"
+    },
+    {
+      "path": "src/assets/fonts/Hind_Siliguri/HindSiliguri-SemiBold.ttf",
+      "sha1": "e75ec38ea60dbaebcfffa3e230bcd91c92447e4a"
+    },
+    {
+      "path": "src/assets/fonts/Inconsolata/Inconsolata/Inconsolata-Black.ttf",
+      "sha1": "529ab2ab8935dfa84fc81fa9f0a6c0d2c2d7294c"
+    },
+    {
+      "path": "src/assets/fonts/Inconsolata/Inconsolata/Inconsolata-Bold.ttf",
+      "sha1": "82ff0ef4a72d1414995377a3b30af84381d7b85a"
+    },
+    {
+      "path": "src/assets/fonts/Inconsolata/Inconsolata/Inconsolata-ExtraBold.ttf",
+      "sha1": "2ffbe237c65a8ef3c28ec18b72e5a7de5acb48bf"
+    },
+    {
+      "path": "src/assets/fonts/Inconsolata/Inconsolata/Inconsolata-ExtraLight.ttf",
+      "sha1": "3b9feef87ba8db5ae2c88a6407df32cfcab6567d"
+    },
+    {
+      "path": "src/assets/fonts/Inconsolata/Inconsolata/Inconsolata-Light.ttf",
+      "sha1": "3f39d85ade68cdae3ac451e0832d65f294de8ee5"
+    },
+    {
+      "path": "src/assets/fonts/Inconsolata/Inconsolata/Inconsolata-Medium.ttf",
+      "sha1": "5e046cc150d289bfc7b968b8d3da054380e1d4b9"
+    },
+    {
+      "path": "src/assets/fonts/Inconsolata/Inconsolata/Inconsolata-Regular.ttf",
+      "sha1": "5236122ed33eacc57aa314cedbb46ff31b1a52a2"
+    },
+    {
+      "path": "src/assets/fonts/Inconsolata/Inconsolata/Inconsolata-SemiBold.ttf",
+      "sha1": "2c24a30b33d3183feb6eca8225c50c078f860e60"
+    },
+    {
+      "path": "src/assets/fonts/Inconsolata/Inconsolata-VariableFont_wdth,wght.ttf",
+      "sha1": "0bbda1af9558fd531bcbaffebb69ba89b4dc4eef"
+    }
+  ]
+}
