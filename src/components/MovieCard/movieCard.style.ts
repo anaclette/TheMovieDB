@@ -17,14 +17,15 @@ export const styles = StyleSheet.create({
   imageContainer: {
     width: ITEM_SIZE,
     height: WINDOW_TOP_DISTANCE - metrics.scale(20),
-    shadowColor: colors.blackChocolate,
+
     shadowOffset: {
-      width: 0,
-      height: 1,
+      width: 3,
+      height: 4,
     },
-    shadowOpacity: 0.9,
-    shadowRadius: metrics.scale(5),
-    elevation: 10,
+    shadowOpacity: 0.65,
+    shadowRadius: 2.84,
+    elevation: 5,
+    shadowColor: colors.blackChocolate,
   },
   poster: {
     borderRadius: metrics.scale(10),
