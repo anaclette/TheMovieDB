@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
     borderBottomColor: colors.darkPink,
     borderBottomWidth: 1,
     borderLeftWidth: 1,
-    borderRadius: metrics.scale(3),
+    borderRadius: metrics.scale(20),
     borderLeftColor: colors.darkPink,
     alignSelf: 'flex-end',
   },

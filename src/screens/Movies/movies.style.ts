@@ -6,13 +6,9 @@ import metrics from '../../themes/metrics';
 export const styles = StyleSheet.create({
   safeAreaView: {
     flex: 1,
-    justifyContent: 'space-evenly',
     alignItems: 'center',
   },
-  carousel: {
-    flex: 1,
-    alignItems: 'center',
-  },
+  carousel: {},
   loaderContainer: {
     flex: 1,
     justifyContent: 'center',

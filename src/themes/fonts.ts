@@ -15,7 +15,7 @@ export default {
   },
   InconsolataMedium: {
     fontFamily: 'Inconsolata-Medium',
-    fontSize: metrics.scale(15),
+    fontSize: metrics.scale(20),
   },
   InconsolataExtraLight: {
     fontFamily: 'Inconsolata-ExtraLight',

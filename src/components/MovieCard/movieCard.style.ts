@@ -3,21 +3,17 @@ import colors from '../../themes/colors';
 import fonts from '../../themes/fonts';
 import metrics from '../../themes/metrics';
 
-const ITEM_SIZE = metrics.screenWidth / 2.5;
-const WINDOW_TOP_DISTANCE = metrics.screenHeight / 3;
+const ITEM_SIZE = metrics.screenWidth / 1.5;
+const WINDOW_TOP_DISTANCE = metrics.screenHeight / 2.1;
 
 export const styles = StyleSheet.create({
   container: {
-    width: ITEM_SIZE,
-    marginHorizontal: metrics.scale(10),
-    height: WINDOW_TOP_DISTANCE + metrics.scale(40),
-    marginVertical: metrics.scale(10),
-    justifyContent: 'space-around',
+    alignItems: 'center',
   },
   imageContainer: {
-    width: ITEM_SIZE,
-    height: WINDOW_TOP_DISTANCE - metrics.scale(20),
-
+    width: ITEM_SIZE - metrics.scale(25),
+    borderRadius: metrics.scale(20),
+    height: WINDOW_TOP_DISTANCE - metrics.scale(50),
     shadowOffset: {
       width: 3,
       height: 4,
@@ -27,15 +23,13 @@ export const styles = StyleSheet.create({
     shadowColor: colors.blackChocolate,
   },
   poster: {
-    borderRadius: metrics.scale(10),
+    borderRadius: metrics.scale(20),
     flex: 1,
   },
-
   movieTitle: {
-    flex: 1,
-    paddingTop: metrics.scaleVertical(12),
-    textAlign: 'center',
+    marginVertical: metrics.scale(10),
     ...fonts.InconsolataMedium,
+    textAlign: 'center',
     color: colors.blackChocolate,
   },
 });

@@ -14,22 +14,17 @@ import {Movie} from '../../types/types';
 import {styles} from './movies.style';
 import MovieCard from '../../components/MovieCard';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import metrics from '../../themes/metrics';
-
-export const SLIDER_WIDTH = Dimensions.get('window').width + metrics.scale(70);
-export const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.7);
 
 export const Movies = () => {
   const {top} = useSafeAreaInsets();
   const navigation = useNavigation();
   const {nowPlaying, isLoading} = useMovies();
+  const {width: SLIDER_WIDTH} = Dimensions.get('window');
+
+  const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.6);
 
   const renderItem = useCallback(({item}: {item: Movie}) => {
-    return (
-      <View style={styles.carousel}>
-        <MovieCard movie={item} />
-      </View>
-    );
+    return <MovieCard movie={item} />;
   }, []);
 
   return (
