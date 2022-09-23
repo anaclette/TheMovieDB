@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
   imageContainer: {
     width: ITEM_SIZE - metrics.scale(25),
     borderRadius: metrics.scale(20),
-    height: WINDOW_TOP_DISTANCE - metrics.scale(50),
+    height: WINDOW_TOP_DISTANCE - metrics.scale(30),
     shadowOffset: {
       width: 3,
       height: 4,
@@ -30,9 +30,12 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   movieTitle: {
-    ...fonts.InconsolataMedium,
     fontSize: metrics.scale(17),
+    marginBottom: metrics.scale(25),
+  },
+  title: {
     textAlign: 'center',
+    ...fonts.InconsolataMedium,
     color: colors.blackChocolate,
   },
   overviewContainer: {
@@ -46,8 +49,6 @@ export const styles = StyleSheet.create({
     height: WINDOW_TOP_DISTANCE / 2.3 + metrics.scale(30),
   },
   overviewMovieTitle: {
-    textAlign: 'center',
-    ...fonts.InconsolataMedium,
     alignSelf: 'center',
     paddingVertical: 20,
     width: ITEM_SIZE / 2.1,
