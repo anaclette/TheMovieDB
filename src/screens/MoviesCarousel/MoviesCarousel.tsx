@@ -2,7 +2,7 @@ import {useNavigation} from '@react-navigation/core';
 import React, {useCallback} from 'react';
 import {
   Text,
-  SafeAreaView,
+  ScrollView,
   TouchableOpacity,
   View,
   ActivityIndicator,
@@ -14,6 +14,7 @@ import {Movie} from '../../types/types';
 import {styles} from './moviesCarousel.style';
 import MovieCard from '../../components/MovieCard';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import HorizontalFlatlist from '../../components/HorizontalFlatlist';
 
 export const MoviesCarousel = () => {
   const {top} = useSafeAreaInsets();
@@ -34,21 +35,27 @@ export const MoviesCarousel = () => {
           <ActivityIndicator color="red" size={100} />
         </View>
       ) : (
-        <SafeAreaView style={[styles.safeAreaView, {paddingTop: top + 20}]}>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={[styles.scrollView, {paddingTop: top + 20}]}>
           <TouchableOpacity
             style={styles.backButton}
             onPress={() => navigation.navigate('Home')}>
             <Text style={styles.buttonText}>Back</Text>
           </TouchableOpacity>
-          <Text style={styles.title}>Now playing movies</Text>
-          <Carousel
-            vertical={false}
-            data={nowPlaying as Movie[]}
-            renderItem={renderItem}
-            sliderWidth={SLIDER_WIDTH}
-            itemWidth={ITEM_WIDTH}
-          />
-        </SafeAreaView>
+          <Text style={styles.title}>Ahora en cine</Text>
+          <View style={styles.carousel}>
+            <Carousel
+              vertical={false}
+              data={nowPlaying as Movie[]}
+              renderItem={renderItem}
+              sliderWidth={SLIDER_WIDTH}
+              itemWidth={ITEM_WIDTH}
+            />
+          </View>
+
+          <HorizontalFlatlist movies={nowPlaying as Movie[]} />
+        </ScrollView>
       )}
     </>
   );

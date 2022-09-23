@@ -6,13 +6,21 @@ import {styles} from './movieCard.style';
 
 interface Props {
   movie: Movie;
+  isOverview?: boolean;
 }
-export const MovieCard = ({movie}: Props) => {
+export const MovieCard = ({movie, isOverview}: Props) => {
   const source = `${imageURL}${movie.poster_path}`;
-  return (
+  return !isOverview ? (
     <View style={styles.container}>
       <Text style={styles.movieTitle}>{movie.title}</Text>
       <View style={styles.imageContainer}>
+        <Image source={{uri: source}} style={styles.poster} />
+      </View>
+    </View>
+  ) : (
+    <View style={styles.overviewContainer}>
+      <Text style={styles.overviewMovieTitle}>{movie.title}</Text>
+      <View style={styles.overviewImageContainer}>
         <Image source={{uri: source}} style={styles.poster} />
       </View>
     </View>

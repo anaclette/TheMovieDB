@@ -9,6 +9,9 @@ const WINDOW_TOP_DISTANCE = metrics.screenHeight / 2.1;
 export const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
+    justifyContent: 'space-around',
+    height: WINDOW_TOP_DISTANCE,
+    marginVertical: metrics.scaleVertical(20),
   },
   imageContainer: {
     width: ITEM_SIZE - metrics.scale(25),
@@ -27,9 +30,27 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   movieTitle: {
-    marginVertical: metrics.scale(10),
     ...fonts.InconsolataMedium,
+    fontSize: metrics.scale(17),
     textAlign: 'center',
     color: colors.blackChocolate,
+  },
+  overviewContainer: {
+    paddingVertical: metrics.scale(25),
+    justifyContent: 'space-between',
+    height: WINDOW_TOP_DISTANCE / 1.2,
+  },
+  overviewImageContainer: {
+    width: ITEM_SIZE / 2,
+    marginHorizontal: metrics.scale(5),
+    height: WINDOW_TOP_DISTANCE / 2.3 + metrics.scale(30),
+  },
+  overviewMovieTitle: {
+    textAlign: 'center',
+    ...fonts.InconsolataMedium,
+    alignSelf: 'center',
+    paddingVertical: 20,
+    width: ITEM_SIZE / 2.1,
+    fontSize: metrics.scale(11),
   },
 });

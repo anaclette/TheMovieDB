@@ -4,11 +4,12 @@ import fonts from '../../themes/fonts';
 import metrics from '../../themes/metrics';
 
 export const styles = StyleSheet.create({
-  safeAreaView: {
-    flex: 1,
+  scrollView: {
     alignItems: 'center',
   },
-  carousel: {},
+  carousel: {
+    flex: 1,
+  },
   loaderContainer: {
     flex: 1,
     justifyContent: 'center',
