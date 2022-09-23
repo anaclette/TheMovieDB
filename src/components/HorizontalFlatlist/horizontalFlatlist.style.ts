@@ -5,6 +5,7 @@ import metrics from '../../themes/metrics';
 
 export const styles = StyleSheet.create({
   container: {
+    flex: 1,
     marginLeft: metrics.scale(30),
   },
   title: {
