@@ -1,7 +1,7 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import Home from '../screens/Home';
-import Movies from '../screens/Movies';
+import Movies from '../screens/MoviesCarousel';
 import colors from '../themes/colors';
 
 const Stack = createStackNavigator();

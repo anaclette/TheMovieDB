@@ -11,11 +11,11 @@ import {
 import {useMovies} from '../../hooks/useMovies';
 import Carousel from 'react-native-snap-carousel';
 import {Movie} from '../../types/types';
-import {styles} from './movies.style';
+import {styles} from './moviesCarousel.style';
 import MovieCard from '../../components/MovieCard';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
-export const Movies = () => {
+export const MoviesCarousel = () => {
   const {top} = useSafeAreaInsets();
   const navigation = useNavigation();
   const {nowPlaying, isLoading} = useMovies();
