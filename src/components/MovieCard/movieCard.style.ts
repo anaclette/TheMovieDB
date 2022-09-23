@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
   imageContainer: {
     width: ITEM_SIZE - metrics.scale(25),
     borderRadius: metrics.scale(20),
-    height: WINDOW_TOP_DISTANCE - metrics.scale(30),
+    height: WINDOW_TOP_DISTANCE - metrics.scale(50),
     shadowOffset: {
       width: 3,
       height: 4,
