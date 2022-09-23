@@ -15,11 +15,12 @@ import {styles} from './moviesCarousel.style';
 import MovieCard from '../../components/MovieCard';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import HorizontalFlatlist from '../../components/HorizontalFlatlist';
+import copies from '../../utils/copies';
 
 export const MoviesCarousel = () => {
   const {top} = useSafeAreaInsets();
   const navigation = useNavigation();
-  const {nowPlaying, isLoading} = useMovies();
+  const {isLoading, popular, topRated, upcoming, nowPlaying} = useMovies();
   const {width: SLIDER_WIDTH} = Dimensions.get('window');
 
   const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.6);
@@ -43,18 +44,31 @@ export const MoviesCarousel = () => {
             onPress={() => navigation.navigate('Home')}>
             <Text style={styles.buttonText}>Back</Text>
           </TouchableOpacity>
-          <Text style={styles.title}>Ahora en cine</Text>
+          <Text style={styles.title}>
+            {copies.es.categoryTitles.nowPlaying}
+          </Text>
           <View style={styles.carousel}>
             <Carousel
               vertical={false}
-              data={nowPlaying as Movie[]}
+              data={nowPlaying}
               renderItem={renderItem}
               sliderWidth={SLIDER_WIDTH}
               itemWidth={ITEM_WIDTH}
             />
           </View>
 
-          <HorizontalFlatlist movies={nowPlaying as Movie[]} />
+          <HorizontalFlatlist
+            categoryTitle={copies.es.categoryTitles.popular}
+            movies={popular}
+          />
+          <HorizontalFlatlist
+            categoryTitle={copies.es.categoryTitles.topRated}
+            movies={topRated}
+          />
+          <HorizontalFlatlist
+            categoryTitle={copies.es.categoryTitles.upcoming}
+            movies={upcoming}
+          />
         </ScrollView>
       )}
     </>

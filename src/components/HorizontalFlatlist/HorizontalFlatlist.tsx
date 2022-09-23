@@ -7,9 +7,10 @@ import {styles} from './horizontalFlatlist.style';
 
 interface Props {
   movies: Movie[];
+  categoryTitle: string;
 }
 
-export const HorizontalFlatlist = ({movies}: Props) => {
+export const HorizontalFlatlist = ({movies, categoryTitle}: Props) => {
   // const {nowPlaying} = useMovies();
 
   const renderItem = ({item}: {item: Movie}) => {
@@ -17,7 +18,7 @@ export const HorizontalFlatlist = ({movies}: Props) => {
   };
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Populares</Text>
+      <Text style={styles.title}>{categoryTitle}</Text>
 
       <FlatList
         showsHorizontalScrollIndicator={false}
