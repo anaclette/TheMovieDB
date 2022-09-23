@@ -1,6 +1,6 @@
 # Movies app [WIP]
 
-Movies app using ADB Movies API. It will be under construction for a few weeks from now. For this app I mean to enhance design patterns and to achieve the implementation of a carousel as well as other common features such as pagination, modal and animated layout. And I finally aim to try RTK query for data fetching.
+Movies app using The Movie DB API. It will be under construction for a few weeks from now. For this app I mean to enhance design patterns and to achieve the implementation of a carousel as well as other common features such as pagination, modal and animated layout. And I finally aim to try RTK query for data fetching.
 
 ## Built with
 
