@@ -1,7 +1,8 @@
 import React from 'react';
-import {View, Text, Image} from 'react-native';
+import {useNavigation} from '@react-navigation/core';
+import {View, Text, Image, TouchableOpacity} from 'react-native';
 import {imageURL} from '../../common/constants';
-import {Movie} from '../../types/types';
+import {Movie} from '../../types/moviesInterface';
 import {styles} from './movieCard.style';
 
 interface Props {
@@ -10,13 +11,16 @@ interface Props {
 }
 export const MovieCard = ({movie, isOverview}: Props) => {
   const source = `${imageURL}${movie.poster_path}`;
+  const navigation = useNavigation();
   return !isOverview ? (
-    <View style={styles.container}>
+    <TouchableOpacity
+      onPress={() => navigation.navigate('Details', movie)}
+      style={styles.container}>
       <Text style={[styles.title, styles.movieTitle]}>{movie.title}</Text>
       <View style={styles.imageContainer}>
         <Image source={{uri: source}} style={styles.poster} />
       </View>
-    </View>
+    </TouchableOpacity>
   ) : (
     <View style={styles.overviewContainer}>
       <Text style={[styles.title, styles.overviewMovieTitle]}>

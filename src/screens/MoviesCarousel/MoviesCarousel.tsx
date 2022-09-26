@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import {useMovies} from '../../hooks/useMovies';
 import Carousel from 'react-native-snap-carousel';
-import {Movie} from '../../types/types';
+import {Movie} from '../../types/moviesInterface';
 import {styles} from './moviesCarousel.style';
 import MovieCard from '../../components/MovieCard';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';

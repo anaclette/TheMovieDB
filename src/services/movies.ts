@@ -1,7 +1,7 @@
 // Need to use the React-specific entry point to import createApi
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
 import {baseURL} from '../common/constants';
-import type {Movie} from '../types/types';
+import type {Movie} from '../types/moviesInterface';
 
 // Define a service using a base URL and expected endpoints
 export const moviesApi = createApi({
