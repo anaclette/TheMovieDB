@@ -34,7 +34,7 @@ export enum OriginalLanguage {
   Ja = 'ja',
   Ru = 'ru',
 }
-export interface MovieDetails {
+export interface MovieFullDetails {
   adult: boolean;
   backdrop_path: string;
   belongs_to_collection: null;
