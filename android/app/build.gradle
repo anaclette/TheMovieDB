@@ -84,6 +84,14 @@ project.ext.react = [
 
 apply from: "../../node_modules/react-native/react.gradle"
 
+// To customize the files from react-native-vector-icons being copied:
+
+project.ext.vectoricons = [
+    iconFontNames: [ 'Ionicons.ttf', 'MaterialIcons.ttf', 'FontAwesome.ttf' ] 
+]
+
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
+
 /**
  * Set this to true to create two separate APKs instead of one:
  *   - An APK that only works on ARM devices

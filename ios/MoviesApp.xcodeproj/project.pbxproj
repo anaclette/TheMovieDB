@@ -34,6 +34,9 @@
 		D80FF1539F05469CB35D92DE /* Arvo-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 306B98CA4C044ECCADAC6A41 /* Arvo-BoldItalic.ttf */; };
 		D850864460E8454E8AF8EE21 /* Inconsolata-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 917B9BFCBFBB49A48CA13B78 /* Inconsolata-Medium.ttf */; };
 		ECA3429EFF6F488C9B084A5B /* Inconsolata-VariableFont_wdth,wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1D3DD45045FB442096FA4168 /* Inconsolata-VariableFont_wdth,wght.ttf */; };
+		F6A78EE828E222CA007E715A /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6A78EE528E222CA007E715A /* Ionicons.ttf */; };
+		F6A78EE928E222CA007E715A /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6A78EE628E222CA007E715A /* MaterialIcons.ttf */; };
+		F6A78EEA28E222CA007E715A /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6A78EE728E222CA007E715A /* FontAwesome.ttf */; };
 		F6C31FFE28DB4E0C0029F9F4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -58,33 +61,39 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = MoviesApp/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = MoviesApp/main.m; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-MoviesApp-MoviesAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MoviesApp-MoviesAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1B303F3E945D486589042204 /* HindSiliguri-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "HindSiliguri-Regular.ttf"; path = "../src/assets/fonts/Hind_Siliguri/HindSiliguri-Regular.ttf"; sourceTree = "<group>"; };
-		1D3DD45045FB442096FA4168 /* Inconsolata-VariableFont_wdth,wght.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inconsolata-VariableFont_wdth,wght.ttf"; path = "../src/assets/fonts/Inconsolata/Inconsolata-VariableFont_wdth,wght.ttf"; sourceTree = "<group>"; };
-		306B98CA4C044ECCADAC6A41 /* Arvo-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Arvo-BoldItalic.ttf"; path = "../src/assets/fonts/Arvo/Arvo-BoldItalic.ttf"; sourceTree = "<group>"; };
+		1B303F3E945D486589042204 /* HindSiliguri-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "HindSiliguri-Regular.ttf"; path = "../src/assets/fonts/Hind_Siliguri/HindSiliguri-Regular.ttf"; sourceTree = "<group>"; };
+		1D3DD45045FB442096FA4168 /* Inconsolata-VariableFont_wdth,wght.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inconsolata-VariableFont_wdth,wght.ttf"; path = "../src/assets/fonts/Inconsolata/Inconsolata-VariableFont_wdth,wght.ttf"; sourceTree = "<group>"; };
+		306B98CA4C044ECCADAC6A41 /* Arvo-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Arvo-BoldItalic.ttf"; path = "../src/assets/fonts/Arvo/Arvo-BoldItalic.ttf"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-MoviesApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviesApp.debug.xcconfig"; path = "Target Support Files/Pods-MoviesApp/Pods-MoviesApp.debug.xcconfig"; sourceTree = "<group>"; };
-		3D991249AD794EBE917E03A1 /* Inconsolata-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inconsolata-Bold.ttf"; path = "../src/assets/fonts/Inconsolata/Inconsolata/Inconsolata-Bold.ttf"; sourceTree = "<group>"; };
-		4251352877994D318AB460CD /* Inconsolata-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inconsolata-ExtraLight.ttf"; path = "../src/assets/fonts/Inconsolata/Inconsolata/Inconsolata-ExtraLight.ttf"; sourceTree = "<group>"; };
-		4F8BE7D35B494C3F9AA3581F /* AmaticSC-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "AmaticSC-Bold.ttf"; path = "../src/assets/fonts/Amatic_SC/AmaticSC-Bold.ttf"; sourceTree = "<group>"; };
+		3D991249AD794EBE917E03A1 /* Inconsolata-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inconsolata-Bold.ttf"; path = "../src/assets/fonts/Inconsolata/Inconsolata/Inconsolata-Bold.ttf"; sourceTree = "<group>"; };
+		4251352877994D318AB460CD /* Inconsolata-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inconsolata-ExtraLight.ttf"; path = "../src/assets/fonts/Inconsolata/Inconsolata/Inconsolata-ExtraLight.ttf"; sourceTree = "<group>"; };
+		4F8BE7D35B494C3F9AA3581F /* AmaticSC-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "AmaticSC-Bold.ttf"; path = "../src/assets/fonts/Amatic_SC/AmaticSC-Bold.ttf"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-MoviesApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviesApp.release.xcconfig"; path = "Target Support Files/Pods-MoviesApp/Pods-MoviesApp.release.xcconfig"; sourceTree = "<group>"; };
-		59561664F5CA4FD9B92FA394 /* Inconsolata-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inconsolata-Regular.ttf"; path = "../src/assets/fonts/Inconsolata/Inconsolata/Inconsolata-Regular.ttf"; sourceTree = "<group>"; };
+		59561664F5CA4FD9B92FA394 /* Inconsolata-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inconsolata-Regular.ttf"; path = "../src/assets/fonts/Inconsolata/Inconsolata/Inconsolata-Regular.ttf"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-MoviesApp-MoviesAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviesApp-MoviesAppTests.debug.xcconfig"; path = "Target Support Files/Pods-MoviesApp-MoviesAppTests/Pods-MoviesApp-MoviesAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-MoviesApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MoviesApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5E8BEE0E2AF3473B81EC6F83 /* HindSiliguri-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "HindSiliguri-Bold.ttf"; path = "../src/assets/fonts/Hind_Siliguri/HindSiliguri-Bold.ttf"; sourceTree = "<group>"; };
-		6299F6DE73B14E5B9D4E814A /* HindSiliguri-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "HindSiliguri-Light.ttf"; path = "../src/assets/fonts/Hind_Siliguri/HindSiliguri-Light.ttf"; sourceTree = "<group>"; };
-		637E0795B9214ABD8FB46A79 /* Arvo-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Arvo-Bold.ttf"; path = "../src/assets/fonts/Arvo/Arvo-Bold.ttf"; sourceTree = "<group>"; };
-		77E5219D3B3E424EA50DFD6E /* Arvo-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Arvo-Italic.ttf"; path = "../src/assets/fonts/Arvo/Arvo-Italic.ttf"; sourceTree = "<group>"; };
+		5E8BEE0E2AF3473B81EC6F83 /* HindSiliguri-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "HindSiliguri-Bold.ttf"; path = "../src/assets/fonts/Hind_Siliguri/HindSiliguri-Bold.ttf"; sourceTree = "<group>"; };
+		6299F6DE73B14E5B9D4E814A /* HindSiliguri-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "HindSiliguri-Light.ttf"; path = "../src/assets/fonts/Hind_Siliguri/HindSiliguri-Light.ttf"; sourceTree = "<group>"; };
+		637E0795B9214ABD8FB46A79 /* Arvo-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Arvo-Bold.ttf"; path = "../src/assets/fonts/Arvo/Arvo-Bold.ttf"; sourceTree = "<group>"; };
+		77E5219D3B3E424EA50DFD6E /* Arvo-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Arvo-Italic.ttf"; path = "../src/assets/fonts/Arvo/Arvo-Italic.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = MoviesApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-MoviesApp-MoviesAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviesApp-MoviesAppTests.release.xcconfig"; path = "Target Support Files/Pods-MoviesApp-MoviesAppTests/Pods-MoviesApp-MoviesAppTests.release.xcconfig"; sourceTree = "<group>"; };
-		8B457AF0B2CF49C6A8086EDD /* Inconsolata-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inconsolata-Black.ttf"; path = "../src/assets/fonts/Inconsolata/Inconsolata/Inconsolata-Black.ttf"; sourceTree = "<group>"; };
-		917B9BFCBFBB49A48CA13B78 /* Inconsolata-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inconsolata-Medium.ttf"; path = "../src/assets/fonts/Inconsolata/Inconsolata/Inconsolata-Medium.ttf"; sourceTree = "<group>"; };
-		9A4C8D95511E484287EB1C92 /* AmaticSC-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "AmaticSC-Regular.ttf"; path = "../src/assets/fonts/Amatic_SC/AmaticSC-Regular.ttf"; sourceTree = "<group>"; };
-		B34A03B99AFD4F8E8427E0E6 /* Arvo-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Arvo-Regular.ttf"; path = "../src/assets/fonts/Arvo/Arvo-Regular.ttf"; sourceTree = "<group>"; };
-		C81BFB1B0F314FE5971C476C /* Inconsolata-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inconsolata-SemiBold.ttf"; path = "../src/assets/fonts/Inconsolata/Inconsolata/Inconsolata-SemiBold.ttf"; sourceTree = "<group>"; };
-		C83DC01DA5034006A749B979 /* HindSiliguri-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "HindSiliguri-Medium.ttf"; path = "../src/assets/fonts/Hind_Siliguri/HindSiliguri-Medium.ttf"; sourceTree = "<group>"; };
-		C86C5798FA3B410D9061050D /* Inconsolata-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inconsolata-ExtraBold.ttf"; path = "../src/assets/fonts/Inconsolata/Inconsolata/Inconsolata-ExtraBold.ttf"; sourceTree = "<group>"; };
-		D1551F1E648C468D81D5B2A3 /* HindSiliguri-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "HindSiliguri-SemiBold.ttf"; path = "../src/assets/fonts/Hind_Siliguri/HindSiliguri-SemiBold.ttf"; sourceTree = "<group>"; };
+		8B457AF0B2CF49C6A8086EDD /* Inconsolata-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inconsolata-Black.ttf"; path = "../src/assets/fonts/Inconsolata/Inconsolata/Inconsolata-Black.ttf"; sourceTree = "<group>"; };
+		917B9BFCBFBB49A48CA13B78 /* Inconsolata-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inconsolata-Medium.ttf"; path = "../src/assets/fonts/Inconsolata/Inconsolata/Inconsolata-Medium.ttf"; sourceTree = "<group>"; };
+		9A4C8D95511E484287EB1C92 /* AmaticSC-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "AmaticSC-Regular.ttf"; path = "../src/assets/fonts/Amatic_SC/AmaticSC-Regular.ttf"; sourceTree = "<group>"; };
+		B34A03B99AFD4F8E8427E0E6 /* Arvo-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Arvo-Regular.ttf"; path = "../src/assets/fonts/Arvo/Arvo-Regular.ttf"; sourceTree = "<group>"; };
+		C81BFB1B0F314FE5971C476C /* Inconsolata-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inconsolata-SemiBold.ttf"; path = "../src/assets/fonts/Inconsolata/Inconsolata/Inconsolata-SemiBold.ttf"; sourceTree = "<group>"; };
+		C83DC01DA5034006A749B979 /* HindSiliguri-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "HindSiliguri-Medium.ttf"; path = "../src/assets/fonts/Hind_Siliguri/HindSiliguri-Medium.ttf"; sourceTree = "<group>"; };
+		C86C5798FA3B410D9061050D /* Inconsolata-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inconsolata-ExtraBold.ttf"; path = "../src/assets/fonts/Inconsolata/Inconsolata/Inconsolata-ExtraBold.ttf"; sourceTree = "<group>"; };
+		D1551F1E648C468D81D5B2A3 /* HindSiliguri-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "HindSiliguri-SemiBold.ttf"; path = "../src/assets/fonts/Hind_Siliguri/HindSiliguri-SemiBold.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		FF87661170B146978D4D5CE2 /* Inconsolata-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Inconsolata-Light.ttf"; path = "../src/assets/fonts/Inconsolata/Inconsolata/Inconsolata-Light.ttf"; sourceTree = "<group>"; };
+		F6A78EE528E222CA007E715A /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
+		F6A78EE628E222CA007E715A /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
+		F6A78EE728E222CA007E715A /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
+		F6A78EEB28E224A5007E715A /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
+		F6A78EEC28E224A6007E715A /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
+		F6A78EED28E224A6007E715A /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
+		FF87661170B146978D4D5CE2 /* Inconsolata-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inconsolata-Light.ttf"; path = "../src/assets/fonts/Inconsolata/Inconsolata/Inconsolata-Light.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,7 +181,6 @@
 				C81BFB1B0F314FE5971C476C /* Inconsolata-SemiBold.ttf */,
 			);
 			name = Resources;
-			path = "";
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -185,6 +193,12 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				F6A78EE728E222CA007E715A /* FontAwesome.ttf */,
+				F6A78EEC28E224A6007E715A /* FontAwesome.ttf */,
+				F6A78EE528E222CA007E715A /* Ionicons.ttf */,
+				F6A78EE628E222CA007E715A /* MaterialIcons.ttf */,
+				F6A78EEB28E224A5007E715A /* Ionicons.ttf */,
+				F6A78EED28E224A6007E715A /* MaterialIcons.ttf */,
 				13B07FAE1A68108700A75B9A /* MoviesApp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* MoviesAppTests */,
@@ -320,6 +334,9 @@
 				777D0FF40EDB4857817D5F60 /* Arvo-Italic.ttf in Resources */,
 				62D9F1E6B5E145F890D9491A /* Arvo-Regular.ttf in Resources */,
 				19EB60F2A070457FB3514EEE /* HindSiliguri-Bold.ttf in Resources */,
+				F6A78EE828E222CA007E715A /* Ionicons.ttf in Resources */,
+				F6A78EEA28E222CA007E715A /* FontAwesome.ttf in Resources */,
+				F6A78EE928E222CA007E715A /* MaterialIcons.ttf in Resources */,
 				C995AE93EA3643BA93C1231B /* HindSiliguri-Light.ttf in Resources */,
 				83861800F54C421A8BEC6134 /* HindSiliguri-Medium.ttf in Resources */,
 				B6184346FB214E08A4A93C00 /* HindSiliguri-Regular.ttf in Resources */,

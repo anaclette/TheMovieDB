@@ -31,4 +31,7 @@ For state handling:
 For carousel feature:
 - react-native-snap-carousel@4.0.0-beta.6
 - @types/react-native-snap-carousel
-- deprecated-react-native-prop-types -->
+- deprecated-react-native-prop-types
+For icons:
+- react-native-vector-icons
+- @types/react-native-vector-icons -->
