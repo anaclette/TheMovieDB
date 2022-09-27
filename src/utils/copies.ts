@@ -7,6 +7,7 @@ export default {
       upcoming: 'Próximamente',
     },
     detailTitle: {
+      movies: 'Movies',
       cast: 'Cast',
     },
   },

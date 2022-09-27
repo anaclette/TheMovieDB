@@ -7,21 +7,16 @@ export const styles = StyleSheet.create({
   safeAreaView: {
     flex: 1,
   },
-  title: {
-    ...fonts.Amatic,
-  },
+  // title: {
+  //   ...fonts.Amatic,
+  // },
   navigateButton: {
-    borderBottomColor: colors.darkPink,
+    borderBottomColor: colors.brown,
     borderBottomWidth: 1,
-    borderLeftWidth: 1,
     borderRadius: metrics.scale(20),
-    borderLeftColor: colors.darkPink,
-    alignSelf: 'flex-end',
+    alignSelf: 'center',
   },
   buttonText: {
-    paddingHorizontal: metrics.scale(10),
-    color: colors.darkPink,
-    ...fonts.HindSiliguri,
-    fontSize: metrics.scale(20),
+    ...fonts.Amatic,
   },
 });
