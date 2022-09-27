@@ -17,27 +17,31 @@ export const useMovieDetails = (movieId: number) => {
   });
 
   const getMovieDetails = async () => {
-    const movieDetailsPromise = await movies.get<MovieFullDetails>(
-      `/${movieId}`,
-    );
-    const castPromise = await movies.get<Credits>(`/${movieId}/credits`);
+    try {
+      const movieDetailsPromise = await movies.get<MovieFullDetails>(
+        `/${movieId}`,
+      );
+      const castPromise = await movies.get<Credits>(`/${movieId}/credits`);
 
-    // setDetails(response.data);
-    const [movieDetailsResp, castResp] = await Promise.all([
-      movieDetailsPromise,
-      castPromise,
-    ]);
+      const [movieDetailsResp, castResp] = await Promise.all([
+        movieDetailsPromise,
+        castPromise,
+      ]);
 
-    setDetails({
-      isLoading: false,
-      cast: castResp.data.cast,
-      fullMovie: movieDetailsResp.data,
-    });
+      setDetails({
+        isLoading: false,
+        cast: castResp.data.cast,
+        fullMovie: movieDetailsResp.data,
+      });
+    } catch (error) {
+      // handle error
+    }
   };
 
   useEffect(() => {
     getMovieDetails();
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return {
     ...details,
