@@ -6,6 +6,9 @@ export default {
       topRated: 'Mejor calificadas',
       upcoming: 'Próximamente',
     },
+    detailTitle: {
+      cast: 'Cast',
+    },
   },
   en: {
     categoryTitles: {

@@ -22,13 +22,15 @@ export const MovieCard = ({movie, isOverview}: Props) => {
       </View>
     </TouchableOpacity>
   ) : (
-    <View style={styles.overviewContainer}>
+    <TouchableOpacity
+      onPress={() => navigation.navigate('Details', movie)}
+      style={styles.overviewContainer}>
       <Text style={[styles.title, styles.overviewMovieTitle]}>
         {movie.title}
       </Text>
       <View style={styles.overviewImageContainer}>
         <Image source={{uri: source}} style={styles.poster} />
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
