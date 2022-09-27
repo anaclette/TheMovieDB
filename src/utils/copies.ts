@@ -6,9 +6,19 @@ export default {
       topRated: 'Mejor calificadas',
       upcoming: 'Próximamente',
     },
-    detailTitle: {
-      movies: 'Movies',
-      cast: 'Cast',
+    navTitle: {
+      movies: 'Pelis',
+      cast: 'Elenco',
+      series: 'Series',
+      home: 'Home',
+    },
+    details: {
+      noOverview: 'No se encontró descripción de esta peli.',
+      budget: 'Inversión: US',
+      revenue: 'Recaudación: US',
+    },
+    button: {
+      back: 'Atrás',
     },
   },
   en: {
