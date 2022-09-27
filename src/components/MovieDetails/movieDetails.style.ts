@@ -3,14 +3,12 @@ import colors from '../../themes/colors';
 import fonts from '../../themes/fonts';
 import metrics from '../../themes/metrics';
 
-const WINDOW_TOP_DISTANCE = metrics.screenHeight * 0.7;
-
 export const styles = StyleSheet.create({
   detailsContainer: {
     flex: 1,
     justifyContent: 'space-around',
-    height: WINDOW_TOP_DISTANCE / 1.3,
     marginHorizontal: metrics.scale(15),
+    marginVertical: metrics.scale(20),
   },
   title: {
     ...fonts.Arvo,
