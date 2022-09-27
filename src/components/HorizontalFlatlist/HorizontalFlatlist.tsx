@@ -3,16 +3,12 @@ import {Text, FlatList, View} from 'react-native';
 import {Movie} from '../../types/moviesInterface';
 import MovieCard from '../MovieCard';
 import {styles} from './horizontalFlatlist.style';
-// import {useMovies} from '../../hooks/useMovies';
-
 interface Props {
   movies: Movie[];
   categoryTitle: string;
 }
 
 export const HorizontalFlatlist = ({movies, categoryTitle}: Props) => {
-  // const {nowPlaying} = useMovies();
-
   const renderItem = ({item}: {item: Movie}) => {
     return <MovieCard movie={item} isOverview />;
   };
