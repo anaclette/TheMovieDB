@@ -34,4 +34,8 @@ For carousel feature:
 - deprecated-react-native-prop-types
 For icons:
 - react-native-vector-icons
-- @types/react-native-vector-icons -->
+- @types/react-native-vector-icons
+For conversion feature:
+- currency-formatter
+- @types/currency-formatter
+ -->
