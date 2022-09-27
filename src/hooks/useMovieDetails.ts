@@ -11,7 +11,7 @@ interface MovieDetails {
 
 export const useMovieDetails = (movieId: number) => {
   const [details, setDetails] = useState<MovieDetails>({
-    isLoading: false,
+    isLoading: true,
     cast: [],
     fullMovie: undefined,
   });
