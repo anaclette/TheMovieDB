@@ -18,4 +18,5 @@ export default {
       upcoming: 'Upcoming',
     },
   },
+  ellipsis: '...',
 };
