@@ -8,7 +8,6 @@ import {useMovieDetails} from '../../hooks/useMovieDetails';
 import colors from '../../themes/colors';
 import metrics from '../../themes/metrics';
 import MovieDetails from '../../components/MovieDetails';
-import {MovieFullDetails} from '../../types/moviesInterface';
 
 interface Props extends StackScreenProps<RootStackParams, 'Details'> {}
 
@@ -23,7 +22,7 @@ export const Details = ({route}: Props) => {
         <Image style={styles.posterImage} source={{uri: source}} />
       </View>
       {!isLoading ? (
-        <MovieDetails fullMovie={fullMovie as MovieFullDetails} cast={cast} />
+        <MovieDetails fullMovie={fullMovie!} cast={cast} />
       ) : (
         <View style={styles.loaderContainer}>
           <ActivityIndicator color={colors.darkPink} size={metrics.scale(50)} />
