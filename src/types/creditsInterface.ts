@@ -2,11 +2,11 @@
 
 export interface Credits {
   id: number;
-  cast: Cast[];
-  crew: Cast[];
+  cast: CastResp[];
+  crew: CastResp[];
 }
 
-export interface Cast {
+export interface CastResp {
   adult: boolean;
   gender: number;
   id: number;
