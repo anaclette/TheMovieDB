@@ -9,10 +9,10 @@ export const styles = StyleSheet.create({
   },
   castTitle: {
     ...fonts.InconsolataMedium,
-    fontSize: metrics.scaledFontSize(18),
+    fontSize: metrics.scaledFontSize(19),
+    marginVertical: metrics.scale(10),
   },
   castMember: {
-    padding: metrics.scale(5),
     fontSize: metrics.scaledFontSize(17),
     ...fonts.InconsolataExtraLight,
   },

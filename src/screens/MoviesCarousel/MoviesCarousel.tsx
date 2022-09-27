@@ -16,6 +16,9 @@ import MovieCard from '../../components/MovieCard';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import HorizontalFlatlist from '../../components/HorizontalFlatlist';
 import copies from '../../utils/copies';
+import Icon from 'react-native-vector-icons/Ionicons';
+import colors from '../../themes/colors';
+import metrics from '../../themes/metrics';
 
 export const MoviesCarousel = () => {
   const {top} = useSafeAreaInsets();
@@ -40,9 +43,16 @@ export const MoviesCarousel = () => {
           showsVerticalScrollIndicator={false}
           contentContainerStyle={[styles.scrollView, {paddingTop: top + 20}]}>
           <TouchableOpacity
-            style={styles.backButton}
+            style={styles.navigateButton}
             onPress={() => navigation.navigate('Home')}>
-            <Text style={styles.buttonText}>Back</Text>
+            <View style={styles.buttonContentWrapper}>
+              <Icon
+                name="home-outline"
+                size={metrics.scale(30)}
+                color={colors.brown}
+              />
+              <Text style={styles.buttonText}>{copies.es.navTitle.home}</Text>
+            </View>
           </TouchableOpacity>
           <Text style={styles.title}>
             {copies.es.categoryTitles.nowPlaying}

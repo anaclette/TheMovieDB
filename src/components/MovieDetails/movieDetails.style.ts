@@ -21,4 +21,9 @@ export const styles = StyleSheet.create({
     fontSize: metrics.scaledFontSize(17),
     color: colors.blackChocolate,
   },
+  secondaryTitle: {
+    ...fonts.InconsolataMedium,
+    fontSize: metrics.scaledFontSize(18),
+    marginBottom: metrics.scaleVertical(10),
+  },
 });

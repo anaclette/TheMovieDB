@@ -19,16 +19,21 @@ export const styles = StyleSheet.create({
     ...fonts.Amatic,
     color: colors.darkPink,
   },
-  backButton: {
-    alignSelf: 'flex-start',
-    marginLeft: metrics.scale(25),
-    borderColor: colors.wine,
-    borderWidth: 1,
-    borderRadius: metrics.scale(10),
-  },
   buttonText: {
-    paddingHorizontal: metrics.scale(10),
-    color: colors.wine,
-    ...fonts.HindSiliguri,
+    ...fonts.InconsolataMedium,
+    fontSize: metrics.scaledFontSize(20),
+    color: colors.brown,
+  },
+  buttonContentWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    width: metrics.screenWidth / 2 - metrics.scale(80),
+  },
+
+  navigateButton: {
+    marginBottom: metrics.scaleVertical(20),
+    marginLeft: metrics.scale(20),
+    alignSelf: 'flex-start',
   },
 });

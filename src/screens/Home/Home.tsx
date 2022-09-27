@@ -1,8 +1,11 @@
 import React from 'react';
 import {useNavigation} from '@react-navigation/core';
-import {TouchableOpacity, SafeAreaView, Text} from 'react-native';
+import {TouchableOpacity, SafeAreaView, Text, View} from 'react-native';
 import {styles} from './home.style';
 import copies from '../../utils/copies';
+import Icon from 'react-native-vector-icons/Ionicons';
+import metrics from '../../themes/metrics';
+import colors from '../../themes/colors';
 
 export const Home = () => {
   const navigation = useNavigation();
@@ -13,7 +16,26 @@ export const Home = () => {
       <TouchableOpacity
         style={styles.navigateButton}
         onPress={() => navigation.navigate('Movies')}>
-        <Text style={styles.buttonText}>{copies.es.detailTitle.movies}</Text>
+        <View style={styles.buttonContentWrapper}>
+          <Icon
+            name="videocam-outline"
+            size={metrics.scale(30)}
+            color={colors.brown}
+          />
+          <Text style={styles.buttonText}>{copies.es.navTitle.movies}</Text>
+        </View>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.navigateButton}
+        onPress={() => navigation.navigate('Series')}>
+        <View style={styles.buttonContentWrapper}>
+          <Icon
+            name="tv-outline"
+            size={metrics.scale(30)}
+            color={colors.brown}
+          />
+          <Text style={styles.buttonText}>{copies.es.navTitle.series}</Text>
+        </View>
       </TouchableOpacity>
     </SafeAreaView>
   );
