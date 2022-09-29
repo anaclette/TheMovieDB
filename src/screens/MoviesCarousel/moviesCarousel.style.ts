@@ -17,12 +17,12 @@ export const styles = StyleSheet.create({
   },
   title: {
     ...fonts.Amatic,
-    color: colors.darkPink,
+    color: colors.palePink,
   },
   buttonText: {
     ...fonts.InconsolataMedium,
     fontSize: metrics.scaledFontSize(20),
-    color: colors.brown,
+    color: colors.palePink,
   },
   buttonContentWrapper: {
     flexDirection: 'row',
