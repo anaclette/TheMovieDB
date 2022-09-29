@@ -38,4 +38,10 @@ For icons:
 For conversion feature:
 - currency-formatter
 - @types/currency-formatter
- -->
+For tabs:
+- @react-navigation/material-top-tabs
+- react-native-tab-view
+- react-native-pager-view
+For linear gradient animation:
+- react-native-linear-gradient
+- react-native-image-colors -->
