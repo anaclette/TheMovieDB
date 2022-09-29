@@ -23,17 +23,25 @@ export const styles = StyleSheet.create({
     ...fonts.InconsolataExtraLight,
   },
   name: {
-    alignSelf: 'center',
+    textAlign: 'center',
   },
   memberDetailsWrapper: {
     width: ITEM_SIZE - metrics.scale(150),
-    height: WINDOW_TOP_DISTANCE - metrics.scaleVertical(150),
-    justifyContent: 'space-around',
+    height: WINDOW_TOP_DISTANCE - metrics.scaleVertical(170),
+    justifyContent: 'space-between',
     marginRight: metrics.scale(4),
   },
   imageWrapper: {
     width: ITEM_SIZE - metrics.scale(150),
     height: WINDOW_TOP_DISTANCE - metrics.scaleVertical(200),
+    shadowColor: colors.brown,
+    shadowOffset: {
+      width: 1,
+      height: 5,
+    },
+    shadowOpacity: 0.24,
+    shadowRadius: 2,
+    elevation: 9,
   },
   image: {
     borderRadius: metrics.scale(10),

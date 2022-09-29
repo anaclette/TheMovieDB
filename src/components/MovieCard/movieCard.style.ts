@@ -32,11 +32,12 @@ export const styles = StyleSheet.create({
   movieTitle: {
     fontSize: metrics.scale(17),
     marginBottom: metrics.scale(25),
+    color: colors.brown,
   },
   title: {
     textAlign: 'center',
     ...fonts.InconsolataMedium,
-    color: colors.blackChocolate,
+    color: colors.darkPink,
   },
   overviewContainer: {
     paddingVertical: metrics.scale(25),
