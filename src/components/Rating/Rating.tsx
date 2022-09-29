@@ -16,12 +16,24 @@ export const Rating = ({rating}: Props) => {
     const rate = [];
 
     for (let i = 0; i < fullStar; i++) {
-      rate.push(<Icon name="star" size={20} color={colors.blackChocolate} />);
+      rate.push(
+        <Icon
+          key={`full-${i}`}
+          name="star"
+          size={20}
+          color={colors.blackChocolate}
+        />,
+      );
     }
 
     if (halfStar) {
       rate.push(
-        <Icon name="star-half" size={20} color={colors.blackChocolate} />,
+        <Icon
+          key={'half'}
+          name="star-half"
+          size={20}
+          color={colors.blackChocolate}
+        />,
       );
     }
 
@@ -29,7 +41,12 @@ export const Rating = ({rating}: Props) => {
       const rest = maxRate - rate.length;
       for (let j = 0; j < rest; j++) {
         rate.push(
-          <Icon name="star-outline" size={20} color={colors.blackChocolate} />,
+          <Icon
+            key={`empty-${j}`}
+            name="star-outline"
+            size={20}
+            color={colors.blackChocolate}
+          />,
         );
       }
     }
