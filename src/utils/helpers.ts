@@ -11,9 +11,10 @@ export const getImageColors = async (uri: string) => {
   if (colors.platform === 'android') {
     primary = colors.average;
     secondary = colors.dominant;
-  } else {
+  } else if (colors.platform === 'ios') {
     primary = colors.primary;
     secondary = colors.secondary;
   }
+
   return [primary, secondary];
 };
