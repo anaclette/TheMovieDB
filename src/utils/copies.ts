@@ -8,7 +8,7 @@ export default {
     },
     navTitle: {
       movies: 'Pelis',
-      cast: 'Elenco',
+      cast: 'Reparto',
       series: 'Series',
       home: 'Home',
     },

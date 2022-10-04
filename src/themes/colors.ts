@@ -4,4 +4,6 @@ export default {
   darkPink: '#9f2042',
   palePink: '#f8e5ee',
   blackChocolate: '#211103',
+  lightBlue: '#C2E3FF',
+  black: '#000000',
 };
