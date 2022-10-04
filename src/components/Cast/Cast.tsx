@@ -41,6 +41,7 @@ export const Cast = ({cast}: Props) => {
             data={cast}
             renderItem={renderItem}
             showsHorizontalScrollIndicator={false}
+            keyExtractor={item => String(item.id)}
           />
         </Text>
       </View>
