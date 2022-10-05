@@ -32,19 +32,15 @@ export const Cast = ({cast}: Props) => {
     );
   };
   return (
-    <View style={styles.container}>
+    <>
       <Text style={styles.castTitle}>{copies.es.navTitle.cast} </Text>
-      <View style={styles.castWrapper}>
-        <Text style={styles.castMember}>
-          <FlatList
-            horizontal
-            data={cast}
-            renderItem={renderItem}
-            showsHorizontalScrollIndicator={false}
-            keyExtractor={item => String(item.id)}
-          />
-        </Text>
-      </View>
-    </View>
+      <FlatList
+        horizontal
+        data={cast}
+        renderItem={renderItem}
+        showsHorizontalScrollIndicator={false}
+        keyExtractor={item => String(item.id)}
+      />
+    </>
   );
 };
