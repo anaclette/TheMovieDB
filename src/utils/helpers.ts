@@ -21,3 +21,22 @@ export const getImageColors = async (uri: string) => {
 
   return [primary, secondary, addOn];
 };
+
+export const getIconName = (route: {name: string}) => {
+  let iconName: string = '';
+  switch (route.name) {
+    case 'Movies':
+      iconName = 'movie';
+      break;
+    case 'Tv':
+      iconName = 'tv';
+      break;
+    case 'Home':
+      iconName = 'home';
+      break;
+    case 'Search':
+      iconName = 'search';
+      break;
+  }
+  return {iconName};
+};
