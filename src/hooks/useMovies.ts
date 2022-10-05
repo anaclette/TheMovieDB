@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {ENDPOINTS} from '../common/constants';
+import {MOVIE_ENDPOINTS} from '../common/constants';
 import movies from '../state/api/movieDB';
 import {Movie, MovieDBMoviesResponse} from '../types/moviesInterface';
 
@@ -22,16 +22,16 @@ export const useMovies = () => {
   const getMovies = async () => {
     try {
       const nowPlayingPromise = movies.get<MovieDBMoviesResponse>(
-        `/${ENDPOINTS.NOW_PLAYING}`,
+        `/${MOVIE_ENDPOINTS.NOW_PLAYING}`,
       );
       const popularPromise = movies.get<MovieDBMoviesResponse>(
-        `/${ENDPOINTS.POPULAR}`,
+        `/${MOVIE_ENDPOINTS.POPULAR}`,
       );
       const topRatedPromise = movies.get<MovieDBMoviesResponse>(
-        `/${ENDPOINTS.TOP_RATED}`,
+        `/${MOVIE_ENDPOINTS.TOP_RATED}`,
       );
       const upcomingPromise = movies.get<MovieDBMoviesResponse>(
-        `/${ENDPOINTS.UPCOMING}`,
+        `/${MOVIE_ENDPOINTS.UPCOMING}`,
       );
       const [nowPlayingResp, popularResp, topRatedResp, upcomingResp] =
         await Promise.all([
