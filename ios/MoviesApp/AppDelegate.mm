@@ -46,7 +46,7 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
   NSDictionary *initProps = [self prepareInitialProps];
   UIView *rootView = RCTAppSetupDefaultRootView(bridge, @"MoviesApp", initProps);
 
- rootView.backgroundColor = [UIColor colorWithRed:0.76078 green:0.89020 blue:1.00000 alpha:1.00000];
+ rootView.backgroundColor = [UIColor colorWithRed:0.00000 green:0.00000 blue:0.00000 alpha:1.00000];
 
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   UIViewController *rootViewController = [UIViewController new];

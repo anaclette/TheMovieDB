@@ -6,4 +6,5 @@ export default {
   blackChocolate: '#211103',
   lightBlue: '#C2E3FF',
   black: '#000000',
+  transparent: 'transparent',
 };
