@@ -11,5 +11,10 @@ export const styles = StyleSheet.create({
   title: {
     ...fonts.Amatic,
     color: colors.darkPink,
+    marginRight: metrics.scale(20),
+  },
+  buttonContentWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });

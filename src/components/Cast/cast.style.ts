@@ -24,6 +24,7 @@ export const styles = StyleSheet.create({
   },
   name: {
     textAlign: 'center',
+    color: colors.blackChocolate,
   },
   memberDetailsWrapper: {
     width: ITEM_SIZE - metrics.scale(150),

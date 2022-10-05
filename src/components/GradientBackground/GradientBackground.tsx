@@ -20,8 +20,8 @@ export const GradientBackground = ({children}: Props) => {
         <LinearGradient
           colors={[
             contextColors.primary,
-            contextColors.secondary,
             contextColors.addOn,
+            contextColors.secondary,
           ]}
           style={{...StyleSheet.absoluteFillObject}}
           start={{x: 0.1, y: 0.1}}

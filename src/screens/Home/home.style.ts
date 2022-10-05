@@ -7,6 +7,8 @@ export const styles = StyleSheet.create({
   safeAreaView: {
     flex: 1,
     justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: colors.lightBlue,
   },
   // title: {
   //   ...fonts.Amatic,
