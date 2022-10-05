@@ -1,28 +1,21 @@
 import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {Animated} from 'react-native';
+import {useAnimation} from '../../hooks/useAnimation';
 import {styles} from './splashScreen.style';
 
 export const Splash = ({isAppReady}: {isAppReady: boolean}) => {
   const containerOpacity = useRef(new Animated.Value(1)).current;
   const imageOpacity = useRef(new Animated.Value(0)).current;
   const [hidden, setHidden] = useState(false);
+  const {fade} = useAnimation();
 
   const fadeIn = useCallback(() => {
-    Animated.timing(imageOpacity, {
-      toValue: 1,
-      duration: 1000,
-      useNativeDriver: true,
-    }).start();
-  }, [imageOpacity]);
+    fade(imageOpacity, 1);
+  }, [imageOpacity, fade]);
 
   const fadeOut = useCallback(() => {
-    Animated.timing(containerOpacity, {
-      toValue: 0,
-      duration: 2600,
-      delay: 2600,
-      useNativeDriver: true,
-    }).start(() => setHidden(true));
-  }, [containerOpacity]);
+    fade(containerOpacity, 0, 2600, 2600, () => setHidden(true));
+  }, [containerOpacity, fade]);
 
   useEffect(() => {
     if (isAppReady) {
