@@ -4,25 +4,16 @@ import fonts from '../../themes/fonts';
 import metrics from '../../themes/metrics';
 
 export const styles = StyleSheet.create({
-  scrollView: {
-    alignItems: 'center',
+  contentContainer: {
+    backgroundColor: colors.darkPink,
   },
-  carousel: {
-    flex: 1,
-  },
-  loaderContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+  wrapper: {
+    width: metrics.screenWidth / 2,
   },
   title: {
     ...fonts.Amatic,
+    textAlign: 'center',
     color: colors.brown,
     marginRight: metrics.scale(20),
-  },
-
-  buttonContentWrapper: {
-    flexDirection: 'row',
-    alignItems: 'center',
   },
 });
