@@ -13,7 +13,7 @@ export const TvCard = ({item}: Props) => {
   const navigation = useNavigation();
   return (
     <TouchableOpacity
-      onPress={() => navigation.navigate('Details', item)}
+      // onPress={() => }
       style={styles.container}>
       <Text style={styles.name}>{item.name}</Text>
       <View style={styles.imageWrapper}>
