@@ -26,7 +26,7 @@ export const Details = ({route}: Props) => {
   const {isLoading, cast, fullMovie} = useMovieDetails(movie.id);
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={(styles.container, {marginTop: 0})}>
       <View style={styles.imgContainer}>
         <TouchableOpacity
           style={styles.backButton}

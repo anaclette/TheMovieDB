@@ -4,7 +4,7 @@ import metrics from './metrics';
 export default {
   Amatic: {
     fontFamily: 'AmaticSC-Regular',
-    fontSize: metrics.scale(50),
+    fontSize: metrics.scale(40),
     color: colors.brown,
   },
   Arvo: {

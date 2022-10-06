@@ -24,6 +24,7 @@ export const styles = StyleSheet.create({
     borderBottomLeftRadius: metrics.scale(20),
   },
   backButton: {
+    top: metrics.scale(40),
     position: 'absolute',
     zIndex: 1,
     right: 0,
