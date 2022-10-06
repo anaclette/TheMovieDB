@@ -27,7 +27,7 @@ export const Home = () => {
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.navigateButton}
-        onPress={() => navigation.navigate('Series')}>
+        onPress={() => navigation.navigate('Tv')}>
         <View style={styles.buttonContentWrapper}>
           <Icon
             name="tv-outline"
