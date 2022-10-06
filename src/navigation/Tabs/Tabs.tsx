@@ -8,6 +8,8 @@ import TabIcon from '../../components/TabIcon';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import Tv from '../../screens/Tv';
 import SearchBar from '../../components/SearchBar';
+import fonts from '../../themes/fonts';
+import metrics from '../../themes/metrics';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -18,7 +20,7 @@ export const Tabs = () => {
     <Tab.Navigator
       screenOptions={({route}) => ({
         tabBarLabelStyle: {
-          fontSize: 10,
+          ...fonts.HindSiliguri,
           color: colors.blackChocolate,
         },
         tabBarIcon: ({focused}) => {
@@ -28,15 +30,14 @@ export const Tabs = () => {
             </TouchableHighlight>
           );
         },
-        tabBarItemStyle: {width: 100},
         tabBarStyle: !platformIsIos
           ? {
-              height: insets.top + 90,
+              height: insets.top + metrics.scale(90),
               backgroundColor: colors.blackChocolate,
               elevation: 0,
             }
           : {
-              height: insets.top + 50,
+              height: insets.top + metrics.scale(40),
               backgroundColor: colors.palePink,
             },
 
@@ -49,9 +50,17 @@ export const Tabs = () => {
       })}
       tabBarPosition={platformIsIos ? 'bottom' : 'top'}>
       <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="Movies" component={MoviesCarousel} />
-      <Tab.Screen name="Tv" component={Tv} />
-      <Tab.Screen name="Search" component={SearchBar} />
+      <Tab.Screen
+        options={{title: 'Pelis'}}
+        name="Movies"
+        component={MoviesCarousel}
+      />
+      <Tab.Screen options={{title: 'Series'}} name="Tv" component={Tv} />
+      <Tab.Screen
+        options={{title: 'Buscar'}}
+        name="Search"
+        component={SearchBar}
+      />
     </Tab.Navigator>
   );
 };

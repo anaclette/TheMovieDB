@@ -13,16 +13,17 @@ interface IconProps {
 }
 
 export const TabIcon = ({route, focused, style}: IconProps) => {
-  const margins = {
-    height: metrics.screenHeight,
-    width: metrics.screenWidth,
-  };
   const {iconName} = getIconName(route);
   const isiOS = Platform.OS === 'ios';
   return (
     <Icon
       accessibilityRole="image"
-      style={[margins, style]}
+      style={[
+        {
+          width: metrics.screenWidth / 2.5 - metrics.scale(110),
+        },
+        style,
+      ]}
       name={iconName}
       size={metrics.scale(25)}
       color={
