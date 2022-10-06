@@ -19,8 +19,8 @@ export const GradientBackground = ({children}: Props) => {
       <Animated.View style={{...StyleSheet.absoluteFillObject}}>
         <LinearGradient
           colors={[
-            contextColors.primary,
             contextColors.addOn,
+            contextColors.primary,
             contextColors.secondary,
           ]}
           style={{...StyleSheet.absoluteFillObject}}

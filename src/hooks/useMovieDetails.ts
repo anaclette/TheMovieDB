@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import movies from '../state/api/movieDB';
+import data from '../state/api/movieDB';
 import {Credits, CastResp} from '../types/creditsInterface';
 import {MovieFullDetails} from '../types/moviesInterface';
 
@@ -18,10 +18,10 @@ export const useMovieDetails = (movieId: number) => {
 
   const getMovieDetails = async () => {
     try {
-      const movieDetailsPromise = await movies.get<MovieFullDetails>(
-        `/${movieId}`,
+      const movieDetailsPromise = await data.get<MovieFullDetails>(
+        `/movie/${movieId}`,
       );
-      const castPromise = await movies.get<Credits>(`/${movieId}/credits`);
+      const castPromise = await data.get<Credits>(`/movie/${movieId}/credits`);
 
       const [movieDetailsResp, castResp] = await Promise.all([
         movieDetailsPromise,

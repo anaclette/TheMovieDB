@@ -20,20 +20,8 @@ export const styles = StyleSheet.create({
     color: colors.brown,
     marginRight: metrics.scale(20),
   },
-  buttonText: {
-    ...fonts.InconsolataMedium,
-    fontSize: metrics.scaledFontSize(20),
-    color: colors.palePink,
-    marginLeft: metrics.scale(20),
-  },
   buttonContentWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
-  },
-
-  navigateButton: {
-    marginBottom: metrics.scaleVertical(20),
-    marginLeft: metrics.scale(20),
-    alignSelf: 'flex-start',
   },
 });

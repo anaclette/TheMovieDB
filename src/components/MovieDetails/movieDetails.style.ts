@@ -26,9 +26,4 @@ export const styles = StyleSheet.create({
     fontSize: metrics.scaledFontSize(18),
     marginBottom: metrics.scaleVertical(10),
   },
-  headerWrapper: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
 });

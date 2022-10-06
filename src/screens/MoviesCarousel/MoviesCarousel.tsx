@@ -8,6 +8,8 @@ import {
   View,
   ActivityIndicator,
   Dimensions,
+  // Animated,
+  // Easing,
 } from 'react-native';
 import {useMovies} from '../../hooks/useMovies';
 import Carousel from 'react-native-snap-carousel';
@@ -32,6 +34,7 @@ export const MoviesCarousel = () => {
   const {width: SLIDER_WIDTH} = Dimensions.get('window');
   const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.6);
   const {setMainColors} = useContext(GradientContext);
+  // const topValue = useRef(new Animated.Value(-30)).current;
 
   const renderItem = useCallback(({item}: {item: Movie}) => {
     return <MovieCard movie={item} />;
@@ -40,8 +43,8 @@ export const MoviesCarousel = () => {
   const defineBackgroundColor = async (index: number) => {
     const movie = nowPlaying[index];
     const movieImage = `${imageURL}${movie.poster_path}`;
-    const [primary, secondary] = await getImageColors(movieImage);
-    setMainColors({primary, secondary});
+    const [primary, secondary, addOn] = await getImageColors(movieImage);
+    setMainColors({primary, secondary, addOn});
   };
 
   useEffect(() => {
@@ -49,6 +52,17 @@ export const MoviesCarousel = () => {
       defineBackgroundColor(0);
     }
   }, [nowPlaying]);
+
+  // const bounce = useCallback(() => {
+  //   Animated.timing(topValue, {
+  //     toValue: 0,
+  //     duration: 700,
+  //     useNativeDriver: true,
+  //     easing: Easing.bounce,
+  //   }).start();
+  // }, []);
+
+  // {transform: [{translateY: topValue}]}
 
   return (
     <>
@@ -62,21 +76,22 @@ export const MoviesCarousel = () => {
             showsVerticalScrollIndicator={false}
             contentContainerStyle={[styles.scrollView, {paddingTop: top + 20}]}>
             <TouchableOpacity
-              style={styles.navigateButton}
-              onPress={() => navigation.navigate('Home')}>
+              onPress={() =>
+                navigation.navigate('FullCategoryContent', {
+                  movieType: 'now-playing',
+                })
+              }>
               <View style={styles.buttonContentWrapper}>
+                <Text style={styles.title}>
+                  {copies.es.categoryTitles.nowPlaying}
+                </Text>
                 <Icon
-                  name="home-outline"
-                  size={metrics.scale(30)}
-                  color={colors.palePink}
+                  name="arrow-forward-outline"
+                  size={metrics.scale(20)}
+                  color={colors.brown}
                 />
-
-                <Text style={styles.buttonText}>{copies.es.navTitle.home}</Text>
               </View>
             </TouchableOpacity>
-            <Text style={styles.title}>
-              {copies.es.categoryTitles.nowPlaying}
-            </Text>
             <View style={styles.carousel}>
               <Carousel
                 vertical={false}
@@ -91,14 +106,17 @@ export const MoviesCarousel = () => {
             <HorizontalFlatlist
               categoryTitle={copies.es.categoryTitles.popular}
               movies={popular}
+              movieType="popular"
             />
             <HorizontalFlatlist
               categoryTitle={copies.es.categoryTitles.topRated}
               movies={topRated}
+              movieType="top-rated"
             />
             <HorizontalFlatlist
               categoryTitle={copies.es.categoryTitles.upcoming}
               movies={upcoming}
+              movieType="upcoming"
             />
           </ScrollView>
         </GradientBackground>
