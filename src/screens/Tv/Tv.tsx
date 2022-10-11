@@ -6,6 +6,7 @@ import TvCard from '../../components/TvCard';
 import {useTv} from '../../hooks/useTv';
 import colors from '../../themes/colors';
 import {TvDetails} from '../../types/tvInterface';
+import copies from '../../utils/copies';
 import {styles} from './tv.style';
 
 export const Tv = () => {
@@ -41,57 +42,40 @@ export const Tv = () => {
     [airingToday, onTheAir, popular, topRated],
   );
 
-  const renderItem = useCallback(({item}: {item: TvData}) => {
-    if (item.type === 'airingToday') {
-      return (
-        <View style={styles.wrapper}>
-          <Text style={styles.title}>Disponible hoy </Text>
-          <Button icon="arrow-forward" />
-          {item.data.slice(0, 6).map(dataItem => {
-            return <TvCard item={dataItem} />;
-          })}
-        </View>
-      );
-    }
-    if (item.type === 'popular') {
-      return (
-        <View style={styles.wrapper}>
-          <Text style={styles.title}>Populares </Text>
-          <Button icon="arrow-forward" />
-          {item.data.slice(0, 6).map((dataItem: TvDetails) => {
-            return <TvCard item={dataItem} />;
-          })}
-        </View>
-      );
-    }
-    if (item.type === 'topRated') {
-      return (
-        <View style={styles.wrapper}>
-          <Text style={styles.title}>Mejores calificadas </Text>
-          <Button icon="arrow-forward" />
-          {item.data.slice(0, 6).map(dataItem => {
-            return (
-              <>
-                <TvCard item={dataItem} />
-              </>
-            );
-          })}
-        </View>
-      );
-    }
-    if (item.type === 'onTheAir') {
-      return (
-        <View style={styles.wrapper}>
-          <Text style={styles.title}>Al aire </Text>
-          <Button icon="arrow-forward" />
-          {item.data.slice(0, 6).map(dataItem => {
-            return <TvCard item={dataItem} />;
-          })}
-        </View>
-      );
-    }
-    return null;
+  const getItem = useCallback((item: TvData, title: string) => {
+    return (
+      <View style={styles.wrapper}>
+        <Text style={styles.title}>{title} </Text>
+        <Button icon="arrow-forward" />
+        {item.data.slice(0, 6).map(dataItem => {
+          return <TvCard item={dataItem} />;
+        })}
+      </View>
+    );
   }, []);
+
+  const renderItem = useCallback(
+    ({item}: {item: TvData}) => {
+      if (item.type === 'airingToday') {
+        return getItem(item, `${copies.es.tv.categoryTitles.airingToday}`);
+      }
+      if (item.type === 'popular') {
+        return getItem(item, `${copies.es.tv.categoryTitles.popular}`);
+      }
+      if (item.type === 'topRated') {
+        return getItem(item, `${copies.es.tv.categoryTitles.topRated}`);
+      }
+      if (item.type === 'onTheAir') {
+        return getItem(item, `${copies.es.tv.categoryTitles.onTheAir}`);
+      }
+      return null;
+    },
+    [getItem],
+  );
+
+  // const retrieveKey = (results: TvData, index: number) => {
+  //   return results.data.map(item => `item_${item.id}_${index}`);
+  // };
 
   return (
     <View style={{backgroundColor: colors.darkPink, paddingTop: top}}>
@@ -100,7 +84,7 @@ export const Tv = () => {
         contentContainerStyle={styles.contentContainer}
         renderItem={renderItem}
         numColumns={2}
-        // keyExtractor={}
+        // keyExtractor={retrieveKey}
       />
     </View>
   );
