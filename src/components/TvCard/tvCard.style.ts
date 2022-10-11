@@ -20,13 +20,13 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
   },
   imageWrapper: {
-    width: metrics.scale(150),
+    width: '100%',
     height: metrics.scale(200),
     marginVertical: metrics.scale(10),
   },
   image: {
     flex: 1,
-    borderRadius: metrics.scale(10),
+    resizeMode: 'contain',
   },
   overview: {
     color: colors.palePink,
