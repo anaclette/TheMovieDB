@@ -83,7 +83,7 @@ export const MoviesCarousel = () => {
               }>
               <View style={styles.buttonContentWrapper}>
                 <Text style={styles.title}>
-                  {copies.es.categoryTitles.nowPlaying}
+                  {copies.es.movies.categoryTitles.nowPlaying}
                 </Text>
                 <Icon
                   name="arrow-forward-outline"
@@ -104,17 +104,17 @@ export const MoviesCarousel = () => {
             </View>
 
             <HorizontalFlatlist
-              categoryTitle={copies.es.categoryTitles.popular}
+              categoryTitle={copies.es.movies.categoryTitles.popular}
               movies={popular}
               movieType="popular"
             />
             <HorizontalFlatlist
-              categoryTitle={copies.es.categoryTitles.topRated}
+              categoryTitle={copies.es.movies.categoryTitles.topRated}
               movies={topRated}
               movieType="top-rated"
             />
             <HorizontalFlatlist
-              categoryTitle={copies.es.categoryTitles.upcoming}
+              categoryTitle={copies.es.movies.categoryTitles.upcoming}
               movies={upcoming}
               movieType="upcoming"
             />

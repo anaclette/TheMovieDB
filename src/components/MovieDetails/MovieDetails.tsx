@@ -24,13 +24,13 @@ export const MovieDetails = ({fullMovie, cast}: Props) => {
       <Rating rating={fullMovie.vote_average} />
       <Text style={styles.overview}>
         {fullMovie.overview === ''
-          ? copies.es.details.noOverview
+          ? copies.es.movies.details.noOverview
           : fullMovie.overview}
       </Text>
 
       {fullMovie.budget !== 0 && (
         <Text style={styles.secondaryTitle}>
-          {copies.es.details.budget}
+          {copies.es.movies.details.budget}
           {replaceComma(
             currencyFormatter.format(fullMovie.budget, {code: 'USD'}),
           )}
@@ -39,7 +39,7 @@ export const MovieDetails = ({fullMovie, cast}: Props) => {
 
       {fullMovie.revenue !== 0 && (
         <Text style={styles.secondaryTitle}>
-          {copies.es.details.revenue}
+          {copies.es.movies.details.revenue}
           {replaceComma(
             currencyFormatter.format(fullMovie.revenue, {code: 'USD'}),
           )}

@@ -33,7 +33,7 @@ export const Cast = ({cast}: Props) => {
   };
   return (
     <>
-      <Text style={styles.castTitle}>{copies.es.navTitle.cast} </Text>
+      <Text style={styles.castTitle}>{copies.es.movies.navTitle.cast} </Text>
       <FlatList
         horizontal
         data={cast}

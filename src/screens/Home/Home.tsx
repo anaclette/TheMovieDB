@@ -22,7 +22,9 @@ export const Home = () => {
             size={metrics.scale(30)}
             color={colors.brown}
           />
-          <Text style={styles.buttonText}>{copies.es.navTitle.movies}</Text>
+          <Text style={styles.buttonText}>
+            {copies.es.movies.navTitle.movies}
+          </Text>
         </View>
       </TouchableOpacity>
       <TouchableOpacity
@@ -34,7 +36,9 @@ export const Home = () => {
             size={metrics.scale(30)}
             color={colors.brown}
           />
-          <Text style={styles.buttonText}>{copies.es.navTitle.series}</Text>
+          <Text style={styles.buttonText}>
+            {copies.es.movies.navTitle.series}
+          </Text>
         </View>
       </TouchableOpacity>
     </SafeAreaView>
