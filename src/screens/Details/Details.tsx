@@ -1,4 +1,3 @@
-import {StackScreenProps} from '@react-navigation/stack';
 import React from 'react';
 import {
   View,
@@ -8,7 +7,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {imageURL} from '../../common/constants';
-import {RootStackParams} from '../../navigation/NavigationController';
+import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {styles} from './details.style';
 import {useMovieDetails} from '../../hooks/useMovieDetails';
 import colors from '../../themes/colors';
@@ -16,12 +15,14 @@ import metrics from '../../themes/metrics';
 import MovieDetails from '../../components/MovieDetails';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
+import {RootStackParamList} from '../../navigation/NavigationController';
 
-interface Props extends StackScreenProps<RootStackParams, 'Details'> {}
+type Props = NativeStackScreenProps<RootStackParamList, 'Details'>;
 
 export const Details = ({route}: Props) => {
   const navigation = useNavigation();
   const movie = route.params;
+
   const source = `${imageURL}${movie.poster_path}`;
   const {isLoading, cast, fullMovie} = useMovieDetails(movie.id);
 
@@ -34,7 +35,7 @@ export const Details = ({route}: Props) => {
           <Icon
             name="chevron-back-circle-outline"
             color={colors.wine}
-            size={metrics.scale(30)}
+            size={metrics.scale(25)}
           />
         </TouchableOpacity>
         <Image style={styles.posterImage} source={{uri: source}} />

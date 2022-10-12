@@ -27,6 +27,8 @@ export const styles = StyleSheet.create({
     top: metrics.scale(40),
     position: 'absolute',
     zIndex: 1,
-    right: 0,
+    left: metrics.scale(5),
+    backgroundColor: colors.palePink,
+    borderRadius: metrics.scale(20),
   },
 });
