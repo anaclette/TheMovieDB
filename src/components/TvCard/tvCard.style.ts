@@ -5,32 +5,40 @@ import metrics from '../../themes/metrics';
 
 export const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: colors.palePink,
+    borderColor: colors.peach,
     borderRadius: metrics.scale(10),
     marginHorizontal: metrics.scale(5),
     marginVertical: metrics.scale(3),
     paddingVertical: metrics.scale(10),
+    height: metrics.screenHeight / 3,
+    justifyContent: 'space-between',
+    backgroundColor: colors.petroleum,
+  },
+  innerContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
   },
   name: {
     ...fonts.Arvo,
     fontSize: metrics.scaledFontSize(15),
-    color: colors.brown,
+    marginHorizontal: metrics.scale(1),
+    color: colors.champagne,
     textAlign: 'center',
   },
   imageWrapper: {
-    width: '100%',
+    width: '40%',
     height: metrics.scale(200),
-    marginVertical: metrics.scale(10),
+    alignSelf: 'center',
   },
   image: {
     flex: 1,
     resizeMode: 'contain',
   },
   overview: {
+    width: '50%',
     color: colors.palePink,
     ...fonts.InconsolataMedium,
-    width: metrics.screenWidth - metrics.scale(200),
+    marginVertical: metrics.scale(5),
   },
 });

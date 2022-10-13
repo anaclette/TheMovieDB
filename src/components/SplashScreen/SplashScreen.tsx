@@ -14,7 +14,7 @@ export const Splash = ({isAppReady}: {isAppReady: boolean}) => {
   }, [imageOpacity, fade]);
 
   const fadeOut = useCallback(() => {
-    fade(containerOpacity, 0, 2600, 2600, () => setHidden(true));
+    fade(containerOpacity, 0, 2600, 2400, () => setHidden(true));
   }, [containerOpacity, fade]);
 
   useEffect(() => {

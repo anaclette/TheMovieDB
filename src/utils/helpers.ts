@@ -3,7 +3,7 @@ import ImageColors from 'react-native-image-colors';
 export const replaceComma = (str: string) => str.replace(/,/g, '.');
 
 export const getImageColors = async (uri: string) => {
-  const colors = await ImageColors.getColors(uri, {});
+  const colors = await ImageColors.getColors(uri);
 
   let primary;
   let secondary;

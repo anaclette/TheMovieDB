@@ -7,4 +7,9 @@ export default {
   lightBlue: '#C2E3FF',
   black: '#000000',
   transparent: 'transparent',
+  champagne: '#fcd29f',
+  peach: '#fcab64',
+  rose: '#885a5a',
+  blueGreen: '#7fd8be',
+  petroleum: '#353a47',
 };

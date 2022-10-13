@@ -19,13 +19,14 @@ export const GradientBackground = ({children}: Props) => {
       <Animated.View style={{...StyleSheet.absoluteFillObject}}>
         <LinearGradient
           colors={[
-            contextColors.addOn,
             contextColors.primary,
             contextColors.secondary,
+            contextColors.addOn,
           ]}
           style={{...StyleSheet.absoluteFillObject}}
-          start={{x: 0.1, y: 0.1}}
-          end={{x: 0.8, y: 0.6}}
+          start={{x: 0, y: 0}}
+          end={{x: 1, y: 1}}
+          locations={[0, 0.5, 0.9]}
         />
       </Animated.View>
       {children}
