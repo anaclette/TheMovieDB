@@ -25,5 +25,6 @@ export const styles = StyleSheet.create({
     ...fonts.InconsolataMedium,
     fontSize: metrics.scaledFontSize(18),
     marginBottom: metrics.scaleVertical(10),
+    color: colors.blackChocolate,
   },
 });
