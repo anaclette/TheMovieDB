@@ -4,33 +4,35 @@ import {imageURL, noImageURL} from '../../common/constants';
 import {CastResp} from '../../types/creditsInterface';
 import copies from '../../utils/copies';
 import {styles} from './cast.style';
+import {Cast as TvCast} from '../../types/tvCreditsInterface';
 
 interface Props {
-  cast: CastResp[];
+  cast: CastResp[] | TvCast[];
 }
 
-export const Cast = ({cast}: Props) => {
-  const renderItem = ({item}: {item: CastResp}) => {
-    const source = `${imageURL}${item.profile_path}`;
-    // const noImage = require('../../assets/images/No-img-available.svg.png');
-    return (
-      <View style={styles.memberDetailsWrapper}>
-        <Text style={styles.name}>{item.name}</Text>
-        <View style={styles.imageWrapper}>
-          {item.profile_path ? (
-            <Image source={{uri: source}} style={styles.image} />
-          ) : (
-            <Image
-              source={{
-                uri: noImageURL,
-              }}
-              style={styles.image}
-            />
-          )}
-        </View>
+const renderItem = ({item}: {item: CastResp | TvCast}) => {
+  const source = `${imageURL}${item.profile_path}`;
+  // const noImage = require('../../assets/images/No-img-available.svg.png');
+  return (
+    <View style={styles.memberDetailsWrapper}>
+      <Text style={styles.name}>{item.name}</Text>
+      <View style={styles.imageWrapper}>
+        {item.profile_path ? (
+          <Image source={{uri: source}} style={styles.image} />
+        ) : (
+          <Image
+            source={{
+              uri: noImageURL,
+            }}
+            style={styles.image}
+          />
+        )}
       </View>
-    );
-  };
+    </View>
+  );
+};
+
+export const Cast = ({cast}: Props) => {
   return (
     <>
       <Text style={styles.castTitle}>{copies.es.movies.navTitle.cast} </Text>

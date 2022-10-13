@@ -9,11 +9,16 @@ import Rating from '../Rating';
 import currencyFormatter from 'currency-formatter';
 import {styles} from './movieDetails.style';
 import {replaceComma} from '../../utils/helpers';
+import {Cast as TvCast} from '../../types/tvCreditsInterface';
 
 interface Props {
   fullMovie: MovieFullDetails;
-  cast: CastResp[];
+  cast: CastResp[] | TvCast[];
 }
+
+const replaceWithDot = (value: number) => {
+  return replaceComma(currencyFormatter.format(value, {code: 'USD'}));
+};
 
 export const MovieDetails = ({fullMovie, cast}: Props) => {
   return (
@@ -31,18 +36,14 @@ export const MovieDetails = ({fullMovie, cast}: Props) => {
       {fullMovie.budget !== 0 && (
         <Text style={styles.secondaryTitle}>
           {copies.es.movies.details.budget}
-          {replaceComma(
-            currencyFormatter.format(fullMovie.budget, {code: 'USD'}),
-          )}
+          {replaceWithDot(fullMovie.budget)}
         </Text>
       )}
 
       {fullMovie.revenue !== 0 && (
         <Text style={styles.secondaryTitle}>
           {copies.es.movies.details.revenue}
-          {replaceComma(
-            currencyFormatter.format(fullMovie.revenue, {code: 'USD'}),
-          )}
+          {replaceWithDot(fullMovie.revenue)}
         </Text>
       )}
 

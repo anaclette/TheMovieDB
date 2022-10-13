@@ -26,10 +26,14 @@ import GradientBackground from '../../components/GradientBackground';
 import {imageURL} from '../../common/constants';
 import {getImageColors} from '../../utils/helpers';
 import {GradientContext} from '../../context/GradientContext';
+import {NavigationProp} from '@react-navigation/native';
+import {RootStackParamList} from '../../navigation/NavigationController';
+
+type NavProps = NavigationProp<RootStackParamList, 'FullCategoryContent'>;
 
 export const MoviesCarousel = () => {
   const {top} = useSafeAreaInsets();
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavProps>();
   const {isLoading, popular, topRated, upcoming, nowPlaying} = useMovies();
   const {width: SLIDER_WIDTH} = Dimensions.get('window');
   const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.6);
@@ -78,7 +82,7 @@ export const MoviesCarousel = () => {
             <TouchableOpacity
               onPress={() =>
                 navigation.navigate('FullCategoryContent', {
-                  movieType: 'now-playing',
+                  categoryTitle: copies.es.movies.categoryTitles.nowPlaying,
                 })
               }>
               <View style={styles.buttonContentWrapper}>
@@ -106,17 +110,14 @@ export const MoviesCarousel = () => {
             <HorizontalFlatlist
               categoryTitle={copies.es.movies.categoryTitles.popular}
               movies={popular}
-              movieType="popular"
             />
             <HorizontalFlatlist
               categoryTitle={copies.es.movies.categoryTitles.topRated}
               movies={topRated}
-              movieType="top-rated"
             />
             <HorizontalFlatlist
               categoryTitle={copies.es.movies.categoryTitles.upcoming}
               movies={upcoming}
-              movieType="upcoming"
             />
           </ScrollView>
         </GradientBackground>
