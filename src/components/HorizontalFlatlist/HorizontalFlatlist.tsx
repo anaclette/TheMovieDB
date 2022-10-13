@@ -1,4 +1,5 @@
 import React from 'react';
+import {NavigationProp, useNavigation} from '@react-navigation/native';
 import {Text, FlatList, View, TouchableOpacity} from 'react-native';
 import metrics from '../../themes/metrics';
 import {Movie} from '../../types/moviesInterface';
@@ -6,29 +7,28 @@ import MovieCard from '../MovieCard';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {styles} from './horizontalFlatlist.style';
 import colors from '../../themes/colors';
-import {useNavigation} from '@react-navigation/native';
+import {RootStackParamList} from '../../navigation/NavigationController';
+
 interface Props {
   movies: Movie[];
   categoryTitle: string;
-  movieType: 'now-playing' | 'top-rated' | 'upcoming' | 'popular';
 }
 
-export const HorizontalFlatlist = ({
-  movies,
-  categoryTitle,
-  movieType,
-}: Props) => {
-  const navigation = useNavigation();
-  const renderItem = ({item}: {item: Movie}) => {
-    return <MovieCard movie={item} isOverview />;
-  };
+type NavProps = NavigationProp<RootStackParamList, 'FullCategoryContent'>;
+
+const renderItem = ({item}: {item: Movie}) => {
+  return <MovieCard movie={item} isOverview />;
+};
+
+export const HorizontalFlatlist = ({movies, categoryTitle}: Props) => {
+  const navigation = useNavigation<NavProps>();
 
   return (
     <View style={styles.container}>
       <TouchableOpacity
         onPress={() =>
           navigation.navigate('FullCategoryContent', {
-            movieType,
+            categoryTitle: categoryTitle,
           })
         }>
         <View style={styles.buttonContentWrapper}>

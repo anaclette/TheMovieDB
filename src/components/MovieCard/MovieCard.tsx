@@ -4,14 +4,19 @@ import {View, Text, Image, TouchableOpacity} from 'react-native';
 import {imageURL} from '../../common/constants';
 import {Movie} from '../../types/moviesInterface';
 import {styles} from './movieCard.style';
+import {NavigationProp} from '@react-navigation/native';
+import {RootStackParamList} from '../../navigation/NavigationController';
 
 interface Props {
   movie: Movie;
   isOverview?: boolean;
 }
+
+type NavProps = NavigationProp<RootStackParamList, 'Details'>;
+
 export const MovieCard = ({movie, isOverview}: Props) => {
   const source = `${imageURL}${movie.poster_path}`;
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavProps>();
   return !isOverview ? (
     <TouchableOpacity
       onPress={() => navigation.navigate('Details', movie)}

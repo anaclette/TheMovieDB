@@ -4,14 +4,16 @@ import colors from '../themes/colors';
 import Details from '../screens/Details';
 import {Movie} from '../types/moviesInterface';
 import Tabs from './Tabs';
-// import {FullCategoryContent} from '../screens/FullCategoryContent/FullCategoryContent';
+import {FullCategoryContent} from '../screens/FullCategoryContent/FullCategoryContent';
 import {TvDetails} from '../types/tvInterface';
 
 export type RootStackParamList = {
   Home: undefined;
   Details: Movie | TvDetails;
-  TvDetails: TvDetails;
   Tabs: () => JSX.Element;
+  FullCategoryContent: {
+    categoryTitle: string;
+  };
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -27,10 +29,10 @@ const NavigationController = () => {
       }}>
       <Stack.Screen name="Tabs" component={Tabs} />
       <Stack.Screen name="Details" component={Details} />
-      {/* <Stack.Screen
+      <Stack.Screen
         name="FullCategoryContent"
         component={FullCategoryContent}
-      /> */}
+      />
     </Stack.Navigator>
   );
 };
