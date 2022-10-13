@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import MoviesCarousel from '../../screens/MoviesCarousel';
@@ -25,15 +26,16 @@ export const Tabs = () => {
         },
         tabBarIcon: ({focused}) => {
           return (
-            <TouchableHighlight>
+            <TouchableHighlight style={{alignSelf: 'center'}}>
               <TabIcon route={route} focused={focused} />
             </TouchableHighlight>
           );
         },
         tabBarStyle: !platformIsIos
           ? {
-              height: insets.top + metrics.scale(90),
-              backgroundColor: colors.blackChocolate,
+              height: insets.top + metrics.scale(75),
+              backgroundColor: colors.lightBlue,
+              justifyContent: 'center',
               elevation: 0,
             }
           : {

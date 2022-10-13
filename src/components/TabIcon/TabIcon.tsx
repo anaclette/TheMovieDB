@@ -12,18 +12,14 @@ interface IconProps {
   style?: TextStyle;
 }
 
-export const TabIcon = ({route, focused, style}: IconProps) => {
+export const TabIcon = ({route, focused}: IconProps) => {
   const {iconName} = getIconName(route);
   const isiOS = Platform.OS === 'ios';
   return (
     <Icon
       accessibilityRole="image"
-      style={[
-        {
-          width: metrics.screenWidth / 2.5 - metrics.scale(110),
-        },
-        style,
-      ]}
+      // eslint-disable-next-line react-native/no-inline-styles
+      style={{width: '100%'}}
       name={iconName}
       size={metrics.scale(25)}
       color={
