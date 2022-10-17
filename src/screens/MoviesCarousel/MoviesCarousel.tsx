@@ -1,15 +1,14 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import {useNavigation} from '@react-navigation/core';
-import React, {useCallback, useContext, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   Text,
   ScrollView,
   TouchableOpacity,
   View,
-  ActivityIndicator,
   Dimensions,
 } from 'react-native';
 import {useMovies} from '../../hooks/useMovies';
+import {LinearTextGradient} from 'react-native-text-gradient';
 import Carousel from 'react-native-snap-carousel';
 import {Movie} from '../../types/moviesInterface';
 import {styles} from './moviesCarousel.style';
@@ -20,12 +19,12 @@ import copies from '../../utils/copies';
 import Icon from 'react-native-vector-icons/Ionicons';
 import colors from '../../themes/colors';
 import metrics from '../../themes/metrics';
-import GradientBackground from '../../components/GradientBackground';
 import {imageURL} from '../../common/constants';
 import {getImageColors} from '../../utils/helpers';
-import {GradientContext} from '../../context/GradientContext';
 import {NavigationProp} from '@react-navigation/native';
 import {RootStackParamList} from '../../navigation/NavigationController';
+import LinearGradient from 'react-native-linear-gradient';
+import Loader from '../../components/Loader';
 
 type NavProps = NavigationProp<RootStackParamList, 'FullCategoryContent'>;
 type ImageColors = {
@@ -35,16 +34,24 @@ type ImageColors = {
 };
 
 export const MoviesCarousel = () => {
-  const {top} = useSafeAreaInsets();
   const navigation = useNavigation<NavProps>();
+  const {top} = useSafeAreaInsets();
   const {isLoading, popular, topRated, upcoming, nowPlaying} = useMovies();
   const {width: SLIDER_WIDTH} = Dimensions.get('window');
   const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.6);
-  const {setMainColors} = useContext(GradientContext);
 
-  const renderItem = useCallback(({item}: {item: Movie}) => {
+  const [imageColors, setImageColors] = useState<ImageColors>({
+    primary: colors.transparent,
+    secondary: colors.transparent,
+    addOn: colors.transparent,
+  });
+  const setMainColors = (mainColors: ImageColors) => {
+    setImageColors(mainColors);
+  };
+
+  const renderItem = ({item}: {item: Movie}) => {
     return <MovieCard movie={item} />;
-  }, []);
+  };
 
   const defineBackgroundColor = async (index: number) => {
     const movie = nowPlaying[index];
@@ -57,16 +64,23 @@ export const MoviesCarousel = () => {
     if (nowPlaying.length > 0) {
       defineBackgroundColor(0);
     }
-  }, [nowPlaying]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
       {isLoading ? (
-        <View style={styles.loaderContainer}>
-          <ActivityIndicator color="red" size={100} />
-        </View>
+        <Loader />
       ) : (
-        <GradientBackground>
+        <LinearGradient
+          start={{x: 0, y: 0}}
+          end={{x: 1, y: 1}}
+          locations={[0, 0.5, 0.9]}
+          colors={[
+            imageColors.primary,
+            imageColors.secondary,
+            imageColors.addOn,
+          ]}>
           <ScrollView
             showsVerticalScrollIndicator={false}
             contentContainerStyle={[styles.scrollView, {paddingTop: top + 20}]}>
@@ -77,9 +91,15 @@ export const MoviesCarousel = () => {
                 })
               }>
               <View style={styles.buttonContentWrapper}>
-                <Text style={styles.title}>
-                  {copies.es.movies.categoryTitles.nowPlaying}
-                </Text>
+                <LinearTextGradient
+                  style={styles.title}
+                  locations={[0.4, 0.7]}
+                  colors={[imageColors.secondary, imageColors.primary]}
+                  start={{x: 0, y: 0}}
+                  end={{x: 1, y: 0}}>
+                  <Text>{copies.es.movies.categoryTitles.nowPlaying}</Text>
+                </LinearTextGradient>
+
                 <Icon
                   name="arrow-forward-outline"
                   size={metrics.scale(20)}
@@ -111,7 +131,7 @@ export const MoviesCarousel = () => {
               movies={upcoming}
             />
           </ScrollView>
-        </GradientBackground>
+        </LinearGradient>
       )}
     </>
   );

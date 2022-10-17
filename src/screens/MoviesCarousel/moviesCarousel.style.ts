@@ -17,7 +17,6 @@ export const styles = StyleSheet.create({
   },
   title: {
     ...fonts.Amatic,
-    color: colors.brown,
     marginRight: metrics.scale(20),
   },
   buttonContentWrapper: {
