@@ -12,14 +12,14 @@ interface Props {
   isOverview?: boolean;
 }
 
-type NavProps = NavigationProp<RootStackParamList, 'Details'>;
+type NavProps = NavigationProp<RootStackParamList, 'MovieDetails'>;
 
 export const MovieCard = ({movie, isOverview}: Props) => {
   const source = `${imageURL}${movie.poster_path}`;
   const navigation = useNavigation<NavProps>();
   return !isOverview ? (
     <TouchableOpacity
-      onPress={() => navigation.navigate('Details', movie)}
+      onPress={() => navigation.navigate('MovieDetails', movie)}
       style={styles.container}>
       <Text style={[styles.title, styles.movieTitle]}>{movie.title}</Text>
       <View style={styles.imageContainer}>
@@ -28,7 +28,7 @@ export const MovieCard = ({movie, isOverview}: Props) => {
     </TouchableOpacity>
   ) : (
     <TouchableOpacity
-      onPress={() => navigation.navigate('Details', movie)}
+      onPress={() => navigation.navigate('MovieDetails', movie)}
       style={styles.overviewContainer}>
       <Text style={[styles.title, styles.overviewMovieTitle]}>
         {movie.title}
