@@ -1,28 +1,15 @@
-// // import {StackScreenProps} from '@react-navigation/stack';
 import React, {useState} from 'react';
-import {
-  ActivityIndicator,
-  FlatList,
-  SafeAreaView,
-  ScrollView,
-  Text,
-  View,
-} from 'react-native';
-// // import {RootStackParams} from '../../navigation/NavigationController';
-// import SearchBar from '../../components/SearchBar';
+import {FlatList, SafeAreaView, ScrollView, Text, View} from 'react-native';
 import {useMovies} from '../../hooks/useMovies';
 import {styles} from './fullCategoryContent.style';
-// import {Movie} from '../../types/moviesInterface';
-// import HorizontalFlatlist from '../../components/HorizontalFlatlist';
-// import copies from '../../utils/copies';
-// import MovieCard from '../../components/MovieCard';
+
 import {StackScreenProps} from '@react-navigation/stack';
-import {RootStackParams} from '../../navigation/NavigationController';
+import {RootStackParamList} from '../../navigation/NavigationController';
 import {Movie} from '../../types/moviesInterface';
 import MovieCard from '../../components/MovieCard';
 
 interface Props
-  extends StackScreenProps<RootStackParams, 'FullCategoryContent'> {}
+  extends StackScreenProps<RootStackParamList, 'FullCategoryContent'> {}
 
 export const FullCategoryContent = ({route}: Props) => {
   const params = route.params;
@@ -68,31 +55,6 @@ export const FullCategoryContent = ({route}: Props) => {
   return (
     <SafeAreaView>
       <Text>{JSON.stringify(params)}</Text>
-      {/* {isLoading ? (
-        <View>
-          <ActivityIndicator color="red" size={100} />
-        </View>
-      )
-       : (
-        <FlatList data={retrieveInfo('popular')} renderItem={renderItem} />
-      )} */}
     </SafeAreaView>
   );
-
-  //       {/* {!clicked && <Text> Todas las pelis</Text>}
-  //       <SafeAreaView>
-  //         <SearchBar
-  //           searchPhrase={searchPhrase}
-  //           setSearchPhrase={setSearchPhrase}
-  //           clicked={clicked}
-  //           setClicked={setClicked}
-  //         />
-  //         <View
-  //         //   onStartShouldSetResponder={() => {
-  //         //     setClicked(false);
-  //         //   }}
-  //         >
-  //           <FlatList data={retrieveInfo(nowPlaying)} renderItem={renderItem} />
-  //         </View>
-  //       </SafeAreaView> */}
 };
