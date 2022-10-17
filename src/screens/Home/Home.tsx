@@ -7,12 +7,14 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import metrics from '../../themes/metrics';
 import colors from '../../themes/colors';
 
+type Navigation = {
+  navigate: (screen: string) => void;
+};
+
 export const Home = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<Navigation>();
   return (
     <SafeAreaView style={styles.safeAreaView}>
-      {/* <Text style={styles.title}>Home</Text> */}
-
       <TouchableOpacity
         style={styles.navigateButton}
         onPress={() => navigation.navigate('Movies')}>
