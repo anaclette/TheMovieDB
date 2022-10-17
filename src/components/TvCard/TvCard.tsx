@@ -9,7 +9,7 @@ interface Props {
   item: TvDetails;
 }
 
-type NavProps = NavigationProp<RootStackParamList, 'Details'>;
+type NavProps = NavigationProp<RootStackParamList, 'TvDetails'>;
 
 export const TvCard = ({item}: Props) => {
   const navigation = useNavigation<NavProps>();
@@ -17,7 +17,7 @@ export const TvCard = ({item}: Props) => {
     <>
       <TouchableOpacity
         activeOpacity={0.8}
-        onPress={() => navigation.navigate('Details', item)}
+        onPress={() => navigation.navigate('TvDetails', item)}
         style={styles.container}>
         <Text style={styles.name}>{item.name}</Text>
 

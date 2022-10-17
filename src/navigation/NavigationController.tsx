@@ -1,15 +1,17 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import colors from '../themes/colors';
-import Details from '../screens/Details';
 import {Movie} from '../types/moviesInterface';
 import Tabs from './Tabs';
 import {FullCategoryContent} from '../screens/FullCategoryContent/FullCategoryContent';
-import {TvDetails} from '../types/tvInterface';
+import {TvDetails as TvDetailsType} from '../types/tvInterface';
+import MovieDetails from '../screens/MovieDetails';
+import TvDetails from '../screens/TvDetails';
 
 export type RootStackParamList = {
   Home: undefined;
-  Details: Movie | TvDetails;
+  MovieDetails: Movie;
+  TvDetails: TvDetailsType;
   Tabs: () => JSX.Element;
   FullCategoryContent: {
     categoryTitle: string;
@@ -28,7 +30,8 @@ const NavigationController = () => {
         },
       }}>
       <Stack.Screen name="Tabs" component={Tabs} />
-      <Stack.Screen name="Details" component={Details} />
+      <Stack.Screen name="TvDetails" component={TvDetails} />
+      <Stack.Screen name="MovieDetails" component={MovieDetails} />
       <Stack.Screen
         name="FullCategoryContent"
         component={FullCategoryContent}

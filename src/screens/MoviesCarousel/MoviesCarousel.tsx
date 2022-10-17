@@ -8,8 +8,6 @@ import {
   View,
   ActivityIndicator,
   Dimensions,
-  // Animated,
-  // Easing,
 } from 'react-native';
 import {useMovies} from '../../hooks/useMovies';
 import Carousel from 'react-native-snap-carousel';
@@ -30,6 +28,11 @@ import {NavigationProp} from '@react-navigation/native';
 import {RootStackParamList} from '../../navigation/NavigationController';
 
 type NavProps = NavigationProp<RootStackParamList, 'FullCategoryContent'>;
+type ImageColors = {
+  primary: string;
+  secondary: string;
+  addOn: string;
+};
 
 export const MoviesCarousel = () => {
   const {top} = useSafeAreaInsets();
@@ -38,7 +41,6 @@ export const MoviesCarousel = () => {
   const {width: SLIDER_WIDTH} = Dimensions.get('window');
   const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.6);
   const {setMainColors} = useContext(GradientContext);
-  // const topValue = useRef(new Animated.Value(-30)).current;
 
   const renderItem = useCallback(({item}: {item: Movie}) => {
     return <MovieCard movie={item} />;
@@ -48,7 +50,7 @@ export const MoviesCarousel = () => {
     const movie = nowPlaying[index];
     const movieImage = `${imageURL}${movie.poster_path}`;
     const [primary, secondary, addOn] = await getImageColors(movieImage);
-    setMainColors({primary, secondary, addOn});
+    setMainColors({primary, secondary, addOn} as ImageColors);
   };
 
   useEffect(() => {
@@ -56,17 +58,6 @@ export const MoviesCarousel = () => {
       defineBackgroundColor(0);
     }
   }, [nowPlaying]);
-
-  // const bounce = useCallback(() => {
-  //   Animated.timing(topValue, {
-  //     toValue: 0,
-  //     duration: 700,
-  //     useNativeDriver: true,
-  //     easing: Easing.bounce,
-  //   }).start();
-  // }, []);
-
-  // {transform: [{translateY: topValue}]}
 
   return (
     <>

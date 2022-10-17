@@ -6,26 +6,54 @@ import {MovieFullDetails} from '../types/moviesInterface';
 interface MovieDetails {
   isLoading: boolean;
   cast: CastResp[];
-  fullMovie?: MovieFullDetails;
+  fullMovie: MovieFullDetails;
 }
 
-export const useMovieDetails = (movieId: number) => {
+const initialState = {
+  adult: false,
+  backdrop_path: '',
+  belongs_to_collection: null,
+  budget: 0,
+  genres: [],
+  homepage: '',
+  id: 0,
+  imdb_id: '',
+  original_language: '',
+  original_title: '',
+  overview: '',
+  popularity: 0,
+  poster_path: '',
+  production_companies: [],
+  production_countries: [],
+  release_date: '',
+  revenue: 0,
+  runtime: 0,
+  spoken_languages: [],
+  status: '',
+  tagline: '',
+  title: '',
+  video: false,
+  vote_average: 0,
+  vote_count: 0,
+};
+
+export const useMovieDetails = (id: number) => {
   const [details, setDetails] = useState<MovieDetails>({
     isLoading: true,
     cast: [],
-    fullMovie: undefined,
+    fullMovie: initialState,
   });
 
   const getMovieDetails = async () => {
     try {
       const movieDetailsPromise = await data.get<MovieFullDetails>(
-        `/movie/${movieId}`,
+        `/movie/${id}`,
       );
-      const castPromise = await data.get<Credits>(`/movie/${movieId}/credits`);
+      const movieCastPromise = await data.get<Credits>(`/movie/${id}/credits`);
 
       const [movieDetailsResp, castResp] = await Promise.all([
         movieDetailsPromise,
-        castPromise,
+        movieCastPromise,
       ]);
 
       setDetails({
