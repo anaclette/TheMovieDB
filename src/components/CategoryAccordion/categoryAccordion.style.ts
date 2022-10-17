@@ -8,6 +8,6 @@ export const styles = StyleSheet.create({
     ...fonts.Amatic,
     textAlign: 'center',
     color: colors.champagne,
-    marginRight: metrics.scale(20),
+    marginVertical: metrics.scale(45),
   },
 });

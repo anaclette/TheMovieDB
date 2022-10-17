@@ -5,6 +5,7 @@ import {
   LayoutAnimation,
   Platform,
   UIManager,
+  View,
 } from 'react-native';
 import Button from '../Button';
 import TvCard from '../TvCard';
@@ -35,18 +36,23 @@ export const CategoryAccordion = ({title, data}: Props) => {
   }, [isAndroid]);
 
   return (
-    <>
+    <View>
       <TouchableOpacity
-        onPress={() =>
-          setIsExpanded((prevIsExpanded: boolean) => !prevIsExpanded)
-        }>
+        onPress={() => {
+          animation();
+          setIsExpanded((prevIsExpanded: boolean) => !prevIsExpanded);
+        }}>
         <Text style={styles.title}>{title}</Text>
       </TouchableOpacity>
-      <Button icon="arrow-forward" />
-      {data.map(dataItem => {
-        animation();
-        return isExpanded && <TvCard item={dataItem} />;
-      })}
-    </>
+
+      {isExpanded && (
+        <>
+          <Button icon="arrow-forward" />
+          {data.map((dataItem, index) => {
+            return <TvCard key={index.toString()} item={dataItem} />;
+          })}
+        </>
+      )}
+    </View>
   );
 };
