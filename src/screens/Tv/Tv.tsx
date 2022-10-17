@@ -1,9 +1,7 @@
 import React from 'react';
-import {View, FlatList} from 'react-native';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {FlatList, SafeAreaView} from 'react-native';
 import CategoryAccordion from '../../components/CategoryAccordion';
 import {useTv} from '../../hooks/useTv';
-import metrics from '../../themes/metrics';
 import {TvDetails} from '../../types/tvInterface';
 import copies from '../../utils/copies';
 import {styles} from './tv.style';
@@ -25,7 +23,6 @@ const renderItem = ({item, index}: {item: TvData; index: number}) => (
 
 export const Tv = () => {
   const {airingToday, onTheAir, popular, topRated} = useTv();
-  const {top} = useSafeAreaInsets();
   const tvData: TvData[] = [
     {
       data: onTheAir,
@@ -46,12 +43,12 @@ export const Tv = () => {
   ];
 
   return (
-    <View style={[{paddingTop: top + metrics.scale(100)}, styles.wrapper]}>
+    <SafeAreaView style={styles.wrapper}>
       <FlatList
         keyExtractor={(item, index) => index.toString()}
         data={tvData}
         renderItem={renderItem}
       />
-    </View>
+    </SafeAreaView>
   );
 };
