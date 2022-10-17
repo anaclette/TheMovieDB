@@ -26,6 +26,9 @@ export default {
         topRated: 'Mejor calificadas',
         onTheAir: 'Al aire',
       },
+      details: {
+        noOverview: 'No se encontró descripción de esta serie.',
+      },
     },
   },
   en: {
