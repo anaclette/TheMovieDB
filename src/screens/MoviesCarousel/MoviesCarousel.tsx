@@ -8,7 +8,6 @@ import {
   Dimensions,
 } from 'react-native';
 import {useMovies} from '../../hooks/useMovies';
-import {LinearTextGradient} from 'react-native-text-gradient';
 import Carousel from 'react-native-snap-carousel';
 import {Movie} from '../../types/moviesInterface';
 import {styles} from './moviesCarousel.style';
@@ -45,6 +44,7 @@ export const MoviesCarousel = () => {
     secondary: colors.transparent,
     addOn: colors.transparent,
   });
+
   const setMainColors = (mainColors: ImageColors) => {
     setImageColors(mainColors);
   };
@@ -65,7 +65,7 @@ export const MoviesCarousel = () => {
       defineBackgroundColor(0);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [nowPlaying.length]);
 
   return (
     <>
@@ -91,14 +91,9 @@ export const MoviesCarousel = () => {
                 })
               }>
               <View style={styles.buttonContentWrapper}>
-                <LinearTextGradient
-                  style={styles.title}
-                  locations={[0.4, 0.7]}
-                  colors={[imageColors.secondary, imageColors.primary]}
-                  start={{x: 0, y: 0}}
-                  end={{x: 1, y: 0}}>
-                  <Text>{copies.es.movies.categoryTitles.nowPlaying}</Text>
-                </LinearTextGradient>
+                <Text style={styles.title}>
+                  {copies.es.movies.categoryTitles.nowPlaying}
+                </Text>
 
                 <Icon
                   name="arrow-forward-outline"
