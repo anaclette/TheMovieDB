@@ -44,4 +44,6 @@ For tabs:
 - react-native-pager-view
 For linear gradient animation:
 - react-native-linear-gradient
-- react-native-image-colors -->
+- react-native-image-colors
+For blur background:
+- react-native-community/blur -->
