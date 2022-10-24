@@ -18,16 +18,14 @@ export const TabIcon = ({route, focused}: IconProps) => {
   return (
     <Icon
       accessibilityRole="image"
-      // eslint-disable-next-line react-native/no-inline-styles
-      style={{width: '100%'}}
       name={iconName}
       size={metrics.scale(25)}
       color={
         focused && isiOS
-          ? colors.darkPink
+          ? colors.champagne
           : focused && !isiOS
           ? colors.wine
-          : colors.blackChocolate
+          : colors.rose
       }
     />
   );
