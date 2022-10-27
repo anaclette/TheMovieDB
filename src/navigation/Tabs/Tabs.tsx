@@ -1,56 +1,50 @@
-/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import MoviesCarousel from '../../screens/MoviesCarousel';
 import Home from '../../screens/Home';
-import {Platform, TouchableHighlight} from 'react-native';
 import colors from '../../themes/colors';
 import TabIcon from '../../components/TabIcon';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import Tv from '../../screens/Tv';
-import SearchBar from '../../components/SearchBar';
 import fonts from '../../themes/fonts';
 import metrics from '../../themes/metrics';
 
 const Tab = createMaterialTopTabNavigator();
 
 export const Tabs = () => {
-  const platformIsIos = Platform.OS === 'ios';
-  const insets = useSafeAreaInsets();
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
         tabBarLabelStyle: {
           ...fonts.HindSiliguri,
-          color: colors.blackChocolate,
+          fontSize: metrics.scaledFontSize(10),
         },
         tabBarIcon: ({focused}) => {
-          return (
-            <TouchableHighlight style={{alignSelf: 'center'}}>
-              <TabIcon route={route} focused={focused} />
-            </TouchableHighlight>
-          );
+          return <TabIcon route={route} focused={focused} />;
         },
-        tabBarStyle: !platformIsIos
-          ? {
-              height: insets.top + metrics.scale(75),
-              backgroundColor: colors.lightBlue,
-              justifyContent: 'center',
-              elevation: 0,
-            }
-          : {
-              height: insets.top + metrics.scale(40),
-              backgroundColor: colors.palePink,
-            },
-
-        tabBarPressColor: colors.palePink,
+        tabBarStyle: {
+          backgroundColor: colors.petroleum,
+          height: metrics.scaleVertical(75),
+          justifyContent: 'center',
+          shadowOffset: {
+            height: metrics.scale(2),
+            width: metrics.scale(1), // unnecessary but specified to appease TS
+          },
+          shadowOpacity: 0.9,
+          shadowRadius: metrics.scale(11),
+          shadowColor: colors.palePink,
+        },
         tabBarIndicatorStyle: {
-          backgroundColor: !platformIsIos ? colors.palePink : colors.wine,
+          backgroundColor: colors.lightBlue,
+          bottom: metrics.screenHeight / 5 - metrics.scale(135),
+          height: 1,
+          alignSelf: 'center',
+          width: '15%',
+          marginHorizontal: metrics.scale(33),
         },
-        tabBarActiveTintColor: platformIsIos ? colors.palePink : colors.wine,
-        tabBarInactiveTintColor: colors.palePink,
+        tabBarActiveTintColor: colors.lightBlue,
+        tabBarInactiveTintColor: colors.gray,
       })}
-      tabBarPosition={platformIsIos ? 'bottom' : 'top'}>
+      tabBarPosition={'bottom'}>
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen
         options={{title: 'Pelis'}}
@@ -58,11 +52,6 @@ export const Tabs = () => {
         component={MoviesCarousel}
       />
       <Tab.Screen options={{title: 'Series'}} name="Tv" component={Tv} />
-      <Tab.Screen
-        options={{title: 'Buscar'}}
-        name="Search"
-        component={SearchBar}
-      />
     </Tab.Navigator>
   );
 };

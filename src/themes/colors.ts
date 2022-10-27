@@ -12,4 +12,5 @@ export default {
   rose: '#885a5a',
   blueGreen: '#7fd8be',
   petroleum: '#353a47',
+  gray: 'rgba(255,255,255,0.5)',
 };
