@@ -1,4 +1,3 @@
-import {useNavigation} from '@react-navigation/core';
 import React, {useState, useEffect} from 'react';
 import {
   Text,
@@ -20,20 +19,19 @@ import colors from '../../themes/colors';
 import metrics from '../../themes/metrics';
 import {imageURL} from '../../common/constants';
 import {getImageColors} from '../../utils/helpers';
-import {NavigationProp} from '@react-navigation/native';
 import {RootStackParamList} from '../../navigation/NavigationController';
 import LinearGradient from 'react-native-linear-gradient';
 import Loader from '../../components/Loader';
+import {StackScreenProps} from '@react-navigation/stack';
 
-type NavProps = NavigationProp<RootStackParamList, 'FullCategoryContent'>;
+type NavProps = StackScreenProps<RootStackParamList, 'FullCategoryContent'>;
 type ImageColors = {
   primary: string;
   secondary: string;
   addOn: string;
 };
 
-export const MoviesCarousel = () => {
-  const navigation = useNavigation<NavProps>();
+export const MoviesCarousel = ({navigation}: NavProps) => {
   const {top} = useSafeAreaInsets();
   const {isLoading, popular, topRated, upcoming, nowPlaying} = useMovies();
   const {width: SLIDER_WIDTH} = Dimensions.get('window');

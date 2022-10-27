@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import colors from '../../themes/colors';
 import fonts from '../../themes/fonts';
 import metrics from '../../themes/metrics';
 
@@ -17,6 +18,7 @@ export const styles = StyleSheet.create({
   title: {
     ...fonts.Amatic,
     marginRight: metrics.scale(20),
+    color: colors.wine,
   },
   buttonContentWrapper: {
     flexDirection: 'row',
