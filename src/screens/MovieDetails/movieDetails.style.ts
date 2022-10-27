@@ -7,31 +7,29 @@ const WINDOW_TOP_DISTANCE = metrics.screenHeight * 0.7;
 
 export const styles = StyleSheet.create({
   container: {
-    marginTop: WINDOW_TOP_DISTANCE / 3 - metrics.scale(110),
-    backgroundColor: colors.palePink,
-  },
-  detailsContainer: {
+    backgroundColor: colors.petroleum,
     flex: 1,
-    justifyContent: 'space-around',
-    marginHorizontal: metrics.scale(15),
-    marginVertical: metrics.scale(20),
   },
   title: {
     ...fonts.Arvo,
     fontSize: metrics.scaledFontSize(20),
-    color: colors.darkPink,
+    color: colors.palePink,
   },
   overview: {
     marginBottom: metrics.scale(35),
     ...fonts.HindSiliguri,
     fontSize: metrics.scaledFontSize(17),
-    color: colors.blackChocolate,
+    color: colors.lightBlue,
   },
   secondaryTitle: {
     ...fonts.InconsolataMedium,
     fontSize: metrics.scaledFontSize(18),
     marginBottom: metrics.scaleVertical(10),
-    color: colors.blackChocolate,
+    color: colors.palePink,
+  },
+  wrapper: {
+    paddingHorizontal: metrics.scale(15),
+    paddingVertical: metrics.scale(20),
   },
   imgContainer: {
     width: '100%',
@@ -39,15 +37,12 @@ export const styles = StyleSheet.create({
   },
   posterImage: {
     flex: 1,
-    borderBottomRightRadius: metrics.scale(20),
-    borderBottomLeftRadius: metrics.scale(20),
   },
   backButton: {
     top: metrics.scale(40),
     position: 'absolute',
     zIndex: 1,
     left: metrics.scale(5),
-    backgroundColor: colors.palePink,
     borderRadius: metrics.scale(20),
   },
 });
