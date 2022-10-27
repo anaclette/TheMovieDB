@@ -1,14 +1,14 @@
 import React from 'react';
 import {View} from 'react-native';
-import colors from '../../themes/colors';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {styles} from './rating.style';
 
 interface Props {
   rating: number;
+  color: string;
 }
 
-export const Rating = ({rating}: Props) => {
+export const Rating = ({rating, color}: Props) => {
   const ratingStars = (ratingValue: number) => {
     const maxRate = 5;
     const fullStar = Math.floor(ratingValue / 2);
@@ -16,25 +16,11 @@ export const Rating = ({rating}: Props) => {
     const rate = [];
 
     for (let i = 0; i < fullStar; i++) {
-      rate.push(
-        <Icon
-          key={`full-${i}`}
-          name="star"
-          size={20}
-          color={colors.blackChocolate}
-        />,
-      );
+      rate.push(<Icon key={`full-${i}`} name="star" size={20} color={color} />);
     }
 
     if (halfStar) {
-      rate.push(
-        <Icon
-          key={'half'}
-          name="star-half"
-          size={20}
-          color={colors.blackChocolate}
-        />,
-      );
+      rate.push(<Icon key={'half'} name="star-half" size={20} color={color} />);
     }
 
     if (rate.length < maxRate) {
@@ -45,7 +31,7 @@ export const Rating = ({rating}: Props) => {
             key={`empty-${j}`}
             name="star-outline"
             size={20}
-            color={colors.blackChocolate}
+            color={color}
           />,
         );
       }

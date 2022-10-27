@@ -28,6 +28,7 @@ export const styles = StyleSheet.create({
   poster: {
     borderRadius: metrics.scale(20),
     flex: 1,
+    resizeMode: 'stretch',
   },
   movieTitle: {
     fontSize: metrics.scale(17),
@@ -42,7 +43,6 @@ export const styles = StyleSheet.create({
   overviewContainer: {
     paddingVertical: metrics.scale(25),
     justifyContent: 'space-between',
-    height: WINDOW_TOP_DISTANCE / 1.2,
   },
   overviewImageContainer: {
     width: ITEM_SIZE / 2,

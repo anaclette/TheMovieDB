@@ -34,15 +34,15 @@ const renderItem = ({item}: {item: CastResp | TvCast}) => {
 
 export const Cast = ({cast}: Props) => {
   return (
-    <>
+    <View style={styles.container}>
       <Text style={styles.castTitle}>{copies.es.movies.navTitle.cast} </Text>
       <FlatList
         horizontal
-        data={cast}
+        data={cast as TvCast[]}
         renderItem={renderItem}
         showsHorizontalScrollIndicator={false}
-        keyExtractor={item => String(item.id)}
+        keyExtractor={(item, index) => String(index)}
       />
-    </>
+    </View>
   );
 };

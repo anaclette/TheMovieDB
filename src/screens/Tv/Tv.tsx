@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList, SafeAreaView} from 'react-native';
+import {FlatList, View} from 'react-native';
 import CategoryAccordion from '../../components/CategoryAccordion';
 import {useTv} from '../../hooks/useTv';
 import {TvDetails} from '../../types/tvInterface';
@@ -43,12 +43,12 @@ export const Tv = () => {
   ];
 
   return (
-    <SafeAreaView style={styles.wrapper}>
+    <View style={styles.wrapper}>
       <FlatList
         keyExtractor={(item, index) => index.toString()}
         data={tvData}
         renderItem={renderItem}
       />
-    </SafeAreaView>
+    </View>
   );
 };

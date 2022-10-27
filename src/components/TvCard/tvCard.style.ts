@@ -6,14 +6,13 @@ import metrics from '../../themes/metrics';
 export const styles = StyleSheet.create({
   container: {
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: colors.peach,
+    borderColor: colors.palePink,
     borderRadius: metrics.scale(10),
     marginHorizontal: metrics.scale(5),
     marginVertical: metrics.scale(3),
     paddingVertical: metrics.scale(10),
-    height: metrics.screenHeight / 3,
     justifyContent: 'space-between',
-    backgroundColor: colors.petroleum,
+    backgroundColor: colors.rose,
   },
   innerContainer: {
     flexDirection: 'row',
@@ -23,7 +22,8 @@ export const styles = StyleSheet.create({
     ...fonts.Arvo,
     fontSize: metrics.scaledFontSize(15),
     marginHorizontal: metrics.scale(1),
-    color: colors.champagne,
+    marginBottom: metrics.scale(15),
+    color: colors.palePink,
     textAlign: 'center',
   },
   imageWrapper: {

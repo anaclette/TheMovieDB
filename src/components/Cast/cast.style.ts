@@ -7,9 +7,16 @@ const ITEM_SIZE = metrics.screenWidth / 1.5;
 const WINDOW_TOP_DISTANCE = metrics.screenHeight / 2.1;
 
 export const styles = StyleSheet.create({
+  container: {
+    backgroundColor: colors.palePink,
+    borderTopRightRadius: metrics.scale(10),
+    borderTopLeftRadius: metrics.scale(10),
+    paddingHorizontal: metrics.scale(15),
+    paddingVertical: metrics.scale(15),
+  },
   castTitle: {
     ...fonts.InconsolataMedium,
-    color: colors.blackChocolate,
+    color: colors.petroleum,
     fontSize: metrics.scaledFontSize(19),
     marginVertical: metrics.scale(10),
   },
@@ -19,7 +26,7 @@ export const styles = StyleSheet.create({
     ...fonts.InconsolataExtraLight,
     paddingVertical: metrics.scaleVertical(5),
     textAlign: 'center',
-    color: colors.blackChocolate,
+    color: colors.brown,
   },
   memberDetailsWrapper: {
     width: ITEM_SIZE - metrics.scale(150),

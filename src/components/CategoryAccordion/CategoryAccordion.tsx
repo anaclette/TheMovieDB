@@ -5,7 +5,6 @@ import {
   LayoutAnimation,
   Platform,
   UIManager,
-  View,
 } from 'react-native';
 import Button from '../Button';
 import TvCard from '../TvCard';
@@ -36,7 +35,7 @@ export const CategoryAccordion = ({title, data}: Props) => {
   }, [isAndroid]);
 
   return (
-    <View>
+    <>
       <TouchableOpacity
         onPress={() => {
           animation();
@@ -53,6 +52,6 @@ export const CategoryAccordion = ({title, data}: Props) => {
           })}
         </>
       )}
-    </View>
+    </>
   );
 };

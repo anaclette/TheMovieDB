@@ -7,6 +7,7 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginLeft: metrics.scale(30),
+    marginVertical: metrics.scale(30),
   },
   title: {
     ...fonts.Amatic,

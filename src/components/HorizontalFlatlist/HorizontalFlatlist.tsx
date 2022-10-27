@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
 import {Text, FlatList, View, TouchableOpacity} from 'react-native';
 import metrics from '../../themes/metrics';
@@ -8,6 +8,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import {styles} from './horizontalFlatlist.style';
 import colors from '../../themes/colors';
 import {RootStackParamList} from '../../navigation/NavigationController';
+// import Loader from '../Loader';
+// import {loadMore} from '../../utils/helpers';
 
 interface Props {
   movies: Movie[];
@@ -22,6 +24,7 @@ const renderItem = ({item}: {item: Movie}) => {
 
 export const HorizontalFlatlist = ({movies, categoryTitle}: Props) => {
   const navigation = useNavigation<NavProps>();
+  // const [numbers, setNumbers] = useState([movies.length]);
 
   return (
     <View style={styles.container}>
@@ -42,11 +45,14 @@ export const HorizontalFlatlist = ({movies, categoryTitle}: Props) => {
       </TouchableOpacity>
 
       <FlatList
+        // ListFooterComponent={() => <Loader />}
+        // onEndReached={() => loadMore(numbers, setNumbers)}
+        // onEndReachedThreshold={0.5}
         showsHorizontalScrollIndicator={false}
         horizontal
         renderItem={renderItem}
         data={movies}
-        keyExtractor={item => String(item.id)}
+        keyExtractor={(item, index) => String(index)}
       />
     </View>
   );
