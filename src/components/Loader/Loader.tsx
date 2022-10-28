@@ -7,7 +7,7 @@ import {styles} from './loader.style';
 export const Loader = () => {
   return (
     <View style={styles.loaderContainer}>
-      <ActivityIndicator color={colors.darkPink} size={metrics.scale(50)} />
+      <ActivityIndicator color={colors.palePink} size={metrics.scale(50)} />
     </View>
   );
 };

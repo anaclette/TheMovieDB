@@ -1,12 +1,11 @@
 import React, {useRef} from 'react';
-import {Animated, ScrollView, Text, TouchableOpacity, View} from 'react-native';
+import {Animated, ScrollView, Text, View} from 'react-native';
 import copies from '../../utils/copies';
 import Cast from '../../components/Cast';
 import Rating from '../../components/Rating';
 import currencyFormatter from 'currency-formatter';
 import {styles} from './movieDetails.style';
 import {replaceComma} from '../../utils/helpers';
-import Icon from 'react-native-vector-icons/Ionicons';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../navigation/NavigationController';
 import {useMovieDetails} from '../../hooks/useMovieDetails';
@@ -15,6 +14,7 @@ import colors from '../../themes/colors';
 import metrics from '../../themes/metrics';
 import Loader from '../../components/Loader';
 import {useAnimation} from '../../hooks/useAnimation';
+import Button from '../../components/Button';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'MovieDetails'>;
 
@@ -35,15 +35,13 @@ export const MovieDetails = ({route, navigation}: Props) => {
   return (
     <View style={styles.container}>
       <View style={styles.imgContainer}>
-        <TouchableOpacity
-          style={styles.backButton}
-          onPress={() => navigation.goBack()}>
-          <Icon
-            name="chevron-back-circle-outline"
-            color={colors.palePink}
-            size={metrics.scale(25)}
-          />
-        </TouchableOpacity>
+        <Button
+          color={colors.palePink}
+          size={metrics.scale(25)}
+          icon="chevron-back-circle-outline"
+          wrapperStyle={styles.backButton}
+          onPress={() => navigation.goBack()}
+        />
         <Animated.Image
           onLoadEnd={finishLoading}
           style={[styles.posterImage, {opacity}]}

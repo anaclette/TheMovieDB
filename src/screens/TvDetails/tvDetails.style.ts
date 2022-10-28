@@ -3,47 +3,38 @@ import colors from '../../themes/colors';
 import fonts from '../../themes/fonts';
 import metrics from '../../themes/metrics';
 
-const WINDOW_TOP_DISTANCE = metrics.screenHeight * 0.7;
-
 export const styles = StyleSheet.create({
   title: {
     ...fonts.Arvo,
     fontSize: metrics.scaledFontSize(20),
-    color: colors.darkPink,
-    marginBottom: metrics.scale(14),
+    color: colors.lightBlue,
   },
   overview: {
-    marginBottom: metrics.scale(35),
     ...fonts.HindSiliguri,
     fontSize: metrics.scaledFontSize(17),
-    color: colors.blackChocolate,
+    color: colors.palePink,
   },
-
-  container: {
-    marginTop: WINDOW_TOP_DISTANCE / 3 - metrics.scale(110),
-    backgroundColor: colors.palePink,
+  modalInnerWrapper: {
+    backgroundColor: colors.petroleum,
+    flex: 1,
   },
   detailsContainer: {
-    flex: 1,
-    justifyContent: 'space-around',
-    marginHorizontal: metrics.scale(15),
-    marginVertical: metrics.scale(20),
+    paddingHorizontal: metrics.scale(15),
+    paddingVertical: metrics.scale(20),
+    backgroundColor: colors.petroleum,
   },
-
-  // secondaryTitle: {
-  //   ...fonts.InconsolataMedium,
-  //   fontSize: metrics.scaledFontSize(18),
-  //   marginBottom: metrics.scaleVertical(10),
-  //   color: colors.blackChocolate,
-  // },
+  previewContainer: {
+    flex: 1,
+    padding: metrics.scale(10),
+    backgroundColor: colors.petroleum,
+    justifyContent: 'space-evenly',
+  },
   imgContainer: {
     width: '100%',
-    height: WINDOW_TOP_DISTANCE,
+    height: '70%',
   },
   posterImage: {
     flex: 1,
-    borderBottomRightRadius: metrics.scale(20),
-    borderBottomLeftRadius: metrics.scale(20),
   },
   backButton: {
     top: metrics.scale(40),
@@ -51,6 +42,26 @@ export const styles = StyleSheet.create({
     zIndex: 1,
     left: metrics.scale(5),
     backgroundColor: colors.palePink,
-    borderRadius: metrics.scale(20),
+    borderRadius: metrics.scale(15),
+  },
+  closeModalButton: {
+    marginTop: metrics.scale(10),
+    alignSelf: 'center',
+  },
+  genreWrapper: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+  },
+  genreItem: {
+    ...fonts.HindSiliguri,
+    fontSize: metrics.scaledFontSize(17),
+    borderColor: colors.lightBlue,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderRadius: metrics.scale(10),
+    color: colors.palePink,
+    alignSelf: 'center',
+    paddingHorizontal: metrics.scale(10),
+    margin: metrics.scale(5),
   },
 });

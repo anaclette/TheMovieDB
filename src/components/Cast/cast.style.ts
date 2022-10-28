@@ -9,8 +9,7 @@ const WINDOW_TOP_DISTANCE = metrics.screenHeight / 2.1;
 export const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.palePink,
-    borderTopRightRadius: metrics.scale(10),
-    borderTopLeftRadius: metrics.scale(10),
+    borderRadius: metrics.scale(10),
     paddingHorizontal: metrics.scale(15),
     paddingVertical: metrics.scale(15),
   },

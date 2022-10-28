@@ -39,6 +39,7 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   backButton: {
+    backgroundColor: colors.petroleum,
     top: metrics.scale(40),
     position: 'absolute',
     zIndex: 1,

@@ -30,7 +30,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     resizeMode: 'stretch',
   },
-  movieTitle: {
+  bigCardTitle: {
     fontSize: metrics.scale(17),
     marginBottom: metrics.scale(25),
     color: colors.brown,
@@ -43,16 +43,16 @@ export const styles = StyleSheet.create({
   overviewContainer: {
     paddingVertical: metrics.scale(25),
     justifyContent: 'space-between',
+    alignItems: 'center',
   },
   overviewImageContainer: {
-    width: ITEM_SIZE / 2,
+    width: ITEM_SIZE / 1.5,
     marginHorizontal: metrics.scale(5),
-    height: WINDOW_TOP_DISTANCE / 2.3 + metrics.scale(30),
+    height: WINDOW_TOP_DISTANCE / 1.8 + metrics.scale(30),
   },
-  overviewMovieTitle: {
-    alignSelf: 'center',
-    paddingVertical: 20,
+  smallCardTitle: {
     width: ITEM_SIZE / 2.1,
-    fontSize: metrics.scale(11),
+    paddingVertical: metrics.scaleVertical(10),
+    fontSize: metrics.scaledFontSize(15),
   },
 });

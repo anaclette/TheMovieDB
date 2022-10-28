@@ -1,11 +1,5 @@
 import React, {useState, useCallback} from 'react';
-import {
-  TouchableOpacity,
-  Text,
-  LayoutAnimation,
-  Platform,
-  UIManager,
-} from 'react-native';
+import {LayoutAnimation, Platform, UIManager} from 'react-native';
 import Button from '../Button';
 import TvCard from '../TvCard';
 import {TvDetails} from '../../types/tvInterface';
@@ -36,17 +30,24 @@ export const CategoryAccordion = ({title, data}: Props) => {
 
   return (
     <>
-      <TouchableOpacity
+      <Button
         onPress={() => {
           animation();
           setIsExpanded((prevIsExpanded: boolean) => !prevIsExpanded);
-        }}>
-        <Text style={styles.title}>{title}</Text>
-      </TouchableOpacity>
+        }}
+        textStyle={styles.title}
+        text={title}
+        wrapperStyle={styles.title}
+      />
 
       {isExpanded && (
         <>
-          <Button icon="arrow-forward" />
+          <Button
+            moreButton
+            wrapperStyle={styles.moreButton}
+            onPress={() => {}}
+            icon="arrow-forward"
+          />
           {data.map((dataItem, index) => {
             return <TvCard key={index.toString()} item={dataItem} />;
           })}

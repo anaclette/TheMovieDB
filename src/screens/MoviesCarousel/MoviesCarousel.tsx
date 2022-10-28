@@ -1,11 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {
-  Text,
-  ScrollView,
-  TouchableOpacity,
-  View,
-  Dimensions,
-} from 'react-native';
+import {Text, ScrollView, View, Dimensions} from 'react-native';
 import {useMovies} from '../../hooks/useMovies';
 import Carousel from 'react-native-snap-carousel';
 import {Movie} from '../../types/moviesInterface';
@@ -23,6 +17,7 @@ import {RootStackParamList} from '../../navigation/NavigationController';
 import LinearGradient from 'react-native-linear-gradient';
 import Loader from '../../components/Loader';
 import {StackScreenProps} from '@react-navigation/stack';
+import Button from '../../components/Button';
 
 type NavProps = StackScreenProps<RootStackParamList, 'FullCategoryContent'>;
 type ImageColors = {
@@ -48,7 +43,7 @@ export const MoviesCarousel = ({navigation}: NavProps) => {
   };
 
   const renderItem = ({item}: {item: Movie}) => {
-    return <MovieCard movie={item} />;
+    return <MovieCard movie={item} bigCard />;
   };
 
   const defineBackgroundColor = async (index: number) => {
@@ -82,24 +77,27 @@ export const MoviesCarousel = ({navigation}: NavProps) => {
           <ScrollView
             showsVerticalScrollIndicator={false}
             contentContainerStyle={[styles.scrollView, {paddingTop: top + 20}]}>
-            <TouchableOpacity
+            <Button
               onPress={() =>
                 navigation.navigate('FullCategoryContent', {
                   categoryTitle: copies.es.movies.categoryTitles.nowPlaying,
                 })
-              }>
-              <View style={styles.buttonContentWrapper}>
-                <Text style={styles.title}>
-                  {copies.es.movies.categoryTitles.nowPlaying}
-                </Text>
+              }
+              children={
+                <View style={styles.buttonContentWrapper}>
+                  <Text style={styles.title}>
+                    {copies.es.movies.categoryTitles.nowPlaying}
+                  </Text>
 
-                <Icon
-                  name="arrow-forward-outline"
-                  size={metrics.scale(20)}
-                  color={colors.brown}
-                />
-              </View>
-            </TouchableOpacity>
+                  <Icon
+                    name="arrow-forward-outline"
+                    size={metrics.scale(20)}
+                    color={colors.brown}
+                  />
+                </View>
+              }
+            />
+
             <View style={styles.carousel}>
               <Carousel
                 vertical={false}
