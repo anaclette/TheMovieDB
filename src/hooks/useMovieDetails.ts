@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import data from '../state/api/movieDB';
+import data from '../common/api/movieDB';
 import {Credits, CastResp} from '../types/creditsInterface';
 import {MovieFullDetails} from '../types/moviesInterface';
 

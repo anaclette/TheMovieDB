@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import {MOVIE_ENDPOINTS} from '../common/constants';
-import data from '../state/api/movieDB';
+import data from '../common/api/movieDB';
 import {Movie, MovieDBMoviesResponse} from '../types/moviesInterface';
 
 interface MoviesState {

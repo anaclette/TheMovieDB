@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import {TV_ENDPOINTS} from '../common/constants';
-import movies from '../state/api/movieDB';
+import movies from '../common/api/movieDB';
 import {TvResponse, TvDetails} from '../types/tvInterface';
 
 interface TvState {
