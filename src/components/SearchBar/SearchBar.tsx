@@ -1,57 +1,67 @@
-import React from 'react';
-import {TextInput, View, Keyboard, Button, SafeAreaView} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import React, {useState} from 'react';
+import {
+  TextInput,
+  View,
+  Keyboard,
+  SafeAreaView,
+  KeyboardAvoidingView,
+  Platform,
+} from 'react-native';
+import colors from '../../themes/colors';
+import metrics from '../../themes/metrics';
+import Button from '../Button';
 import {styles} from './searchBar.style';
 
-interface Props {
-  clicked: Event;
-  searchPhrase: string;
-  setSearchPhrase: (value: string) => void;
-  setClicked: (value: boolean) => void;
-}
+export const SearchBar = () => {
+  // const [clicked, setClicked] = useState(false);
+  const [searchPhrase, setSearchPhrase] = useState('');
+  const [form, setForm] = useState({
+    userInput: '',
+    pressedEnter: false,
+  });
 
-export const SearchBar = ({
-  clicked,
-  searchPhrase,
-  setSearchPhrase,
-  setClicked,
-}: Props) => {
+  const onChange = (value: boolean, field: string) => {
+    setForm({
+      ...form,
+      [field]: value,
+    });
+    setSearchPhrase(field);
+  };
+
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={clicked ? styles.clicked : styles.unclicked}>
-        <Icon name="search-outline" size={20} color="black" />
-        <TextInput
-          style={styles.input}
-          placeholder="Search"
-          value={searchPhrase}
-          onChangeText={setSearchPhrase}
-          onFocus={() => {
-            setClicked(true);
-          }}
-        />
-        {clicked && (
-          <Icon
-            name="close-outline"
-            size={20}
-            color="black"
-            onPress={() => {
-              setSearchPhrase('');
-            }}
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+      <SafeAreaView style={styles.wrapper}>
+        <View style={styles.inputWrapper}>
+          <TextInput
+            style={[
+              styles.input,
+              // eslint-disable-next-line react-native/no-inline-styles
+              {
+                height:
+                  Platform.OS === 'ios' ? metrics.scale(20) : metrics.scale(30),
+              },
+            ]}
+            placeholder="Encuentra"
+            placeholderTextColor={colors.petroleum}
+            value={searchPhrase}
+            onChangeText={() => onChange}
+            // onFocus={() => {
+            //   setClicked(true);
+            // }}
           />
-        )}
-      </View>
-      {clicked && (
-        <View>
           <Button
-            title="Cancel"
+            icon="search-outline"
+            color={colors.petroleum}
+            size={metrics.scale(15)}
             onPress={() => {
               Keyboard.dismiss();
-              setClicked(false);
             }}
           />
         </View>
-      )}
-    </SafeAreaView>
+      </SafeAreaView>
+    </KeyboardAvoidingView>
   );
 };
 export default SearchBar;

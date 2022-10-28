@@ -1,35 +1,30 @@
 import {StyleSheet} from 'react-native';
 import colors from '../../themes/colors';
+import fonts from '../../themes/fonts';
 import metrics from '../../themes/metrics';
 
 export const styles = StyleSheet.create({
   container: {
-    margin: metrics.scale(15),
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    flexDirection: 'row',
-    width: '90%',
+    height: metrics.scale(100),
+    backgroundColor: colors.petroleum,
   },
-  unclicked: {
-    padding: metrics.scale(10),
+  wrapper: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  inputWrapper: {
     flexDirection: 'row',
-    width: '95%',
+    justifyContent: 'space-between',
+    alignSelf: 'flex-end',
+    marginRight: metrics.scale(10),
+    borderRadius: metrics.scale(8),
+    paddingHorizontal: metrics.scale(10),
+    alignItems: 'center',
+    width: '50%',
     backgroundColor: colors.palePink,
-    borderRadius: metrics.scale(13),
-    alignItems: 'center',
-  },
-  clicked: {
-    padding: metrics.scale(10),
-    flexDirection: 'row',
-    width: '80%',
-    backgroundColor: '#d9dbda',
-    borderRadius: metrics.scale(13),
-    alignItems: 'center',
-    justifyContent: 'space-evenly',
   },
   input: {
-    fontSize: metrics.scaledFontSize(20),
-    marginLeft: metrics.scale(10),
-    width: '90%',
+    fontSize: metrics.scaledFontSize(12),
+    ...fonts.HindSiliguri,
   },
 });
