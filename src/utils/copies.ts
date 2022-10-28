@@ -27,8 +27,12 @@ export default {
         onTheAir: 'Al aire',
       },
       details: {
+        genderTitle: 'Géneros',
         noOverview: 'No se encontró descripción de esta serie.',
       },
+    },
+    button: {
+      more: 'Más',
     },
   },
   en: {
@@ -40,8 +44,8 @@ export default {
         upcoming: 'Upcoming',
       },
     },
-  },
-  button: {
-    back: 'Atrás',
+    button: {
+      more: 'More',
+    },
   },
 };
