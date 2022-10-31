@@ -1,10 +1,11 @@
 import {StyleSheet} from 'react-native';
-import metrics from '../../themes/metrics';
+import colors from '../../themes/colors';
 
 export const styles = StyleSheet.create({
   loaderContainer: {
     flex: 1,
     justifyContent: 'center',
-    height: metrics.scale(100),
+    alignItems: 'center',
+    backgroundColor: colors.petroleum,
   },
 });
