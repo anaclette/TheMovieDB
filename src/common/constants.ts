@@ -1,3 +1,4 @@
+export const API_KEY = '60f4e8225b109e5131a88c96f3fecfc0';
 export const baseURL = 'https://api.themoviedb.org/3';
 export const imageURL = 'https://image.tmdb.org/t/p/w500';
 export const noImageURL =
