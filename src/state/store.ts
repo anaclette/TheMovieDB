@@ -1,7 +1,8 @@
 import {combineReducers, configureStore} from '@reduxjs/toolkit';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {persistReducer, persistStore} from 'redux-persist';
-import {moviesApi} from '../services/movies';
+import {moviesApi} from '../state/movies';
+import {tvShowsApi} from '../state/tvshows';
 
 const persistConfig = {
   key: 'root',
@@ -10,6 +11,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   [moviesApi.reducerPath]: moviesApi.reducer,
+  [tvShowsApi.reducerPath]: tvShowsApi.reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
