@@ -7,7 +7,8 @@ import {styles} from './moviesCarousel.style';
 import MovieCard from '../../components/MovieCard';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import HorizontalFlatlist from '../../components/HorizontalFlatlist';
-import copies from '../../utils/copies';
+import {TranslationKeys} from '../../locale/translations/keys';
+import {useTranslation} from 'react-i18next';
 import Icon from 'react-native-vector-icons/Ionicons';
 import colors from '../../themes/colors';
 import metrics from '../../themes/metrics';
@@ -18,6 +19,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import Loader from '../../components/Loader';
 import {StackScreenProps} from '@react-navigation/stack';
 import Button from '../../components/Button';
+import copies from '../../utils/copies';
 
 type NavProps = StackScreenProps<RootStackParamList, 'FullCategoryContent'>;
 type ImageColors = {
@@ -27,6 +29,7 @@ type ImageColors = {
 };
 
 export const MoviesCarousel = ({navigation}: NavProps) => {
+  const {t} = useTranslation();
   const [refreshing, setRefreshing] = React.useState(false);
   const {top} = useSafeAreaInsets();
   const {isLoading, popular, topRated, upcoming, nowPlaying} = useMovies();
@@ -98,6 +101,7 @@ export const MoviesCarousel = ({navigation}: NavProps) => {
                 <View style={styles.buttonContentWrapper}>
                   <Text style={styles.title}>
                     {copies.es.movies.categoryTitles.nowPlaying}
+                    {/* {t(TranslationKeys.NOW_PLAYING_MOVIES)} */}
                   </Text>
 
                   <Icon
@@ -122,6 +126,7 @@ export const MoviesCarousel = ({navigation}: NavProps) => {
 
             <HorizontalFlatlist
               categoryTitle={copies.es.movies.categoryTitles.popular}
+              // categoryTitle={t(TranslationKeys.POPULAR_MOVIES)}
               movies={popular}
             />
             <HorizontalFlatlist
