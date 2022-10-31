@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {Text, ScrollView, View, Dimensions} from 'react-native';
+import React, {useState, useEffect, useCallback} from 'react';
+import {Text, ScrollView, View, Dimensions, RefreshControl} from 'react-native';
 import {useMovies} from '../../hooks/useMovies';
 import Carousel from 'react-native-snap-carousel';
 import {Movie} from '../../types/moviesInterface';
@@ -27,6 +27,7 @@ type ImageColors = {
 };
 
 export const MoviesCarousel = ({navigation}: NavProps) => {
+  const [refreshing, setRefreshing] = React.useState(false);
   const {top} = useSafeAreaInsets();
   const {isLoading, popular, topRated, upcoming, nowPlaying} = useMovies();
   const {width: SLIDER_WIDTH} = Dimensions.get('window');
@@ -60,9 +61,16 @@ export const MoviesCarousel = ({navigation}: NavProps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nowPlaying.length]);
 
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 2000);
+  }, []);
+
   return (
     <>
-      {isLoading ? (
+      {isLoading || refreshing ? (
         <Loader />
       ) : (
         <LinearGradient
@@ -75,6 +83,9 @@ export const MoviesCarousel = ({navigation}: NavProps) => {
             imageColors.addOn,
           ]}>
           <ScrollView
+            refreshControl={
+              <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+            }
             showsVerticalScrollIndicator={false}
             contentContainerStyle={[styles.scrollView, {paddingTop: top + 20}]}>
             <Button

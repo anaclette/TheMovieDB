@@ -24,51 +24,54 @@ export const TvDetails = ({route}: Props) => {
   const {loading, tvCast, fullTv} = useTvDetails(details.id);
   return (
     <>
-      <View style={styles.imgContainer}>
-        <Button
-          size={metrics.scale(25)}
-          wrapperStyle={styles.backButton}
-          icon="chevron-back-circle-outline"
-          onPress={() => navigation.goBack()}
-          color={colors.brown}
-        />
-        <Image
-          style={styles.posterImage}
-          source={{uri: `${imageURL}${fullTv.poster_path}`}}
-        />
-      </View>
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <View style={styles.imgContainer}>
+            <Button
+              size={metrics.scale(25)}
+              wrapperStyle={styles.backButton}
+              icon="chevron-back-circle-outline"
+              onPress={() => navigation.goBack()}
+              color={colors.brown}
+            />
+            <Image
+              style={styles.posterImage}
+              source={{uri: `${imageURL}${fullTv.poster_path}`}}
+            />
+          </View>
 
-      <View style={styles.previewContainer}>
-        {fullTv.genres.length !== 0 && (
-          <>
-            <Text style={styles.title}>{copies.es.tv.details.genderTitle}</Text>
+          <View style={styles.previewContainer}>
+            {fullTv.genres.length !== 0 && (
+              <>
+                <View style={styles.genreWrapper}>
+                  {fullTv.genres.map((genre, index) => {
+                    return (
+                      <Text key={index.toString()} style={styles.genreItem}>
+                        {(index ? ' ● ' : '') + genre.name}
+                      </Text>
+                    );
+                  })}
+                </View>
+              </>
+            )}
 
-            <View style={styles.genreWrapper}>
-              {fullTv.genres.map((genre, index) => {
-                return (
-                  <Text key={index.toString()} style={styles.genreItem}>
-                    {genre.name}
-                  </Text>
-                );
-              })}
-            </View>
-          </>
-        )}
-
-        {!!fullTv.number_of_episodes && (
-          <Text
-            style={
-              styles.overview
-            }>{`${fullTv.number_of_episodes} episodios`}</Text>
-        )}
-
-        <Button
-          moreButton
-          onPress={() => {
-            setIsVisible(true);
-          }}
-        />
-      </View>
+            {!!fullTv.number_of_episodes && (
+              <Text
+                style={
+                  styles.overview
+                }>{`${fullTv.number_of_episodes} episodios`}</Text>
+            )}
+            <Button
+              moreButton
+              onPress={() => {
+                setIsVisible(true);
+              }}
+            />
+          </View>
+        </>
+      )}
 
       <View>
         <Modal

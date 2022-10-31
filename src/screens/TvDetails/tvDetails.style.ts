@@ -28,6 +28,7 @@ export const styles = StyleSheet.create({
     padding: metrics.scale(10),
     backgroundColor: colors.petroleum,
     justifyContent: 'space-evenly',
+    alignItems: 'center',
   },
   imgContainer: {
     width: '100%',
@@ -56,12 +57,7 @@ export const styles = StyleSheet.create({
   genreItem: {
     ...fonts.HindSiliguri,
     fontSize: metrics.scaledFontSize(17),
-    borderColor: colors.lightBlue,
-    borderWidth: StyleSheet.hairlineWidth,
-    borderRadius: metrics.scale(10),
     color: colors.palePink,
     alignSelf: 'center',
-    paddingHorizontal: metrics.scale(10),
-    margin: metrics.scale(5),
   },
 });

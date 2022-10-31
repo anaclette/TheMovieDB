@@ -27,7 +27,6 @@ export default {
         onTheAir: 'Al aire',
       },
       details: {
-        genderTitle: 'Géneros',
         noOverview: 'No se encontró descripción de esta serie.',
       },
     },
