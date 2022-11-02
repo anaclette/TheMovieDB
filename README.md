@@ -50,4 +50,7 @@ For blur background:
 For locale language translations:
 - i18next
 - react-i18next
-- react-native-localize -->
+- react-native-localize
+For debugging:
+- react-native-flipper
+- redux-flipper -->

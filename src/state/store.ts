@@ -14,6 +14,7 @@ const rootReducer = combineReducers({
   [tvShowsApi.reducerPath]: tvShowsApi.reducer,
 });
 
+const reduxDebugger = require('redux-flipper').default();
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = configureStore({
@@ -22,7 +23,7 @@ const store = configureStore({
     getDefaultMiddleware({
       immutableCheck: false,
       serializableCheck: false,
-    }).concat(moviesApi.middleware),
+    }).concat([moviesApi.middleware, reduxDebugger]),
 });
 
 const persistor = persistStore(store);
