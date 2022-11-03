@@ -1,6 +1,15 @@
 import {combineReducers, configureStore} from '@reduxjs/toolkit';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {persistReducer, persistStore} from 'redux-persist';
+import {
+  FLUSH,
+  PAUSE,
+  PERSIST,
+  persistReducer,
+  persistStore,
+  PURGE,
+  REGISTER,
+  REHYDRATE,
+} from 'redux-persist';
 import {moviesApi} from '../state/movies';
 import {tvShowsApi} from '../state/tvshows';
 
@@ -22,7 +31,9 @@ const store = configureStore({
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       immutableCheck: false,
-      serializableCheck: false,
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
     }).concat([moviesApi.middleware, reduxDebugger]),
 });
 
