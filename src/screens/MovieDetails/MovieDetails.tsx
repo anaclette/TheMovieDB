@@ -8,13 +8,13 @@ import {styles} from './movieDetails.style';
 import {replaceComma} from '../../utils/helpers';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../navigation/NavigationController';
-import {useMovieDetails} from '../../hooks/useMovieDetails';
 import {imageURL} from '../../common/constants';
 import colors from '../../themes/colors';
 import metrics from '../../themes/metrics';
 import Loader from '../../components/Loader';
 import {useAnimation} from '../../hooks/useAnimation';
 import Button from '../../components/Button';
+import {useGetMovieCastQuery, useGetMovieQuery} from '../../state/movies';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'MovieDetails'>;
 
@@ -25,7 +25,17 @@ const replaceWithDot = (value: number) => {
 export const MovieDetails = ({route, navigation}: Props) => {
   const details = route.params;
   const source = `${imageURL}${details.poster_path}`;
-  const {isLoading, cast, fullMovie} = useMovieDetails(details.id);
+  const {
+    data: fullMovie,
+    // error,
+    isLoading,
+    isSuccess,
+  } = useGetMovieQuery(details.id);
+  const {
+    data: cast,
+    // error: castError,
+    isSuccess: castIsSuccess,
+  } = useGetMovieCastQuery(details.id);
   const {fade} = useAnimation();
   const opacity = useRef(new Animated.Value(0)).current;
 
@@ -48,7 +58,7 @@ export const MovieDetails = ({route, navigation}: Props) => {
           source={{uri: source}}
         />
       </View>
-      {!isLoading ? (
+      {!isLoading && isSuccess ? (
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.wrapper}>
             <Text style={styles.title}>{fullMovie.title}</Text>
@@ -59,7 +69,7 @@ export const MovieDetails = ({route, navigation}: Props) => {
                 : fullMovie.overview}
             </Text>
 
-            {fullMovie.budget !== 0 && (
+            {fullMovie!.budget !== 0 && (
               <Text style={styles.secondaryTitle}>
                 {copies.es.movies.details.budget}
                 {replaceWithDot(fullMovie.budget)}
@@ -73,7 +83,7 @@ export const MovieDetails = ({route, navigation}: Props) => {
               </Text>
             )}
           </View>
-          {cast.length !== 0 && <Cast cast={cast} />}
+          {castIsSuccess && cast?.length !== 0 && <Cast cast={cast} />}
         </ScrollView>
       ) : (
         <Loader />

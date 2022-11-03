@@ -1,6 +1,5 @@
 import React, {useState, useEffect, useCallback} from 'react';
 import {Text, ScrollView, View, Dimensions, RefreshControl} from 'react-native';
-import {useMovies} from '../../hooks/useMovies';
 import Carousel from 'react-native-snap-carousel';
 import {Movie} from '../../types/moviesInterface';
 import {styles} from './moviesCarousel.style';
@@ -20,6 +19,12 @@ import Loader from '../../components/Loader';
 import {StackScreenProps} from '@react-navigation/stack';
 import Button from '../../components/Button';
 import copies from '../../utils/copies';
+import {
+  useGetNowPlayingByPageQuery,
+  useGetPopularByPageQuery,
+  useGetTopRatedByPageQuery,
+  useGetUpcomingByPageQuery,
+} from '../../state/movies';
 
 type NavProps = StackScreenProps<RootStackParamList, 'FullCategoryContent'>;
 type ImageColors = {
@@ -32,9 +37,16 @@ export const MoviesCarousel = ({navigation}: NavProps) => {
   const {t} = useTranslation();
   const [refreshing, setRefreshing] = React.useState(false);
   const {top} = useSafeAreaInsets();
-  const {isLoading, popular, topRated, upcoming, nowPlaying} = useMovies();
   const {width: SLIDER_WIDTH} = Dimensions.get('window');
   const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.6);
+  const {
+    data: nowPlayingData,
+    isLoading,
+    isSuccess,
+  } = useGetNowPlayingByPageQuery(1);
+  const {data: popularData} = useGetPopularByPageQuery(1);
+  const {data: topRatedData} = useGetTopRatedByPageQuery(1);
+  const {data: upcomingData} = useGetUpcomingByPageQuery(1);
 
   const [imageColors, setImageColors] = useState<ImageColors>({
     primary: colors.transparent,
@@ -51,18 +63,18 @@ export const MoviesCarousel = ({navigation}: NavProps) => {
   };
 
   const defineBackgroundColor = async (index: number) => {
-    const movie = nowPlaying[index];
-    const movieImage = `${imageURL}${movie.poster_path}`;
+    const movie = nowPlayingData?.[index];
+    const movieImage = `${imageURL}${movie?.poster_path}`;
     const [primary, secondary, addOn] = await getImageColors(movieImage);
     setMainColors({primary, secondary, addOn} as ImageColors);
   };
 
   useEffect(() => {
-    if (nowPlaying.length > 0) {
+    if (nowPlayingData && nowPlayingData.length > 0) {
       defineBackgroundColor(0);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [nowPlaying.length]);
+  }, [nowPlayingData]);
 
   const onRefresh = useCallback(() => {
     setRefreshing(true);
@@ -100,8 +112,7 @@ export const MoviesCarousel = ({navigation}: NavProps) => {
               children={
                 <View style={styles.buttonContentWrapper}>
                   <Text style={styles.title}>
-                    {copies.es.movies.categoryTitles.nowPlaying}
-                    {/* {t(TranslationKeys.NOW_PLAYING_MOVIES)} */}
+                    {t(TranslationKeys.NOW_PLAYING_MOVIES)}
                   </Text>
 
                   <Icon
@@ -114,28 +125,29 @@ export const MoviesCarousel = ({navigation}: NavProps) => {
             />
 
             <View style={styles.carousel}>
-              <Carousel
-                vertical={false}
-                onSnapToItem={index => defineBackgroundColor(index)}
-                data={nowPlaying}
-                renderItem={renderItem}
-                sliderWidth={SLIDER_WIDTH}
-                itemWidth={ITEM_WIDTH}
-              />
+              {isSuccess && (
+                <Carousel
+                  vertical={false}
+                  onSnapToItem={index => defineBackgroundColor(index)}
+                  data={nowPlayingData}
+                  renderItem={renderItem}
+                  sliderWidth={SLIDER_WIDTH}
+                  itemWidth={ITEM_WIDTH}
+                />
+              )}
             </View>
 
             <HorizontalFlatlist
-              categoryTitle={copies.es.movies.categoryTitles.popular}
-              // categoryTitle={t(TranslationKeys.POPULAR_MOVIES)}
-              movies={popular}
+              categoryTitle={t(TranslationKeys.POPULAR_MOVIES)}
+              movies={popularData}
             />
             <HorizontalFlatlist
-              categoryTitle={copies.es.movies.categoryTitles.topRated}
-              movies={topRated}
+              categoryTitle={t(TranslationKeys.TOP_RATED_MOVIES)}
+              movies={topRatedData}
             />
             <HorizontalFlatlist
-              categoryTitle={copies.es.movies.categoryTitles.upcoming}
-              movies={upcoming}
+              categoryTitle={t(TranslationKeys.UPCOMING_MOVIES)}
+              movies={upcomingData}
             />
           </ScrollView>
         </LinearGradient>

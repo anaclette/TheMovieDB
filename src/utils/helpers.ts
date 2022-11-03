@@ -1,4 +1,5 @@
 import ImageColors from 'react-native-image-colors';
+import {API_KEY} from '../common/constants';
 
 export const replaceComma = (str: string) => str.replace(/,/g, '.');
 
@@ -48,4 +49,12 @@ export const loadMore = (numbers: number[], setNumbers: Function) => {
   }
 
   setNumbers([...numbers, ...newArray]);
+};
+
+export const customQuery = (
+  endpoint: string,
+  language: string,
+  page: number | void = 1,
+) => {
+  return `/movie/${endpoint}?api_key=${API_KEY}&language=${language}&page=${page}`;
 };
