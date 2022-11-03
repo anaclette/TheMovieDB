@@ -1,6 +1,5 @@
 import React, {useRef} from 'react';
 import {Animated, ScrollView, Text, View} from 'react-native';
-import copies from '../../utils/copies';
 import Cast from '../../components/Cast';
 import Rating from '../../components/Rating';
 import currencyFormatter from 'currency-formatter';
@@ -15,6 +14,8 @@ import Loader from '../../components/Loader';
 import {useAnimation} from '../../hooks/useAnimation';
 import Button from '../../components/Button';
 import {useGetMovieCastQuery, useGetMovieQuery} from '../../state/movies';
+import {useTranslation} from 'react-i18next';
+import {TranslationKeys} from '../../locale/translations/keys';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'MovieDetails'>;
 
@@ -23,6 +24,7 @@ const replaceWithDot = (value: number) => {
 };
 
 export const MovieDetails = ({route, navigation}: Props) => {
+  const {t} = useTranslation();
   const details = route.params;
   const source = `${imageURL}${details.poster_path}`;
   const {
@@ -65,20 +67,20 @@ export const MovieDetails = ({route, navigation}: Props) => {
             <Rating rating={fullMovie.vote_average} color={colors.lightBlue} />
             <Text style={styles.overview}>
               {fullMovie.overview === ''
-                ? copies.es.movies.details.noOverview
+                ? t(TranslationKeys.NO_OVERVIEW_MOVIE)
                 : fullMovie.overview}
             </Text>
 
             {fullMovie!.budget !== 0 && (
               <Text style={styles.secondaryTitle}>
-                {copies.es.movies.details.budget}
+                {t(TranslationKeys.BUDGET_TITLE)}
                 {replaceWithDot(fullMovie.budget)}
               </Text>
             )}
 
             {fullMovie.revenue !== 0 && (
               <Text style={styles.secondaryTitle}>
-                {copies.es.movies.details.revenue}
+                {t(TranslationKeys.REVENUE_TITLE)}
                 {replaceWithDot(fullMovie.revenue)}
               </Text>
             )}

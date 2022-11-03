@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {Image, ScrollView, Text, View, Modal} from 'react-native';
 import Cast from '../../components/Cast';
-import copies from '../../utils/copies';
 import {styles} from './tvDetails.style';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../navigation/NavigationController';
@@ -14,6 +13,8 @@ import Loader from '../../components/Loader';
 import Rating from '../../components/Rating';
 import {SafeAreaView} from 'react-native';
 import Button from '../../components/Button';
+import {useTranslation} from 'react-i18next';
+import {TranslationKeys} from '../../locale/translations/keys';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'TvDetails'>;
 
@@ -22,6 +23,7 @@ export const TvDetails = ({route}: Props) => {
   const details = route.params;
   const [isVisible, setIsVisible] = useState(false);
   const {loading, tvCast, fullTv} = useTvDetails(details.id);
+  const {t} = useTranslation();
   return (
     <>
       {loading ? (
@@ -98,7 +100,7 @@ export const TvDetails = ({route}: Props) => {
                   />
                   <Text style={styles.overview}>
                     {fullTv.overview === ''
-                      ? copies.es.tv.details.noOverview
+                      ? t(TranslationKeys.NO_OVERVIEW_TV_SHOW)
                       : fullTv.overview}
                   </Text>
                 </View>

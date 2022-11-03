@@ -1,46 +1,53 @@
 import React from 'react';
+import {useTranslation} from 'react-i18next';
 import {FlatList, View} from 'react-native';
 import CategoryAccordion from '../../components/CategoryAccordion';
 import {useTv} from '../../hooks/useTv';
+import {TvCategoryTranslationKeys} from '../../locale/translations/keys';
 import {TvDetails} from '../../types/tvInterface';
-import copies from '../../utils/copies';
 import {styles} from './tv.style';
 
-type TvTypes = 'onTheAir' | 'airingToday' | 'popular' | 'topRated';
+type TvTypes =
+  | 'ON_THE_AIR_TV_SHOWS'
+  | 'AIRING_TODAY_TV_SHOWS'
+  | 'POPULAR_TV_SHOWS'
+  | 'TOP_RATED_TV_SHOWS';
 
 type TvData = {
   type: TvTypes;
   data: TvDetails[];
 };
 
-const renderItem = ({item, index}: {item: TvData; index: number}) => (
-  <CategoryAccordion
-    key={index.toString()}
-    title={copies.es.tv.categoryTitles[item.type]}
-    data={item.data.slice(0, 6)}
-  />
-);
-
 export const Tv = () => {
   const {airingToday, onTheAir, popular, topRated} = useTv();
+  const {t} = useTranslation();
+
   const tvData: TvData[] = [
     {
       data: onTheAir,
-      type: 'onTheAir',
+      type: 'ON_THE_AIR_TV_SHOWS',
     },
     {
       data: airingToday,
-      type: 'airingToday',
+      type: 'AIRING_TODAY_TV_SHOWS',
     },
     {
       data: popular,
-      type: 'popular',
+      type: 'POPULAR_TV_SHOWS',
     },
     {
       data: topRated,
-      type: 'topRated',
+      type: 'TOP_RATED_TV_SHOWS',
     },
   ];
+
+  const renderItem = ({item, index}: {item: TvData; index: number}) => (
+    <CategoryAccordion
+      key={index.toString()}
+      title={t(TvCategoryTranslationKeys[item.type])}
+      data={item.data.slice(0, 6)}
+    />
+  );
 
   return (
     <View style={styles.wrapper}>

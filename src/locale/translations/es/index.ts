@@ -1,11 +1,23 @@
-import {TranslationResource, TranslationKeys as TK} from '../keys';
+import {
+  TranslationResource,
+  TvCategoryTranslationKeys as TvTitles,
+  TranslationKeys as TK,
+} from '../keys';
 
 const BUTTONS = {
   [TK.BUTTON_MORE]: 'Más',
 };
 
+const TV_TITLES = {
+  [TvTitles.AIRING_TODAY_TV_SHOWS]: 'Disponible hoy',
+  [TvTitles.ON_THE_AIR_TV_SHOWS]: 'Al aire',
+  [TvTitles.POPULAR_TV_SHOWS]: 'Populares',
+  [TvTitles.TOP_RATED_TV_SHOWS]: 'Mejor calificadas',
+};
+
 const translation: TranslationResource = {
   ...BUTTONS,
+  ...TV_TITLES,
   NOW_PLAYING_MOVIES: 'Ahora en cine',
   POPULAR_MOVIES: 'Populares',
   TOP_RATED_MOVIES: 'Mejor calificadas',
@@ -17,10 +29,6 @@ const translation: TranslationResource = {
   NO_OVERVIEW_MOVIE: 'No se encontró descripción de esta peli.',
   BUDGET_TITLE: 'Inversión: US',
   REVENUE_TITLE: 'Recaudación: US',
-  AIRING_TODAY_TV_SHOWS: 'Disponible hoy',
-  POPULAR_TV_SHOWS: 'Populares',
-  TOP_RATED_TV_SHOWS: 'Mejor calificadas',
-  ON_THE_AIR_TV_SHOWS: 'Al aire',
   NO_OVERVIEW_TV_SHOW: 'No se encontró descripción de esta serie.',
 };
 

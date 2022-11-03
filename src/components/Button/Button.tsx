@@ -4,7 +4,8 @@ import {styles} from './button.style';
 import Icon from 'react-native-vector-icons/Ionicons';
 import colors from '../../themes/colors';
 import metrics from '../../themes/metrics';
-import copies from '../../utils/copies';
+import {useTranslation} from 'react-i18next';
+import {TranslationKeys} from '../../locale/translations/keys';
 
 interface Props {
   icon?: string;
@@ -29,13 +30,14 @@ export const Button = ({
   wrapperStyle,
   onPress,
 }: Props) => {
+  const {t} = useTranslation();
   return (
     <TouchableOpacity
       activeOpacity={0.5}
       onPress={onPress}
       style={[!icon && moreButton ? styles.moreButton : wrapperStyle]}>
       {moreButton && (
-        <Text style={styles.moreText}>{copies.es.button.more}</Text>
+        <Text style={styles.moreText}>{t(TranslationKeys.BUTTON_MORE)}</Text>
       )}
       {text && <Text style={textStyle}>{text}</Text>}
       {icon && (

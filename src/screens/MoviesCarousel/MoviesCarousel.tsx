@@ -18,7 +18,6 @@ import LinearGradient from 'react-native-linear-gradient';
 import Loader from '../../components/Loader';
 import {StackScreenProps} from '@react-navigation/stack';
 import Button from '../../components/Button';
-import copies from '../../utils/copies';
 import {
   useGetNowPlayingByPageQuery,
   useGetPopularByPageQuery,
@@ -106,7 +105,7 @@ export const MoviesCarousel = ({navigation}: NavProps) => {
             <Button
               onPress={() =>
                 navigation.navigate('FullCategoryContent', {
-                  categoryTitle: copies.es.movies.categoryTitles.nowPlaying,
+                  categoryTitle: t(TranslationKeys.NOW_PLAYING_MOVIES),
                 })
               }
               children={

@@ -2,9 +2,10 @@ import React from 'react';
 import {Text, View, FlatList, Image} from 'react-native';
 import {imageURL, noImageURL} from '../../common/constants';
 import {CastResp} from '../../types/creditsInterface';
-import copies from '../../utils/copies';
 import {styles} from './cast.style';
 import {Cast as TvCast} from '../../types/tvCreditsInterface';
+import {useTranslation} from 'react-i18next';
+import {TranslationKeys} from '../../locale/translations/keys';
 
 interface Props {
   cast: CastResp[] | TvCast[];
@@ -33,9 +34,10 @@ const renderItem = ({item}: {item: CastResp | TvCast}) => {
 };
 
 export const Cast = ({cast}: Props) => {
+  const {t} = useTranslation();
   return (
     <View style={styles.container}>
-      <Text style={styles.castTitle}>{copies.es.movies.navTitle.cast} </Text>
+      <Text style={styles.castTitle}>{t(TranslationKeys.CAST_TITLE)} </Text>
       <FlatList
         horizontal
         data={cast as TvCast[]}
