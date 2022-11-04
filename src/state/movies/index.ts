@@ -25,35 +25,47 @@ export const moviesApi = createApi({
   endpoints: builder => ({
     getNowPlayingByPage: builder.query<Movie[], number | void>({
       query: page =>
-        customQuery(MOVIE_ENDPOINTS.NOW_PLAYING, CURRENT_LANGUAGE, page),
+        customQuery(
+          `movie/${MOVIE_ENDPOINTS.NOW_PLAYING}`,
+          CURRENT_LANGUAGE,
+          page,
+        ),
       providesTags: ['NOW_PLAYING'],
       transformResponse: (response: MovieDBMoviesResponse) => response.results,
     }),
     getTopRatedByPage: builder.query<Movie[], number | void>({
       query: page =>
-        customQuery(MOVIE_ENDPOINTS.TOP_RATED, CURRENT_LANGUAGE, page),
+        customQuery(
+          `movie/${MOVIE_ENDPOINTS.TOP_RATED}`,
+          CURRENT_LANGUAGE,
+          page,
+        ),
       providesTags: ['TOP_RATED'],
       transformResponse: (response: MovieDBMoviesResponse) => response.results,
     }),
     getUpcomingByPage: builder.query<Movie[], number | void>({
       query: page =>
-        customQuery(MOVIE_ENDPOINTS.UPCOMING, CURRENT_LANGUAGE, page),
+        customQuery(
+          `movie/${MOVIE_ENDPOINTS.UPCOMING}`,
+          CURRENT_LANGUAGE,
+          page,
+        ),
       providesTags: ['UPCOMING'],
       transformResponse: (response: MovieDBMoviesResponse) => response.results,
     }),
     getPopularByPage: builder.query<Movie[], number | void>({
       query: page =>
-        customQuery(MOVIE_ENDPOINTS.POPULAR, CURRENT_LANGUAGE, page),
+        customQuery(`movie/${MOVIE_ENDPOINTS.POPULAR}`, CURRENT_LANGUAGE, page),
       providesTags: ['POPULAR'],
       transformResponse: (response: MovieDBMoviesResponse) => response.results,
     }),
     getMovie: builder.query<MovieFullDetails, number | void>({
-      query: id => customQuery(String(id), CURRENT_LANGUAGE),
+      query: id => customQuery(`movie/${String(id)}`, CURRENT_LANGUAGE),
       providesTags: ['MOVIE'],
       transformResponse: (response: MovieFullDetails) => response,
     }),
     getMovieCast: builder.query<CastResp[], number | void>({
-      query: id => customQuery(`${id}/credits`, CURRENT_LANGUAGE),
+      query: id => customQuery(`movie/${id}/credits`, CURRENT_LANGUAGE),
       providesTags: ['CAST'],
       transformResponse: (response: Credits) => response.cast,
     }),

@@ -56,5 +56,5 @@ export const customQuery = (
   language: string,
   page: number | void = 1,
 ) => {
-  return `/movie/${endpoint}?api_key=${API_KEY}&language=${language}&page=${page}`;
+  return `/${endpoint}?api_key=${API_KEY}&language=${language}&page=${page}`;
 };
