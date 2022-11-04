@@ -34,7 +34,7 @@ const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat([moviesApi.middleware, reduxDebugger]),
+    }).concat([moviesApi.middleware, tvShowsApi.middleware, reduxDebugger]),
 });
 
 const persistor = persistStore(store);

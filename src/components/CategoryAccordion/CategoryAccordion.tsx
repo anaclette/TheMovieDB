@@ -7,7 +7,7 @@ import {styles} from './categoryAccordion.style';
 
 interface Props {
   title: string;
-  data: TvDetails[];
+  data: TvDetails[] | undefined;
 }
 
 export const CategoryAccordion = ({title, data}: Props) => {
@@ -48,7 +48,7 @@ export const CategoryAccordion = ({title, data}: Props) => {
             onPress={() => {}}
             icon="arrow-forward"
           />
-          {data.map((dataItem, index) => {
+          {data?.map((dataItem, index) => {
             return <TvCard key={index.toString()} item={dataItem} />;
           })}
         </>

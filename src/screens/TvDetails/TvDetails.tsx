@@ -8,13 +8,13 @@ import colors from '../../themes/colors';
 import metrics from '../../themes/metrics';
 import {useNavigation} from '@react-navigation/native';
 import {imageURL} from '../../common/constants';
-import {useTvDetails} from '../../hooks/useTvDetails';
 import Loader from '../../components/Loader';
 import Rating from '../../components/Rating';
 import {SafeAreaView} from 'react-native';
 import Button from '../../components/Button';
 import {useTranslation} from 'react-i18next';
 import {TranslationKeys} from '../../locale/translations/keys';
+import {useGetTvShowCastQuery, useGetTvShowQuery} from '../../state/tvshows';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'TvDetails'>;
 
@@ -22,13 +22,12 @@ export const TvDetails = ({route}: Props) => {
   const navigation = useNavigation();
   const details = route.params;
   const [isVisible, setIsVisible] = useState(false);
-  const {loading, tvCast, fullTv} = useTvDetails(details.id);
+  const {data: tvCast} = useGetTvShowCastQuery(details.id);
+  const {data: fullTv, isLoading, isSuccess} = useGetTvShowQuery(details.id);
   const {t} = useTranslation();
   return (
     <>
-      {loading ? (
-        <Loader />
-      ) : (
+      {!isLoading && isSuccess ? (
         <>
           <View style={styles.imgContainer}>
             <Button
@@ -73,6 +72,8 @@ export const TvDetails = ({route}: Props) => {
             />
           </View>
         </>
+      ) : (
+        <Loader />
       )}
 
       <View>
@@ -89,22 +90,22 @@ export const TvDetails = ({route}: Props) => {
           }}
           // Android prop to show under the system statusbar
           statusBarTranslucent={true}>
-          {!loading ? (
+          {!isLoading ? (
             <SafeAreaView style={styles.modalInnerWrapper}>
               <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={styles.detailsContainer}>
-                  <Text style={styles.title}>{fullTv.name}</Text>
+                  <Text style={styles.title}>{fullTv?.name}</Text>
                   <Rating
-                    rating={fullTv.vote_average}
+                    rating={fullTv?.vote_average!}
                     color={colors.lightBlue}
                   />
                   <Text style={styles.overview}>
-                    {fullTv.overview === ''
+                    {fullTv?.overview === ''
                       ? t(TranslationKeys.NO_OVERVIEW_TV_SHOW)
-                      : fullTv.overview}
+                      : fullTv?.overview}
                   </Text>
                 </View>
-                {tvCast.length !== 0 && <Cast cast={tvCast} />}
+                {tvCast && tvCast?.length !== 0 && <Cast cast={tvCast} />}
                 <Button
                   icon="chevron-down-outline"
                   size={metrics.scale(25)}

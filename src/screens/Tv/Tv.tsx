@@ -2,8 +2,13 @@ import React from 'react';
 import {useTranslation} from 'react-i18next';
 import {FlatList, View} from 'react-native';
 import CategoryAccordion from '../../components/CategoryAccordion';
-import {useTv} from '../../hooks/useTv';
 import {TvCategoryTranslationKeys} from '../../locale/translations/keys';
+import {
+  useGetAiringTodayByPageQuery,
+  useGetOnTheAirByPageQuery,
+  useGetPopularTvShowsByPageQuery,
+  useGetTopRatedTvShowsByPageQuery,
+} from '../../state/tvshows';
 import {TvDetails} from '../../types/tvInterface';
 import {styles} from './tv.style';
 
@@ -15,11 +20,14 @@ type TvTypes =
 
 type TvData = {
   type: TvTypes;
-  data: TvDetails[];
+  data: TvDetails[] | undefined;
 };
 
 export const Tv = () => {
-  const {airingToday, onTheAir, popular, topRated} = useTv();
+  const {data: airingToday} = useGetAiringTodayByPageQuery(1);
+  const {data: onTheAir} = useGetOnTheAirByPageQuery(1);
+  const {data: popular} = useGetPopularTvShowsByPageQuery(1);
+  const {data: topRated} = useGetTopRatedTvShowsByPageQuery(1);
   const {t} = useTranslation();
 
   const tvData: TvData[] = [
@@ -45,7 +53,7 @@ export const Tv = () => {
     <CategoryAccordion
       key={index.toString()}
       title={t(TvCategoryTranslationKeys[item.type])}
-      data={item.data.slice(0, 6)}
+      data={item?.data?.slice(0, 6)}
     />
   );
 
