@@ -18,4 +18,22 @@ export enum TV_ENDPOINTS {
   ON_THE_AIR = 'on_the_air',
 }
 
+export enum TvShowsTagTypes {
+  AIRING_TODAY = 'AIRING_TODAY',
+  ON_THE_AIR = 'ON_THE_AIR',
+  POPULAR_TV_SHOWS = 'POPULAR_TV_SHOWS',
+  TOP_RATED_TV_SHOWS = 'TOP_RATED_TV_SHOWS',
+  TV_SHOW_CAST = 'TV_SHOW_CAST',
+  TV_SHOW = 'TV_SHOW',
+}
+
+export enum MoviesTagTypes {
+  NOW_PLAYING = 'NOW_PLAYING',
+  UPCOMING = 'UPCOMING',
+  POPULAR = 'POPULAR',
+  TOP_RATED = 'TOP_RATED',
+  CAST = 'CAST',
+  MOVIE = 'MOVIE',
+}
+
 export const THEME_CHANGE = 'THEME_CHANGE';
