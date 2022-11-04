@@ -11,7 +11,7 @@ import {RootStackParamList} from '../../navigation/NavigationController';
 import Button from '../Button';
 
 interface Props {
-  movies: Movie[];
+  movies: Movie[] | undefined;
   categoryTitle: string;
 }
 
