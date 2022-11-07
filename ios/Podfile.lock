@@ -303,8 +303,6 @@ PODS:
   - React-jsinspector (0.70.1)
   - React-logger (0.70.1):
     - glog
-  - react-native-blur (4.3.0):
-    - React-Core
   - react-native-flipper (0.173.0):
     - React-Core
   - react-native-pager-view (6.0.0):
@@ -445,7 +443,6 @@ DEPENDENCIES:
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
-  - "react-native-blur (from `../node_modules/@react-native-community/blur`)"
   - react-native-flipper (from `../node_modules/react-native-flipper`)
   - react-native-pager-view (from `../node_modules/react-native-pager-view`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
@@ -531,8 +528,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
   React-logger:
     :path: "../node_modules/react-native/ReactCommon/logger"
-  react-native-blur:
-    :path: "../node_modules/@react-native-community/blur"
   react-native-flipper:
     :path: "../node_modules/react-native-flipper"
   react-native-pager-view:
@@ -612,7 +607,6 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 47201924064085223b63ec7e3ee9fd40ad8508e8
   React-jsinspector: 1363be638eccfe1aea1b10dd42e632b0397e5ec8
   React-logger: 7bd569e3857d74ed412ce0a5c51f421ff7d4ca7f
-  react-native-blur: 50c9feabacbc5f49b61337ebc32192c6be7ec3c3
   react-native-flipper: 64998cd1c415826bf49ef391e5bc0adcb7dcb77a
   react-native-pager-view: e76d64a5114a152e942caa09136e4e250709378c
   react-native-safe-area-context: dfe5aa13bee37a0c7e8059d14f72ffc076d120e9

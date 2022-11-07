@@ -8,6 +8,7 @@ export const styles = StyleSheet.create({
     ...fonts.Amatic,
     textAlign: 'center',
     marginVertical: metrics.scale(25),
+    color: colors.palePink,
   },
   moreButton: {
     borderBottomWidth: StyleSheet.hairlineWidth,

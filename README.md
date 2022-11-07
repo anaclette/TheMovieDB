@@ -45,8 +45,6 @@ For tabs:
 For linear gradient animation:
 - react-native-linear-gradient
 - react-native-image-colors
-For blur background:
-- react-native-community/blur
 For locale language translations:
 - i18next
 - react-i18next
