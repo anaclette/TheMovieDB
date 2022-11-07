@@ -59,8 +59,7 @@ export const Tv = () => {
   return (
     <ImageBackground
       blurRadius={5}
-      // source={{uri: require('../../assets/images/Friends_wallpaper.jpg')}}
-      source={{uri: 'https://pbs.twimg.com/media/EX66aGzWsAMI2ek.jpg:large'}}>
+      source={require('../../assets/images/Friends_wallpaper.jpg')}>
       <FlatList
         keyExtractor={(item, index) => index.toString()}
         data={tvData}
