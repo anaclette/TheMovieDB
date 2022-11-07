@@ -1,6 +1,6 @@
 import React from 'react';
 import {useTranslation} from 'react-i18next';
-import {FlatList, View} from 'react-native';
+import {FlatList, ImageBackground} from 'react-native';
 import CategoryAccordion from '../../components/CategoryAccordion';
 import {TvCategoryTranslationKeys} from '../../locale/translations/keys';
 import {
@@ -10,7 +10,6 @@ import {
   useGetTopRatedTvShowsByPageQuery,
 } from '../../state/tvshows';
 import {TvDetails} from '../../types/tvInterface';
-import {styles} from './tv.style';
 
 type TvTypes =
   | 'ON_THE_AIR_TV_SHOWS'
@@ -58,12 +57,15 @@ export const Tv = () => {
   );
 
   return (
-    <View style={styles.wrapper}>
+    <ImageBackground
+      blurRadius={5}
+      // source={{uri: require('../../assets/images/Friends_wallpaper.jpg')}}
+      source={{uri: 'https://pbs.twimg.com/media/EX66aGzWsAMI2ek.jpg:large'}}>
       <FlatList
         keyExtractor={(item, index) => index.toString()}
         data={tvData}
         renderItem={renderItem}
       />
-    </View>
+    </ImageBackground>
   );
 };

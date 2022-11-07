@@ -31,7 +31,7 @@ export const TvDetails = ({route}: Props) => {
         <>
           <View style={styles.imgContainer}>
             <Button
-              size={metrics.scale(25)}
+              size={metrics.scale(20)}
               wrapperStyle={styles.backButton}
               icon="chevron-back-circle-outline"
               onPress={() => navigation.goBack()}

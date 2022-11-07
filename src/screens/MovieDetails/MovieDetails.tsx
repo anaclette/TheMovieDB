@@ -49,7 +49,7 @@ export const MovieDetails = ({route, navigation}: Props) => {
       <View style={styles.imgContainer}>
         <Button
           color={colors.palePink}
-          size={metrics.scale(25)}
+          size={metrics.scale(20)}
           icon="chevron-back-circle-outline"
           wrapperStyle={styles.backButton}
           onPress={() => navigation.goBack()}

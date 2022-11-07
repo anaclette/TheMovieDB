@@ -7,6 +7,7 @@ export default {
   lightBlue: '#C2E3FF',
   black: '#000000',
   transparent: 'transparent',
+  transparentBlack: 'rgba(0,0,0,0.7)',
   champagne: '#fcd29f',
   peach: '#fcab64',
   rose: '#885a5a',

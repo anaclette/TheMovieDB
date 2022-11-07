@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
     marginVertical: metrics.scale(3),
     paddingVertical: metrics.scale(10),
     justifyContent: 'space-between',
-    backgroundColor: colors.rose,
+    backgroundColor: colors.transparentBlack,
   },
   innerContainer: {
     flexDirection: 'row',
@@ -30,10 +30,19 @@ export const styles = StyleSheet.create({
     width: '40%',
     height: metrics.scale(200),
     alignSelf: 'center',
+
+    shadowColor: colors.palePink,
+    shadowOffset: {
+      width: 4,
+      height: -4,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 3,
+    elevation: 9,
   },
   image: {
     flex: 1,
-    resizeMode: 'contain',
+    borderRadius: metrics.scale(10),
   },
   overview: {
     width: '50%',

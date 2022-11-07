@@ -9,6 +9,7 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     marginVertical: metrics.scale(25),
     color: colors.palePink,
+    fontWeight: 'bold',
   },
   moreButton: {
     borderBottomWidth: StyleSheet.hairlineWidth,

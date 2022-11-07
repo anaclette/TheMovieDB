@@ -44,6 +44,6 @@ export const styles = StyleSheet.create({
     position: 'absolute',
     zIndex: 1,
     left: metrics.scale(5),
-    borderRadius: metrics.scale(20),
+    borderRadius: metrics.scale(10),
   },
 });
