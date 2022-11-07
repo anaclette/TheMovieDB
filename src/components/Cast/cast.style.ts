@@ -45,7 +45,10 @@ export const styles = StyleSheet.create({
     elevation: 9,
   },
   image: {
-    borderRadius: metrics.scale(10),
     flex: 1,
+    borderRadius: metrics.scale(10),
+  },
+  noImageAsset: {
+    width: '100%',
   },
 });

@@ -32,10 +32,7 @@ export const Splash = ({isAppReady}: {isAppReady: boolean}) => {
       collapsable={false}
       style={[styles.container, {opacity: containerOpacity}]}>
       <Animated.Image
-        source={{
-          uri: 'https://static.wixstatic.com/media/0ceaae_68f7ab5fa4d1473cb199413e90f7e573~mv2.gif',
-        }}
-        // source={require('~/assets/images/splash.gif')}
+        source={require('../../assets/images/splash.gif')}
         fadeDuration={0}
         onLoad={fadeIn}
         style={[styles.image, {opacity: imageOpacity}]}
