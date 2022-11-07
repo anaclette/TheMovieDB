@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
   title: {
     ...fonts.Amatic,
     marginRight: metrics.scale(20),
-    color: colors.wine,
+    color: colors.darkPink,
   },
   buttonContentWrapper: {
     flexDirection: 'row',

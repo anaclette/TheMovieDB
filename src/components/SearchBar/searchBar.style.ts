@@ -21,10 +21,29 @@ export const styles = StyleSheet.create({
     paddingHorizontal: metrics.scale(10),
     alignItems: 'center',
     width: '50%',
+    alignSelf: 'center',
     backgroundColor: colors.palePink,
   },
   input: {
     fontSize: metrics.scaledFontSize(12),
     ...fonts.HindSiliguri,
+  },
+  languageButtonsWrapper: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+  },
+  languageFlagButton: {
+    height: metrics.scale(35),
+    width: metrics.scale(35),
+    marginHorizontal: metrics.scale(3),
+    alignItems: 'center',
+    borderRadius: metrics.scale(20),
+  },
+  flagAsset: {
+    flex: 1,
+    resizeMode: 'contain',
+  },
+  biggerAsset: {
+    width: metrics.scale(29),
   },
 });

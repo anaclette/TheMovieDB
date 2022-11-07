@@ -117,7 +117,7 @@ export const MoviesCarousel = ({navigation}: NavProps) => {
                   <Icon
                     name="arrow-forward-outline"
                     size={metrics.scale(20)}
-                    color={colors.brown}
+                    color={colors.darkPink}
                   />
                 </View>
               }
