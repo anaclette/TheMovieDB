@@ -34,7 +34,7 @@ type ImageColors = {
 
 export const MoviesCarousel = ({navigation}: NavProps) => {
   const {t} = useTranslation();
-  const [refreshing, setRefreshing] = React.useState(false);
+  const [refreshing, setRefreshing] = useState(false);
   const {top} = useSafeAreaInsets();
   const {width: SLIDER_WIDTH} = Dimensions.get('window');
   const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.6);
