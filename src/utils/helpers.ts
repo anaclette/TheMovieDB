@@ -42,14 +42,14 @@ export const getIconName = (route: {name: string}) => {
   return {iconName};
 };
 
-export const loadMore = (numbers: number[], setNumbers: Function) => {
-  const newArray: number[] = [];
-  for (let i = 0; i < 5; i++) {
-    newArray[i] = numbers.length + i;
-  }
+// export const loadMore = (numbers: number[], setNumbers: Function) => {
+//   const newArray: number[] = [];
+//   for (let i = 0; i < 5; i++) {
+//     newArray[i] = numbers.length + i;
+//   }
 
-  setNumbers([...numbers, ...newArray]);
-};
+//   setNumbers([...numbers, ...newArray]);
+// };
 
 export const customQuery = (
   endpoint: string,
