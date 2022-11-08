@@ -30,6 +30,9 @@ const translation: TranslationResource = {
   BUDGET_TITLE: 'Inversión: US',
   REVENUE_TITLE: 'Recaudación: US',
   NO_OVERVIEW_TV_SHOW: 'No se encontró descripción de esta serie.',
+  IS_MOVIE: 'Peli',
+  IS_TV: 'Serie',
+  EVERYBODY_IS_WATCHING: 'Todos están viendo',
 };
 
 export default translation;

@@ -19,6 +19,9 @@ export enum TranslationKeys {
   REVENUE_TITLE = 'REVENUE_TITLE',
   BUTTON_MORE = 'MORE_BUTTON',
   NO_OVERVIEW_TV_SHOW = 'NO_OVERVIEW_TV_SHOW',
+  IS_MOVIE = 'IS_MOVIE',
+  IS_TV = 'IS_TV',
+  EVERYBODY_IS_WATCHING = 'EVERYBODY_IS_WATCHING',
 }
 
 export type TranslationResource = {

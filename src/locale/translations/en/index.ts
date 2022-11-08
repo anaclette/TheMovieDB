@@ -30,6 +30,9 @@ const translation: TranslationResource = {
   BUDGET_TITLE: 'Budget: US',
   REVENUE_TITLE: 'Revenue: US',
   NO_OVERVIEW_TV_SHOW: 'No overview.',
+  IS_MOVIE: 'Movie',
+  IS_TV: 'Tv show',
+  EVERYBODY_IS_WATCHING: 'Everybody is watching',
 };
 
 export default translation;
