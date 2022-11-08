@@ -5,8 +5,13 @@ import * as RNLocalize from 'react-native-localize';
 import en from './translations/en';
 import es from './translations/es';
 
-const Constants = {
+export const Constants = {
   defaultLanguage: 'en',
+};
+
+export const supportedLangs = {
+  en: 'en',
+  es: 'es',
 };
 
 i18n.use(initReactI18next).init({
