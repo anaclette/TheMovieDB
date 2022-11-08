@@ -4,15 +4,17 @@ import fonts from '../../themes/fonts';
 import metrics from '../../themes/metrics';
 
 export const styles = StyleSheet.create({
-  safeAreaView: {
+  container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: colors.lightBlue,
+    justifyContent: 'space-around',
+    backgroundColor: colors.petroleum,
   },
-  // title: {
-  //   ...fonts.Amatic,
-  // },
+  title: {
+    ...fonts.Amatic,
+    color: colors.palePink,
+    marginBottom: metrics.scaleVertical(10),
+  },
   buttonContentWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -28,5 +30,9 @@ export const styles = StyleSheet.create({
   },
   buttonText: {
     ...fonts.Amatic,
+  },
+  activityIndicatorWrapper: {
+    height: metrics.screenHeight / 3 - metrics.scaleVertical(100),
+    justifyContent: 'center',
   },
 });
