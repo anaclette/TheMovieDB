@@ -1,5 +1,5 @@
 export const API_KEY = '60f4e8225b109e5131a88c96f3fecfc0';
-export const baseURL = 'https://api.themoviedb.org/3';
+export const baseURL = 'https://api.themoviedb.org/3/';
 export const imageURL = 'https://image.tmdb.org/t/p/w500';
 
 export enum MOVIE_ENDPOINTS {
@@ -33,5 +33,3 @@ export enum MoviesTagTypes {
   CAST = 'CAST',
   MOVIE = 'MOVIE',
 }
-
-export const THEME_CHANGE = 'THEME_CHANGE';
