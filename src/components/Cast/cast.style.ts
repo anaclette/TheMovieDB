@@ -30,6 +30,7 @@ export const styles = StyleSheet.create({
   memberDetailsWrapper: {
     width: ITEM_SIZE - metrics.scale(150),
     marginRight: metrics.scale(4),
+    flex: 1,
   },
   imageWrapper: {
     width: ITEM_SIZE - metrics.scale(150),
