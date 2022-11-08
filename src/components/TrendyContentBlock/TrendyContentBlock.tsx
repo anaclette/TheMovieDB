@@ -1,5 +1,4 @@
 import React, {useRef} from 'react';
-import {useTranslation} from 'react-i18next';
 import {View, Text, Animated} from 'react-native';
 import {imageURL} from '../../common/constants';
 import {useAnimation} from '../../hooks/useAnimation';
@@ -7,9 +6,10 @@ import colors from '../../themes/colors';
 import {TrendyContentResult} from '../../types/trendyContentInterface';
 import Rating from '../Rating';
 import {styles} from './trendyContentBlock.style';
-import {TranslationKeys} from '../../locale/translations/keys';
 import Button from '../Button';
 import {useNavigation} from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import metrics from '../../themes/metrics';
 
 interface Props {
   item: TrendyContentResult;
@@ -23,7 +23,6 @@ export const TrendyContentBlock = ({item}: Props) => {
   const noImage =
     !item.backdrop_path && require('../../assets/images/No-img-available.png');
   const {fade} = useAnimation();
-  const {t} = useTranslation();
 
   const opacity = useRef(new Animated.Value(0)).current;
   return (
@@ -44,17 +43,31 @@ export const TrendyContentBlock = ({item}: Props) => {
             />
           </View>
           <View style={[styles.absolute, styles.shadow]}>
-            {isMovie ? (
-              <Text style={styles.mediaType}>
-                {t(TranslationKeys.IS_MOVIE)}
-              </Text>
-            ) : (
-              <Text style={styles.mediaType}>{t(TranslationKeys.IS_TV)}</Text>
-            )}
-            {item.name && <Text style={styles.title}>{item.name}</Text>}
-            {item.title && <Text style={styles.title}>{item.title}</Text>}
+            <>
+              {item.name && <Text style={styles.title}>{item.name}</Text>}
+              {item.title && <Text style={styles.title}>{item.title}</Text>}
+            </>
+            <>
+              {isMovie ? (
+                <Text style={styles.mediaType}>
+                  <Icon
+                    name="movie"
+                    size={metrics.scale(20)}
+                    color={colors.blueGreen}
+                  />
+                </Text>
+              ) : (
+                <Text style={styles.mediaType}>
+                  <Icon
+                    name="tv"
+                    size={metrics.scale(20)}
+                    color={colors.blueGreen}
+                  />
+                </Text>
+              )}
+            </>
           </View>
-          <View style={[styles.ratingWrapper, styles.shadow]}>
+          <View style={styles.ratingWrapper}>
             <Rating rating={item.vote_average} color={colors.palePink} />
           </View>
         </View>

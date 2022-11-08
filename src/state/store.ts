@@ -14,6 +14,7 @@ import {moviesApi} from '../state/movies';
 import {tvShowsApi} from '../state/tvshows';
 // import i18nSlice from '../services/i18n/i18nSlice';
 import {trendyContentApi} from './trendy';
+import {castMemberApi} from './cast';
 
 const persistConfig = {
   key: 'root',
@@ -24,6 +25,7 @@ const rootReducer = combineReducers({
   [moviesApi.reducerPath]: moviesApi.reducer,
   [tvShowsApi.reducerPath]: tvShowsApi.reducer,
   [trendyContentApi.reducerPath]: trendyContentApi.reducer,
+  [castMemberApi.reducerPath]: castMemberApi.reducer,
   // i18nSlice,
 });
 
@@ -42,6 +44,7 @@ const store = configureStore({
       moviesApi.middleware,
       tvShowsApi.middleware,
       trendyContentApi.middleware,
+      castMemberApi.middleware,
       reduxDebugger,
     ]),
 });

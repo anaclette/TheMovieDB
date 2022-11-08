@@ -105,7 +105,9 @@ export const TvDetails = ({route}: Props) => {
                       : fullTv?.overview}
                   </Text>
                 </View>
-                {tvCast && tvCast?.length !== 0 && <Cast cast={tvCast} />}
+                {tvCast && tvCast?.length !== 0 && (
+                  <Cast isTv setIsVisible={setIsVisible} cast={tvCast} />
+                )}
                 <Button
                   icon="chevron-down-outline"
                   size={metrics.scale(25)}

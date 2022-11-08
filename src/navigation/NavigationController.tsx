@@ -8,6 +8,8 @@ import MovieDetails from '../screens/MovieDetails';
 import TvDetails from '../screens/TvDetails';
 import SearchBar from '../components/SearchBar';
 import {getHeaderTitle} from '@react-navigation/elements';
+import CastMemberDetails from '../screens/CastMemberDetails';
+import {CastMember} from '../types/castMemberInterface';
 
 export type RootStackParamList = {
   MovieDetails: Movie;
@@ -16,6 +18,7 @@ export type RootStackParamList = {
   FullCategoryContent: {
     categoryTitle: string;
   };
+  CastMemberDetails: CastMember;
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -38,6 +41,7 @@ const NavigationController = () => {
         name="FullCategoryContent"
         component={FullCategoryContent}
       />
+      <Stack.Screen name="CastMemberDetails" component={CastMemberDetails} />
     </Stack.Navigator>
   );
 };
