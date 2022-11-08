@@ -12,7 +12,7 @@ import {
 } from 'redux-persist';
 import {moviesApi} from '../state/movies';
 import {tvShowsApi} from '../state/tvshows';
-import i18nSlice from '../services/i18n/i18nSlice';
+// import i18nSlice from '../services/i18n/i18nSlice';
 import {trendyContentApi} from './trendy';
 
 const persistConfig = {
@@ -24,7 +24,7 @@ const rootReducer = combineReducers({
   [moviesApi.reducerPath]: moviesApi.reducer,
   [tvShowsApi.reducerPath]: tvShowsApi.reducer,
   [trendyContentApi.reducerPath]: trendyContentApi.reducer,
-  i18nSlice,
+  // i18nSlice,
 });
 
 const reduxDebugger = require('redux-flipper').default();
