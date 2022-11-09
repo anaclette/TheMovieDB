@@ -10,6 +10,7 @@ import SearchBar from '../components/SearchBar';
 import {getHeaderTitle} from '@react-navigation/elements';
 import CastMemberDetails from '../screens/CastMemberDetails';
 import {CastMember} from '../types/castMemberInterface';
+import colors from '../themes/colors';
 
 export type RootStackParamList = {
   MovieDetails: Movie;
@@ -32,6 +33,9 @@ const NavigationController = () => {
           return title === 'MovieDetails' || title === 'TvDetails' ? null : (
             <SearchBar />
           );
+        },
+        cardStyle: {
+          backgroundColor: colors.petroleum,
         },
       }}>
       <Stack.Screen name="Tabs" component={Tabs} />
