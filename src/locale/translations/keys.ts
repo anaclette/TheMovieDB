@@ -22,6 +22,9 @@ export enum TranslationKeys {
   IS_MOVIE = 'IS_MOVIE',
   IS_TV = 'IS_TV',
   EVERYBODY_IS_WATCHING = 'EVERYBODY_IS_WATCHING',
+  FIND = 'FIND',
+  NO_FURTHER_INFO = 'NO_FURTHER_INFO',
+  ALSO_IN = 'ALSO_IN',
 }
 
 export type TranslationResource = {

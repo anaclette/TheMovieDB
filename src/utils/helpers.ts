@@ -58,3 +58,5 @@ export const customQuery = (
 ) => {
   return `/${endpoint}?api_key=${API_KEY}&language=${language}&page=${page}`;
 };
+
+export const getYear = (str: string) => str.slice(0, 4);
