@@ -91,4 +91,12 @@ export const styles = StyleSheet.create({
     maxWidth: '95%',
     fontWeight: 'bold',
   },
+  backButton: {
+    top: metrics.scale(10),
+    position: 'absolute',
+    zIndex: 1,
+    left: metrics.scale(5),
+    backgroundColor: colors.petroleum,
+    borderRadius: metrics.scale(10),
+  },
 });

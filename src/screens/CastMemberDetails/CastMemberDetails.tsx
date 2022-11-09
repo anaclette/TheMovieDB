@@ -28,6 +28,13 @@ export const CastMemberDetails = ({route, navigation}: Props) => {
 
   return (
     <SafeAreaView style={styles.safeAreaView}>
+      <Button
+        size={metrics.scale(20)}
+        wrapperStyle={styles.backButton}
+        icon="chevron-back-circle-outline"
+        onPress={() => navigation.goBack()}
+        color={colors.palePink}
+      />
       <ScrollView>
         <View style={styles.personalInfoWrapper}>
           <View style={styles.personalInfoDetails}>
