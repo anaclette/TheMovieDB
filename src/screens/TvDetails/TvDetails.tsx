@@ -82,13 +82,6 @@ export const TvDetails = ({route}: Props) => {
           visible={isVisible}
           transparent={true}
           onRequestClose={() => setIsVisible(!isVisible)}
-          onDismiss={() => {
-            // efecto imagen
-          }}
-          onOrientationChange={() => {
-            // efecto si gira la pantalla cuando está abierto
-          }}
-          // Android prop to show under the system statusbar
           statusBarTranslucent={true}>
           {!isLoading ? (
             <SafeAreaView style={styles.modalInnerWrapper}>
