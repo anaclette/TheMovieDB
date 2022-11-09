@@ -19,6 +19,12 @@ import {castMemberApi} from './cast';
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
+  blacklist: [
+    moviesApi.reducerPath,
+    tvShowsApi.reducerPath,
+    trendyContentApi.reducerPath,
+    castMemberApi.reducerPath,
+  ],
 };
 
 const rootReducer = combineReducers({
