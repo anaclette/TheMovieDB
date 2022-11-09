@@ -33,9 +33,9 @@ const translation: TranslationResource = {
   IS_MOVIE: 'Peli',
   IS_TV: 'Serie',
   EVERYBODY_IS_WATCHING: 'Todos están viendo',
-  FIND: 'Find',
-  NO_FURTHER_INFO: 'No further information.',
-  ALSO_IN: 'Also in ',
+  FIND: 'Encuentra',
+  NO_FURTHER_INFO: 'No hay más información.',
+  ALSO_IN: 'También actuó en',
 };
 
 export default translation;
