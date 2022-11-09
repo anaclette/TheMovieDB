@@ -15,7 +15,7 @@ export const trendyContentApi = createApi({
   baseQuery: fetchBaseQuery({baseUrl: baseURL}),
   endpoints: builder => ({
     getTrendyContent: builder.query<TrendyContentResult[], number | void>({
-      query: page => customQuery('trending/all/week', CURRENT_LANGUAGE, page),
+      query: page => customQuery('trending/all/day', CURRENT_LANGUAGE, page),
       transformResponse: (response: TrendyContent) => response.results,
     }),
   }),
