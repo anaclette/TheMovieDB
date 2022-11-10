@@ -16,7 +16,6 @@ import {getImageColors} from '../../utils/helpers';
 import {RootStackParamList} from '../../navigation/NavigationController';
 import LinearGradient from 'react-native-linear-gradient';
 import Loader from '../../components/Loader';
-import {StackScreenProps} from '@react-navigation/stack';
 import Button from '../../components/Button';
 import {
   useGetNowPlayingByPageQuery,
@@ -24,15 +23,17 @@ import {
   useGetTopRatedByPageQuery,
   useGetUpcomingByPageQuery,
 } from '../../state/movies';
+import {useNavigation, NavigationProp} from '@react-navigation/native';
 
-type NavProps = StackScreenProps<RootStackParamList, 'FullCategoryContent'>;
+type NavProps = NavigationProp<RootStackParamList, 'FullCategoryContent'>;
 type ImageColors = {
   primary: string;
   secondary: string;
   addOn: string;
 };
 
-export const MoviesCarousel = ({navigation}: NavProps) => {
+export const MoviesCarousel = () => {
+  const navigation = useNavigation<NavProps>();
   const {t} = useTranslation();
   const [refreshing, setRefreshing] = useState(false);
   const {top} = useSafeAreaInsets();
