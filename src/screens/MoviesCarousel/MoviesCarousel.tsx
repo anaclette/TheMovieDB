@@ -132,6 +132,7 @@ export const MoviesCarousel = ({navigation}: NavProps) => {
                   renderItem={renderItem}
                   sliderWidth={SLIDER_WIDTH}
                   itemWidth={ITEM_WIDTH}
+                  layout="stack"
                 />
               )}
             </View>

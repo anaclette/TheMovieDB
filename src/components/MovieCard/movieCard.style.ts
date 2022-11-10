@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
 import colors from '../../themes/colors';
+
 import metrics from '../../themes/metrics';
 
 const ITEM_SIZE = metrics.screenWidth / 1.5;
@@ -13,9 +14,9 @@ export const styles = StyleSheet.create({
     marginVertical: metrics.scaleVertical(20),
   },
   imageContainer: {
-    width: ITEM_SIZE - metrics.scale(25),
+    width: ITEM_SIZE,
     borderRadius: metrics.scale(20),
-    height: WINDOW_TOP_DISTANCE - metrics.scale(50),
+    height: WINDOW_TOP_DISTANCE,
     shadowOffset: {
       width: 3,
       height: 4,
@@ -34,12 +35,12 @@ export const styles = StyleSheet.create({
     marginBottom: metrics.scale(25),
     color: colors.brown,
   },
-  overviewContainer: {
+  smallCardContainer: {
     paddingVertical: metrics.scale(25),
     justifyContent: 'space-between',
     alignItems: 'center',
   },
-  overviewImageContainer: {
+  smallCardImageContainer: {
     width: ITEM_SIZE / 1.5,
     marginHorizontal: metrics.scale(5),
     height: WINDOW_TOP_DISTANCE / 1.8 + metrics.scale(30),
