@@ -20,13 +20,14 @@ export const styles = StyleSheet.create({
     marginRight: metrics.scale(20),
     color: colors.palePink,
     letterSpacing: 3,
-    shadowOpacity: 0.9,
+    shadowOpacity: 1,
     shadowColor: colors.blackChocolate,
     shadowOffset: {
-      height: metrics.scale(8),
-      width: metrics.scale(-2),
+      height: metrics.scale(1),
+      width: metrics.scale(1),
     },
-    shadowRadius: metrics.scale(4),
+    shadowRadius: metrics.scale(1),
+    elevation: 4,
   },
   buttonContentWrapper: {
     flexDirection: 'row',
@@ -34,9 +35,10 @@ export const styles = StyleSheet.create({
     shadowOpacity: 1,
     shadowColor: colors.blackChocolate,
     shadowOffset: {
-      height: metrics.scale(-12),
-      width: metrics.scale(5),
+      height: metrics.scale(-1),
+      width: metrics.scale(1),
     },
     shadowRadius: metrics.scale(1),
+    elevation: 4,
   },
 });
