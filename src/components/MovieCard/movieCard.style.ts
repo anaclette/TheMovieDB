@@ -1,6 +1,5 @@
 import {StyleSheet} from 'react-native';
 import colors from '../../themes/colors';
-import fonts from '../../themes/fonts';
 import metrics from '../../themes/metrics';
 
 const ITEM_SIZE = metrics.screenWidth / 1.5;
@@ -34,11 +33,6 @@ export const styles = StyleSheet.create({
     fontSize: metrics.scale(17),
     marginBottom: metrics.scale(25),
     color: colors.brown,
-  },
-  title: {
-    textAlign: 'center',
-    ...fonts.InconsolataMedium,
-    color: colors.darkPink,
   },
   overviewContainer: {
     paddingVertical: metrics.scale(25),

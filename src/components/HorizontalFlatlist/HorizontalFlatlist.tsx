@@ -38,7 +38,7 @@ export const HorizontalFlatlist = ({movies, categoryTitle}: Props) => {
             <Icon
               name="arrow-forward-outline"
               size={metrics.scale(20)}
-              color={colors.darkPink}
+              color={colors.palePink}
             />
           </View>
         }

@@ -1,6 +1,6 @@
 import React from 'react';
 import {useNavigation} from '@react-navigation/core';
-import {View, Text, Image} from 'react-native';
+import {View, Image} from 'react-native';
 import {imageURL} from '../../common/constants';
 import {Movie} from '../../types/moviesInterface';
 import {styles} from './movieCard.style';
@@ -24,7 +24,6 @@ export const MovieCard = ({movie, bigCard}: Props) => {
       wrapperStyle={styles.container}
       children={
         <>
-          <Text style={[styles.title, styles.bigCardTitle]}>{movie.title}</Text>
           <View style={styles.imageContainer}>
             <Image source={{uri: source}} style={styles.poster} />
           </View>
@@ -37,9 +36,6 @@ export const MovieCard = ({movie, bigCard}: Props) => {
       wrapperStyle={styles.overviewContainer}
       children={
         <>
-          <Text style={[styles.title, styles.smallCardTitle]}>
-            {movie.title}
-          </Text>
           <View style={styles.overviewImageContainer}>
             <Image source={{uri: source}} style={styles.poster} />
           </View>
