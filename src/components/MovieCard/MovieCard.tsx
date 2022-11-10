@@ -33,10 +33,10 @@ export const MovieCard = ({movie, bigCard}: Props) => {
   ) : (
     <Button
       onPress={() => navigation.navigate('MovieDetails', movie)}
-      wrapperStyle={styles.overviewContainer}
+      wrapperStyle={styles.smallCardContainer}
       children={
         <>
-          <View style={styles.overviewImageContainer}>
+          <View style={styles.smallCardImageContainer}>
             <Image source={{uri: source}} style={styles.poster} />
           </View>
         </>
