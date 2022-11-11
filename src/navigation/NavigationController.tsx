@@ -11,6 +11,8 @@ import {getHeaderTitle} from '@react-navigation/elements';
 import CastMemberDetails from '../screens/CastMemberDetails';
 import {CastMember} from '../types/castMemberInterface';
 import colors from '../themes/colors';
+import SearchResults from '../screens/SearchResults';
+import {SearchResult} from '../types/multiSearch';
 
 export type RootStackParamList = {
   MovieDetails: Movie;
@@ -20,6 +22,7 @@ export type RootStackParamList = {
     categoryTitle: string;
   };
   CastMemberDetails: CastMember;
+  SearchResults: SearchResult[] | undefined;
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -31,7 +34,7 @@ const NavigationController = () => {
         header: ({route, options}) => {
           const title = getHeaderTitle(options, route.name);
           return title === 'MovieDetails' || title === 'TvDetails' ? null : (
-            <SearchBar />
+            <SearchBar showSearchBar={title !== 'SearchResults'} />
           );
         },
         cardStyle: {
@@ -46,6 +49,7 @@ const NavigationController = () => {
         component={FullCategoryContent}
       />
       <Stack.Screen name="CastMemberDetails" component={CastMemberDetails} />
+      <Stack.Screen name="SearchResults" component={SearchResults} />
     </Stack.Navigator>
   );
 };
