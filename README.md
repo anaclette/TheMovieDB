@@ -51,4 +51,7 @@ For locale language translations:
 - react-native-localize
 For debugging:
 - react-native-flipper
-- redux-flipper -->
+- redux-flipper
+For debouncing api requests:
+- lodash
+- @types/lodash.debounce -->
