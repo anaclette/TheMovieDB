@@ -2,9 +2,9 @@ import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React from 'react';
 import {useTranslation} from 'react-i18next';
 import {Image, ScrollView, Text, View, SafeAreaView} from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import {imageURL} from '../../common/constants';
 import Button from '../../components/Button';
+import CombinedCreditsCard from '../../components/CombinedCreditsCard';
 import Loader from '../../components/Loader';
 import {TranslationKeys} from '../../locale/translations/keys';
 import {RootStackParamList} from '../../navigation/NavigationController';
@@ -14,7 +14,6 @@ import {
 } from '../../state/cast';
 import colors from '../../themes/colors';
 import metrics from '../../themes/metrics';
-import {getYear} from '../../utils/helpers';
 import {styles} from './castMemberDetails.style';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'CastMemberDetails'>;
@@ -88,46 +87,7 @@ export const CastMemberDetails = ({route, navigation}: Props) => {
                       item,
                     )
                   }
-                  children={
-                    <View>
-                      <View style={styles.combinedCreditsImageWrapper}>
-                        <Image
-                          source={
-                            item.poster_path
-                              ? {uri: `${imageURL}${item.poster_path}`}
-                              : require('../../assets/images/No-img-available.png')
-                          }
-                          style={[styles.image, styles.combinedCreditsImage]}
-                        />
-                      </View>
-
-                      <View style={styles.creditDetailsWrapper}>
-                        <View style={styles.creditDetailsContainer}>
-                          {item.title && (
-                            <Text style={[styles.detail, styles.creditTitle]}>
-                              {item.title}
-                            </Text>
-                          )}
-                          {item.name && (
-                            <Text style={[styles.detail, styles.creditTitle]}>
-                              {item.name}
-                            </Text>
-                          )}
-                          {item.release_date && (
-                            <Text style={styles.detail}>
-                              ({getYear(item.release_date)})
-                            </Text>
-                          )}
-                        </View>
-
-                        <Icon
-                          name={isMovie ? 'movie' : 'tv'}
-                          size={metrics.scale(20)}
-                          color={colors.lightBlue}
-                        />
-                      </View>
-                    </View>
-                  }
+                  children={<CombinedCreditsCard item={item} index={index} />}
                 />
               );
             })}

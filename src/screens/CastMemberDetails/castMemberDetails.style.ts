@@ -39,15 +39,6 @@ export const styles = StyleSheet.create({
     borderTopRightRadius: metrics.scale(20),
     resizeMode: 'contain',
   },
-  combinedCreditsImageWrapper: {
-    borderRadius: metrics.scale(20),
-    height: metrics.scale(240),
-  },
-  combinedCreditsImage: {
-    resizeMode: 'stretch',
-    width: '100%',
-    borderRadius: metrics.scale(10),
-  },
   name: {
     ...fonts.HindSiliguri,
     color: colors.palePink,
@@ -73,23 +64,6 @@ export const styles = StyleSheet.create({
     fontSize: metrics.scaledFontSize(18),
     marginLeft: metrics.scale(15),
     marginVertical: metrics.scale(20),
-  },
-  creditDetailsWrapper: {
-    marginTop: metrics.scale(10),
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    marginHorizontal: metrics.scale(2),
-  },
-  creditDetailsContainer: {
-    flex: 1,
-  },
-  detail: {
-    color: colors.palePink,
-    ...fonts.HindSiliguri,
-  },
-  creditTitle: {
-    maxWidth: '95%',
-    fontWeight: 'bold',
   },
   backButton: {
     top: metrics.scale(10),
