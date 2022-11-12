@@ -29,7 +29,9 @@ export const HorizontalFlatlist = ({movies, categoryTitle}: Props) => {
       <Button
         onPress={() =>
           navigation.navigate('FullCategoryContent', {
-            categoryTitle: categoryTitle,
+            tvShow: undefined,
+            movie: movies,
+            page: 1,
           })
         }
         children={

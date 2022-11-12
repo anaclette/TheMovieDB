@@ -19,7 +19,9 @@ export type RootStackParamList = {
   TvDetails: TvDetailsType;
   Tabs: () => JSX.Element;
   FullCategoryContent: {
-    categoryTitle: string;
+    movie?: Movie[] | undefined;
+    tvShow?: TvDetailsType[] | undefined;
+    page: number;
   };
   CastMemberDetails: CastMember;
   SearchResults: SearchResult[] | undefined;

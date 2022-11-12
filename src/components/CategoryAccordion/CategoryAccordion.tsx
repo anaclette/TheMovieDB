@@ -4,13 +4,18 @@ import Button from '../Button';
 import TvCard from '../TvCard';
 import {TvDetails} from '../../types/tvInterface';
 import {styles} from './categoryAccordion.style';
+import {NavigationProp, useNavigation} from '@react-navigation/native';
+import {RootStackParamList} from '../../navigation/NavigationController';
 
 interface Props {
   title: string;
   data: TvDetails[] | undefined;
 }
 
+type NavProp = NavigationProp<RootStackParamList, 'FullCategoryContent'>;
+
 export const CategoryAccordion = ({title, data}: Props) => {
+  const navigation = useNavigation<NavProp>();
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const isAndroid = Platform.OS === 'android';
 
@@ -45,7 +50,13 @@ export const CategoryAccordion = ({title, data}: Props) => {
           <Button
             moreButton
             wrapperStyle={styles.moreButton}
-            onPress={() => {}}
+            onPress={() =>
+              navigation.navigate('FullCategoryContent', {
+                tvShow: data,
+                movie: undefined,
+                page: 1,
+              })
+            }
             icon="arrow-forward"
           />
           {data?.map((dataItem, index) => {
