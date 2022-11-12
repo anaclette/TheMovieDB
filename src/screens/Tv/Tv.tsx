@@ -9,18 +9,7 @@ import {
   useGetPopularTvShowsByPageQuery,
   useGetTopRatedTvShowsByPageQuery,
 } from '../../state/tvshows';
-import {TvDetails} from '../../types/tvInterface';
-
-type TvTypes =
-  | 'ON_THE_AIR_TV_SHOWS'
-  | 'AIRING_TODAY_TV_SHOWS'
-  | 'POPULAR_TV_SHOWS'
-  | 'TOP_RATED_TV_SHOWS';
-
-type TvData = {
-  type: TvTypes;
-  data: TvDetails[] | undefined;
-};
+import {TvData} from '../../types/mediaContentTypes';
 
 export const Tv = () => {
   const {data: airingToday} = useGetAiringTodayByPageQuery(1);
