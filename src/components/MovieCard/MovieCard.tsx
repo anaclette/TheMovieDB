@@ -18,28 +18,17 @@ type NavProps = NavigationProp<RootStackParamList, 'MovieDetails'>;
 export const MovieCard = ({movie, bigCard}: Props) => {
   const source = `${imageURL}${movie.poster_path}`;
   const navigation = useNavigation<NavProps>();
-  return bigCard ? (
+  return (
     <Button
       onPress={() => navigation.navigate('MovieDetails', movie)}
-      wrapperStyle={styles.container}
+      wrapperStyle={bigCard ? styles.container : styles.smallCardContainer}
       children={
-        <>
-          <View style={styles.imageContainer}>
-            <Image source={{uri: source}} style={styles.poster} />
-          </View>
-        </>
-      }
-    />
-  ) : (
-    <Button
-      onPress={() => navigation.navigate('MovieDetails', movie)}
-      wrapperStyle={styles.smallCardContainer}
-      children={
-        <>
-          <View style={styles.smallCardImageContainer}>
-            <Image source={{uri: source}} style={styles.poster} />
-          </View>
-        </>
+        <View
+          style={
+            bigCard ? styles.imageContainer : styles.smallCardImageContainer
+          }>
+          <Image source={{uri: source}} style={styles.poster} />
+        </View>
       }
     />
   );

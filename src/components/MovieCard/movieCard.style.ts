@@ -10,13 +10,14 @@ export const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     justifyContent: 'space-around',
-    height: WINDOW_TOP_DISTANCE,
     marginVertical: metrics.scaleVertical(20),
+    height: WINDOW_TOP_DISTANCE,
+    width: ITEM_SIZE - metrics.scale(35),
+    borderRadius: metrics.scale(20),
   },
   imageContainer: {
-    width: ITEM_SIZE,
-    borderRadius: metrics.scale(20),
-    height: WINDOW_TOP_DISTANCE,
+    width: '100%',
+    height: '100%',
     shadowOffset: {
       width: 3,
       height: 4,
@@ -28,22 +29,16 @@ export const styles = StyleSheet.create({
   poster: {
     borderRadius: metrics.scale(20),
     flex: 1,
-    resizeMode: 'stretch',
-  },
-  bigCardTitle: {
-    fontSize: metrics.scale(17),
-    marginBottom: metrics.scale(25),
-    color: colors.brown,
   },
   smallCardContainer: {
-    paddingVertical: metrics.scale(25),
+    marginVertical: metrics.scale(25),
     justifyContent: 'space-between',
     alignItems: 'center',
   },
   smallCardImageContainer: {
     width: ITEM_SIZE / 1.5,
     marginHorizontal: metrics.scale(5),
-    height: WINDOW_TOP_DISTANCE / 1.8 + metrics.scale(30),
+    height: WINDOW_TOP_DISTANCE / 1.8 + metrics.scale(50),
   },
   smallCardTitle: {
     width: ITEM_SIZE / 2.1,
