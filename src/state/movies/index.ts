@@ -8,7 +8,6 @@ import type {
 } from '../../types/moviesInterface';
 import {customQuery} from '../../utils/helpers';
 
-// TODO: THIS SHOULD BE A STATEFUL VALUE, IDEALLY THE QUERY SHOULD BE ABLE TO ACCESS IT FROM WITHIN THE FUNCTION ITSELF
 const CURRENT_LANGUAGE = 'es-ES';
 
 const MOVIES_API_REDUCER_KEY = 'moviesApi';
