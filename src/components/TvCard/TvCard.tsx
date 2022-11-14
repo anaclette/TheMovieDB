@@ -8,11 +8,12 @@ import {RootStackParamList} from '../../navigation/NavigationController';
 import Button from '../Button';
 interface Props {
   item: TvDetails;
+  isFullContentPage?: boolean;
 }
 
 type NavProps = NavigationProp<RootStackParamList, 'TvDetails'>;
 
-export const TvCard = ({item}: Props) => {
+export const TvCard = ({item, isFullContentPage}: Props) => {
   const navigation = useNavigation<NavProps>();
   return (
     <>
@@ -24,17 +25,24 @@ export const TvCard = ({item}: Props) => {
             <Text style={styles.name}>{item.name}</Text>
 
             <View style={styles.innerContainer}>
-              <View style={styles.imageWrapper}>
+              <View
+                style={
+                  !isFullContentPage
+                    ? styles.imageWrapper
+                    : styles.fullContentPageImageWrapper
+                }>
                 <Image
                   source={{uri: `${imageURL}${item.poster_path}`}}
                   style={styles.image}
                 />
               </View>
-              <Text style={styles.overview} numberOfLines={15}>
-                {item.overview
-                  ? item.overview
-                  : 'No se encontró descripción 😞'}
-              </Text>
+              {!isFullContentPage && (
+                <Text style={styles.overview} numberOfLines={15}>
+                  {item.overview
+                    ? item.overview
+                    : 'No se encontró descripción 😞'}
+                </Text>
+              )}
             </View>
           </>
         }

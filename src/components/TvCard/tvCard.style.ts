@@ -50,4 +50,9 @@ export const styles = StyleSheet.create({
     ...fonts.InconsolataMedium,
     marginVertical: metrics.scale(5),
   },
+  fullContentPageImageWrapper: {
+    width: '100%',
+    height: metrics.scale(225),
+    justifyContent: 'space-between',
+  },
 });
