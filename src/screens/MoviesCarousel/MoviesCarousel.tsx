@@ -76,6 +76,7 @@ export const MoviesCarousel = () => {
       return (
         <>
           <Button
+            key={`${items.data}_title_${index}`}
             onPress={() =>
               navigation.navigate('FullCategoryContent', {
                 movie: items.data,
@@ -101,7 +102,9 @@ export const MoviesCarousel = () => {
           />
 
           {items.type === 'NOW_PLAYING_MOVIES' ? (
-            <View style={styles.carousel}>
+            <View
+              style={styles.carousel}
+              key={`${items.type}_carousel_${index}`}>
               <Carousel
                 vertical={false}
                 onSnapToItem={carouselIndex =>
@@ -115,7 +118,9 @@ export const MoviesCarousel = () => {
               />
             </View>
           ) : (
-            <View style={styles.flatlistContainer}>
+            <View
+              style={styles.flatlistContainer}
+              key={`${items.type}_flatlist_${index}`}>
               <HorizontalFlatlist
                 key={index}
                 movies={items.data}
