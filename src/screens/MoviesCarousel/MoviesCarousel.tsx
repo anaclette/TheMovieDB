@@ -50,75 +50,80 @@ export const MoviesCarousel = () => {
   const {data: topRatedData} = useGetTopRatedByPageQuery(pageNumber);
   const {data: upcomingData} = useGetUpcomingByPageQuery(pageNumber);
 
-  const movieData: MovieData[] = [
-    {
-      data: nowPlayingData,
-      type: 'NOW_PLAYING_MOVIES',
-    },
-    {
-      data: popularData,
-      type: 'POPULAR_MOVIES',
-    },
-    {
-      data: topRatedData,
-      type: 'TOP_RATED_MOVIES',
-    },
-    {
-      data: upcomingData,
-      type: 'UPCOMING_MOVIES',
-    },
-  ];
-
-  const filteredCategoryMovies = useMemo(() => {
-    return nowPlayingData;
-  }, [nowPlayingData]);
+  const movieData: MovieData[] = useMemo(() => {
+    return [
+      {
+        data: nowPlayingData,
+        type: 'NOW_PLAYING_MOVIES',
+      },
+      {
+        data: popularData,
+        type: 'POPULAR_MOVIES',
+      },
+      {
+        data: topRatedData,
+        type: 'TOP_RATED_MOVIES',
+      },
+      {
+        data: upcomingData,
+        type: 'UPCOMING_MOVIES',
+      },
+    ];
+  }, [nowPlayingData, popularData, topRatedData, upcomingData]);
 
   const showCategoryMovies = ({data}: {data: MovieData[]}) => {
     return data.map((items, index) => {
-      return items.type === 'NOW_PLAYING_MOVIES' ? (
+      return (
         <>
           <Button
             onPress={() =>
               navigation.navigate('FullCategoryContent', {
-                movie: filteredCategoryMovies,
+                movie: items.data,
                 tvShow: undefined,
                 page: 1,
               })
             }
             children={
-              <View style={styles.buttonContentWrapper}>
-                <Text style={styles.title}>
-                  {t(TranslationKeys.NOW_PLAYING_MOVIES)}
-                </Text>
+              <>
+                <View style={styles.buttonContentWrapper}>
+                  <Text style={styles.title}>
+                    {t(TranslationKeys[items.type])}
+                  </Text>
 
-                <Icon
-                  name="arrow-forward-outline"
-                  size={metrics.scale(20)}
-                  color={colors.palePink}
-                />
-              </View>
+                  <Icon
+                    name="arrow-forward-outline"
+                    size={metrics.scale(20)}
+                    color={colors.palePink}
+                  />
+                </View>
+              </>
             }
           />
-          <View style={styles.carousel}>
-            <Carousel
-              vertical={false}
-              onSnapToItem={carouselIndex =>
-                defineBackgroundColor(carouselIndex)
-              }
-              data={nowPlayingData as Movie[]}
-              renderItem={renderItem}
-              sliderWidth={SLIDER_WIDTH}
-              itemWidth={ITEM_WIDTH}
-              layout="stack"
-            />
-          </View>
+
+          {items.type === 'NOW_PLAYING_MOVIES' ? (
+            <View style={styles.carousel}>
+              <Carousel
+                vertical={false}
+                onSnapToItem={carouselIndex =>
+                  defineBackgroundColor(carouselIndex)
+                }
+                data={nowPlayingData as Movie[]}
+                renderItem={renderItem}
+                sliderWidth={SLIDER_WIDTH}
+                itemWidth={ITEM_WIDTH}
+                layout="stack"
+              />
+            </View>
+          ) : (
+            <View style={styles.flatlistContainer}>
+              <HorizontalFlatlist
+                key={index}
+                movies={items.data}
+                categoryTitle={t(TranslationKeys[items.type])}
+              />
+            </View>
+          )}
         </>
-      ) : (
-        <HorizontalFlatlist
-          key={index}
-          movies={items.data}
-          categoryTitle={t(TranslationKeys[items.type])}
-        />
       );
     });
   };

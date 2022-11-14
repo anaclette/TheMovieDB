@@ -4,12 +4,6 @@ import fonts from '../../themes/fonts';
 import metrics from '../../themes/metrics';
 
 export const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginHorizontal: metrics.scale(10),
-    alignItems: 'center',
-    marginVertical: metrics.scale(30),
-  },
   title: {
     ...fonts.Amatic,
     color: colors.palePink,

@@ -30,6 +30,7 @@ export const styles = StyleSheet.create({
     elevation: 4,
   },
   buttonContentWrapper: {
+    marginVertical: metrics.scale(10),
     flexDirection: 'row',
     alignItems: 'center',
     shadowOpacity: 1,
@@ -40,5 +41,10 @@ export const styles = StyleSheet.create({
     },
     shadowRadius: metrics.scale(1),
     elevation: 4,
+  },
+  flatlistContainer: {
+    flex: 1,
+    marginHorizontal: metrics.scale(10),
+    alignItems: 'center',
   },
 });
