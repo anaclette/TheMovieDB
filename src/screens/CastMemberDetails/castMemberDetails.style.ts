@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   profileImageWrapper: {
-    width: '32%',
+    width: '26%',
     height: metrics.scaleVertical(150),
   },
   image: {
