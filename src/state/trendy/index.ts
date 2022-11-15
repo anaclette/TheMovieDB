@@ -8,14 +8,16 @@ import {customQuery} from '../../utils/helpers';
 
 const TRENDY_CONTENT_REDUCER_KEY = 'trendyContentApi';
 
-const CURRENT_LANGUAGE = 'es-ES';
-
 export const trendyContentApi = createApi({
   reducerPath: TRENDY_CONTENT_REDUCER_KEY,
   baseQuery: fetchBaseQuery({baseUrl: baseURL}),
   endpoints: builder => ({
-    getTrendyContent: builder.query<TrendyContentResult[], number | void>({
-      query: page => customQuery('trending/all/day', CURRENT_LANGUAGE, page),
+    getTrendyContent: builder.query<
+      TrendyContentResult[],
+      {page: number | void; currentLanguage: string}
+    >({
+      query: ({page, currentLanguage}) =>
+        customQuery('trending/all/day', currentLanguage, page),
       transformResponse: (response: TrendyContent) => response.results,
     }),
   }),

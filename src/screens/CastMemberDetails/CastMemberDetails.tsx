@@ -12,6 +12,7 @@ import {
   useGetCombinedCreditsQuery,
   useGetMemberDetailsQuery,
 } from '../../state/cast';
+import {useAppSelector} from '../../state/hooks';
 import colors from '../../themes/colors';
 import metrics from '../../themes/metrics';
 import {styles} from './castMemberDetails.style';
@@ -21,9 +22,16 @@ type Props = NativeStackScreenProps<RootStackParamList, 'CastMemberDetails'>;
 export const CastMemberDetails = ({route, navigation}: Props) => {
   const {t} = useTranslation();
   const params = route.params;
-  const {data: castMemberData} = useGetMemberDetailsQuery(params.id);
+  const chosenLanguage = useAppSelector(state => state.i18nSlice.lang);
+  const {data: castMemberData} = useGetMemberDetailsQuery({
+    id: params.id,
+    currentLanguage: chosenLanguage,
+  });
   const {data: castMemberCombinedCredits, isLoading} =
-    useGetCombinedCreditsQuery(params.id);
+    useGetCombinedCreditsQuery({
+      id: params.id,
+      currentLanguage: chosenLanguage,
+    });
 
   return (
     <SafeAreaView style={styles.safeAreaView}>

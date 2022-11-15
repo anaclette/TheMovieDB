@@ -25,6 +25,7 @@ import {
 } from '../../state/movies';
 import {useNavigation, NavigationProp} from '@react-navigation/native';
 import {MovieData} from '../../types/mediaContentTypes';
+import {useAppSelector} from '../../state/hooks';
 
 type NavProps = NavigationProp<RootStackParamList, 'FullCategoryContent'>;
 type ImageColors = {
@@ -37,6 +38,7 @@ export const MoviesCarousel = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const navigation = useNavigation<NavProps>();
   const {t} = useTranslation();
+  const chosenLanguage = useAppSelector(state => state.i18nSlice.lang);
   const [refreshing, setRefreshing] = useState(false);
   const {top} = useSafeAreaInsets();
   const {width: SLIDER_WIDTH} = Dimensions.get('window');
@@ -45,10 +47,22 @@ export const MoviesCarousel = () => {
     data: nowPlayingData,
     isLoading,
     isSuccess,
-  } = useGetNowPlayingByPageQuery(1);
-  const {data: popularData} = useGetPopularByPageQuery(pageNumber);
-  const {data: topRatedData} = useGetTopRatedByPageQuery(pageNumber);
-  const {data: upcomingData} = useGetUpcomingByPageQuery(pageNumber);
+  } = useGetNowPlayingByPageQuery({
+    page: pageNumber,
+    currentLanguage: chosenLanguage,
+  });
+  const {data: popularData} = useGetPopularByPageQuery({
+    page: pageNumber,
+    currentLanguage: chosenLanguage,
+  });
+  const {data: topRatedData} = useGetTopRatedByPageQuery({
+    page: pageNumber,
+    currentLanguage: chosenLanguage,
+  });
+  const {data: upcomingData} = useGetUpcomingByPageQuery({
+    page: pageNumber,
+    currentLanguage: chosenLanguage,
+  });
 
   const movieData: MovieData[] = useMemo(() => {
     return [
@@ -81,7 +95,7 @@ export const MoviesCarousel = () => {
               navigation.navigate('FullCategoryContent', {
                 movie: items.data,
                 tvShow: undefined,
-                page: 1,
+                page: pageNumber,
               })
             }
             children={

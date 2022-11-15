@@ -17,6 +17,7 @@ import {styles} from './home.style';
 import {TranslationKeys} from '../../locale/translations/keys';
 import metrics from '../../themes/metrics';
 import colors from '../../themes/colors';
+import {useAppSelector} from '../../state/hooks';
 
 const renderItem = ({
   item,
@@ -31,11 +32,11 @@ const renderItem = ({
 export const Home = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const [refreshing, setRefreshing] = useState(false);
-  const {
-    data: trendyData,
-    isSuccess,
-    // isLoading,
-  } = useGetTrendyContentQuery(pageNumber);
+  const chosenLanguage = useAppSelector(state => state.i18nSlice.lang);
+  const {data: trendyData, isSuccess} = useGetTrendyContentQuery({
+    page: pageNumber,
+    currentLanguage: chosenLanguage,
+  });
   const {t} = useTranslation();
 
   const onRefresh = useCallback(() => {

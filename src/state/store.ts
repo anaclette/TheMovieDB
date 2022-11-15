@@ -12,7 +12,7 @@ import {
 } from 'redux-persist';
 import {moviesApi} from '../state/movies';
 import {tvShowsApi} from '../state/tvshows';
-// import i18nSlice from '../services/i18n/i18nSlice';
+import i18nSlice from '../services/i18n/i18nSlice';
 import {trendyContentApi} from './trendy';
 import {castMemberApi} from './cast';
 import {searchApi} from './search';
@@ -35,7 +35,7 @@ const rootReducer = combineReducers({
   [trendyContentApi.reducerPath]: trendyContentApi.reducer,
   [castMemberApi.reducerPath]: castMemberApi.reducer,
   [searchApi.reducerPath]: searchApi.reducer,
-  // i18nSlice,
+  i18nSlice,
 });
 
 const reduxDebugger = require('redux-flipper').default();

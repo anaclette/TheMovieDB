@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {FlatList, ImageBackground} from 'react-native';
 import CategoryAccordion from '../../components/CategoryAccordion';
 import {TvCategoryTranslationKeys} from '../../locale/translations/keys';
+import {useAppSelector} from '../../state/hooks';
 import {
   useGetAiringTodayByPageQuery,
   useGetOnTheAirByPageQuery,
@@ -12,10 +13,24 @@ import {
 import {TvData} from '../../types/mediaContentTypes';
 
 export const Tv = () => {
-  const {data: airingToday} = useGetAiringTodayByPageQuery(1);
-  const {data: onTheAir} = useGetOnTheAirByPageQuery(1);
-  const {data: popular} = useGetPopularTvShowsByPageQuery(1);
-  const {data: topRated} = useGetTopRatedTvShowsByPageQuery(1);
+  const [pageNumber, setPageNumber] = useState(1);
+  const chosenLanguage = useAppSelector(state => state.i18nSlice.lang);
+  const {data: airingToday} = useGetAiringTodayByPageQuery({
+    page: pageNumber,
+    currentLanguage: chosenLanguage,
+  });
+  const {data: onTheAir} = useGetOnTheAirByPageQuery({
+    page: pageNumber,
+    currentLanguage: chosenLanguage,
+  });
+  const {data: popular} = useGetPopularTvShowsByPageQuery({
+    page: pageNumber,
+    currentLanguage: chosenLanguage,
+  });
+  const {data: topRated} = useGetTopRatedTvShowsByPageQuery({
+    page: pageNumber,
+    currentLanguage: chosenLanguage,
+  });
   const {t} = useTranslation();
 
   const tvData: TvData[] = [
@@ -36,6 +51,10 @@ export const Tv = () => {
       type: 'TOP_RATED_TV_SHOWS',
     },
   ];
+
+  useEffect(() => {
+    setPageNumber(1);
+  }, []);
 
   const renderItem = ({item, index}: {item: TvData; index: number}) => (
     <CategoryAccordion

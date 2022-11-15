@@ -7,19 +7,25 @@ import type {
 } from '../../types/castMemberInterface';
 import {customQuery} from '../../utils/helpers';
 
-const CURRENT_LANGUAGE = 'es-ES';
 export const castMemberApi = createApi({
   reducerPath: 'castMemberApi',
   tagTypes: ['PERSON_PHOTOS', 'PERSONAL_INFO', 'COMBINED_CREDITS'],
   baseQuery: fetchBaseQuery({baseUrl: baseURL}),
   endpoints: builder => ({
-    getMemberDetails: builder.query<CastMember, number | void>({
-      query: id => customQuery(`person/${id}`, CURRENT_LANGUAGE),
+    getMemberDetails: builder.query<
+      CastMember,
+      {id: number; currentLanguage: string}
+    >({
+      query: ({id, currentLanguage}) =>
+        customQuery(`person/${id}`, currentLanguage),
       providesTags: ['PERSONAL_INFO'],
     }),
-    getCombinedCredits: builder.query<CombinedCreditsCast[], number | void>({
-      query: id =>
-        customQuery(`person/${id}/combined_credits`, CURRENT_LANGUAGE),
+    getCombinedCredits: builder.query<
+      CombinedCreditsCast[],
+      {id: number; currentLanguage: string}
+    >({
+      query: ({id, currentLanguage}) =>
+        customQuery(`person/${id}/combined_credits`, currentLanguage),
       providesTags: ['COMBINED_CREDITS'],
       transformResponse: (response: CombinedCredits) => response.cast,
     }),

@@ -4,8 +4,6 @@ import {FullTvDetails, TvDetails, TvResponse} from '../../types/tvInterface';
 import {customQuery} from '../../utils/helpers';
 import {Cast, TvCredits} from '../../types/tvCreditsInterface';
 
-const CURRENT_LANGUAGE = 'es-ES';
-
 const TV_SHOWS_API_REDUCER_KEY = 'tvShowsApi';
 
 export const tvShowsApi = createApi({
@@ -20,37 +18,57 @@ export const tvShowsApi = createApi({
   ],
   baseQuery: fetchBaseQuery({baseUrl: baseURL}),
   endpoints: builder => ({
-    getAiringTodayByPage: builder.query<TvDetails[], number | void>({
-      query: page =>
-        customQuery(`tv/${TV_ENDPOINTS.AIRING_TODAY}`, CURRENT_LANGUAGE, page),
+    getAiringTodayByPage: builder.query<
+      TvDetails[],
+      {page: number | void; currentLanguage: string}
+    >({
+      query: ({page, currentLanguage}) =>
+        customQuery(`tv/${TV_ENDPOINTS.AIRING_TODAY}`, currentLanguage, page),
       providesTags: [TvShowsTagTypes.AIRING_TODAY],
       transformResponse: (response: TvResponse) => response.results,
     }),
-    getTopRatedTvShowsByPage: builder.query<TvDetails[], number | void>({
-      query: page =>
-        customQuery(`tv/${TV_ENDPOINTS.TOP_RATED}`, CURRENT_LANGUAGE, page),
+    getTopRatedTvShowsByPage: builder.query<
+      TvDetails[],
+      {page: number | void; currentLanguage: string}
+    >({
+      query: ({page, currentLanguage}) =>
+        customQuery(`tv/${TV_ENDPOINTS.TOP_RATED}`, currentLanguage, page),
       providesTags: [TvShowsTagTypes.TOP_RATED_TV_SHOWS],
       transformResponse: (response: TvResponse) => response.results,
     }),
-    getPopularTvShowsByPage: builder.query<TvDetails[], number | void>({
-      query: page =>
-        customQuery(`tv/${TV_ENDPOINTS.POPULAR}`, CURRENT_LANGUAGE, page),
+    getPopularTvShowsByPage: builder.query<
+      TvDetails[],
+      {page: number | void; currentLanguage: string}
+    >({
+      query: ({page, currentLanguage}) =>
+        customQuery(`tv/${TV_ENDPOINTS.POPULAR}`, currentLanguage, page),
       providesTags: [TvShowsTagTypes.POPULAR_TV_SHOWS],
       transformResponse: (response: TvResponse) => response.results,
     }),
-    getOnTheAirByPage: builder.query<TvDetails[], number | void>({
-      query: page =>
-        customQuery(`tv/${TV_ENDPOINTS.ON_THE_AIR}`, CURRENT_LANGUAGE, page),
+    getOnTheAirByPage: builder.query<
+      TvDetails[],
+      {page: number | void; currentLanguage: string}
+    >({
+      query: ({page, currentLanguage}) =>
+        customQuery(`tv/${TV_ENDPOINTS.ON_THE_AIR}`, currentLanguage, page),
       providesTags: [TvShowsTagTypes.ON_THE_AIR],
       transformResponse: (response: TvResponse) => response.results,
     }),
-    getTvShow: builder.query<FullTvDetails, number | void>({
-      query: id => customQuery(`tv/${String(id)}`, CURRENT_LANGUAGE),
+    getTvShow: builder.query<
+      FullTvDetails,
+      {id: number | void; currentLanguage: string}
+    >({
+      query: ({id, currentLanguage}) =>
+        customQuery(`tv/${id}`, currentLanguage),
       providesTags: [TvShowsTagTypes.TV_SHOW],
       transformResponse: (response: FullTvDetails) => response,
     }),
-    getTvShowCast: builder.query<Cast[], number | void>({
-      query: id => customQuery(`tv/${id}/credits`, CURRENT_LANGUAGE),
+    getTvShowCast: builder.query<
+      Cast[],
+      {id: number | void; currentLanguage: string}
+    >({
+      query: ({id, currentLanguage}) =>
+        customQuery(`tv/${id}/credits`, currentLanguage),
       providesTags: [TvShowsTagTypes.TV_SHOW_CAST],
       transformResponse: (response: TvCredits) => response.cast,
     }),

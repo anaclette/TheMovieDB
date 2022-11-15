@@ -16,6 +16,7 @@ import Button from '../../components/Button';
 import {useGetMovieCastQuery, useGetMovieQuery} from '../../state/movies';
 import {useTranslation} from 'react-i18next';
 import {TranslationKeys} from '../../locale/translations/keys';
+import {useAppSelector} from '../../state/hooks';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'MovieDetails'>;
 
@@ -27,17 +28,18 @@ export const MovieDetails = ({route, navigation}: Props) => {
   const {t} = useTranslation();
   const details = route.params;
   const source = `${imageURL}${details.poster_path}`;
+  const chosenLanguage = useAppSelector(state => state.i18nSlice.lang);
   const {
     data: fullMovie,
     // error,
     isLoading,
     isSuccess,
-  } = useGetMovieQuery(details.id);
+  } = useGetMovieQuery({id: details.id, currentLanguage: chosenLanguage});
   const {
     data: cast,
     // error: castError,
     isSuccess: castIsSuccess,
-  } = useGetMovieCastQuery(details.id);
+  } = useGetMovieCastQuery({id: details.id, currentLanguage: chosenLanguage});
   const {fade} = useAnimation();
   const opacity = useRef(new Animated.Value(0)).current;
 

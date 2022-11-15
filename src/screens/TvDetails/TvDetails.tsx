@@ -15,6 +15,7 @@ import Button from '../../components/Button';
 import {useTranslation} from 'react-i18next';
 import {TranslationKeys} from '../../locale/translations/keys';
 import {useGetTvShowCastQuery, useGetTvShowQuery} from '../../state/tvshows';
+import {useAppSelector} from '../../state/hooks';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'TvDetails'>;
 
@@ -22,8 +23,16 @@ export const TvDetails = ({route}: Props) => {
   const navigation = useNavigation();
   const details = route.params;
   const [isVisible, setIsVisible] = useState(false);
-  const {data: tvCast} = useGetTvShowCastQuery(details.id);
-  const {data: fullTv, isLoading, isSuccess} = useGetTvShowQuery(details.id);
+  const chosenLanguage = useAppSelector(state => state.i18nSlice.lang);
+  const {data: tvCast} = useGetTvShowCastQuery({
+    id: details.id,
+    currentLanguage: chosenLanguage,
+  });
+  const {
+    data: fullTv,
+    isLoading,
+    isSuccess,
+  } = useGetTvShowQuery({id: details.id, currentLanguage: chosenLanguage});
   const {t} = useTranslation();
   return (
     <>
@@ -59,10 +68,9 @@ export const TvDetails = ({route}: Props) => {
             )}
 
             {!!fullTv.number_of_episodes && (
-              <Text
-                style={
-                  styles.overview
-                }>{`${fullTv.number_of_episodes} episodios`}</Text>
+              <Text style={styles.overview}>{`${fullTv.number_of_episodes} ${t(
+                TranslationKeys.EPISODES,
+              )}`}</Text>
             )}
             <Button
               moreButton

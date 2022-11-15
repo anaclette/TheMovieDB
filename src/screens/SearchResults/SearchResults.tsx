@@ -31,11 +31,11 @@ export const SearchResults = ({
 }: StackScreenProps<RootStackParamList, 'SearchResults'>) => {
   const [userInput, setUserInput] = useState('');
   const {t} = useTranslation();
-  const currentLanguage = useAppSelector(state => state.i18nSlice.lang);
+  const chosenLanguage = useAppSelector(state => state.i18nSlice.lang);
   const {data: searchResults} = useGetSearchResultQuery({
     keyword: userInput,
     page: 1,
-    currentLanguage: currentLanguage,
+    currentLanguage: chosenLanguage,
   });
 
   const debouncedSave = useRef(
