@@ -8,30 +8,27 @@ export const styles = StyleSheet.create({
     left: metrics.scale(5),
   },
   container: {
-    flexDirection: 'row',
     flexWrap: 'wrap',
   },
   title: {
     ...fonts.InconsolataMedium,
     color: colors.palePink,
-    alignSelf: 'center',
     textAlign: 'center',
-    flex: 1,
     flexGrow: 20,
-    marginVertical: metrics.scale(5),
     fontSize: metrics.scaledFontSize(18),
   },
   cardWrapper: {
-    flex: 1,
     justifyContent: 'center',
-    height: metrics.screenHeight / 2.8,
+    width: '50%',
   },
   innerContainer: {
+    flex: 1,
+    alignSelf: 'center',
     alignItems: 'center',
-    marginVertical: metrics.scale(5),
-    width: '50%',
+    marginVertical: metrics.scale(10),
   },
-  tvShowsInnerContainer: {
-    width: '50%',
+  tvShowInnerContainer: {
+    marginHorizontal: metrics.scale(10),
+    alignItems: 'center',
   },
 });
