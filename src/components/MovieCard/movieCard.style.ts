@@ -8,12 +8,11 @@ const WINDOW_TOP_DISTANCE = metrics.screenHeight / 2.1;
 
 export const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
-    justifyContent: 'space-around',
     marginVertical: metrics.scaleVertical(20),
     height: WINDOW_TOP_DISTANCE,
-    width: ITEM_SIZE - metrics.scale(35),
     borderRadius: metrics.scale(20),
+    alignSelf: 'center',
+    width: metrics.screenWidth - metrics.scale(100),
   },
   imageContainer: {
     width: '100%',

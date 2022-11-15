@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   profileImageWrapper: {
-    width: '26%',
+    width: '30%',
     height: metrics.scaleVertical(150),
   },
   image: {
@@ -37,7 +37,6 @@ export const styles = StyleSheet.create({
   profileImage: {
     borderBottomLeftRadius: metrics.scale(20),
     borderTopRightRadius: metrics.scale(20),
-    resizeMode: 'contain',
   },
   name: {
     ...fonts.HindSiliguri,

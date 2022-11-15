@@ -19,7 +19,7 @@ export const TvCard = ({item, isFullContentPage}: Props) => {
     <>
       <Button
         onPress={() => navigation.navigate('TvDetails', item)}
-        wrapperStyle={styles.container}
+        wrapperStyle={!isFullContentPage ? styles.container : {}}
         children={
           <>
             <Text style={styles.name}>{item.name}</Text>
