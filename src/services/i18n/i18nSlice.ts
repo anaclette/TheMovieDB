@@ -23,10 +23,6 @@ export const i18nSlice = createSlice({
   },
 });
 
-export const selectTranslations = (state: {
-  i18n: {translations: {[x: string]: any}; lang: string | number};
-}) => state.i18n.translations[state.i18n.lang];
-
 export const {switchLanguage} = i18nSlice.actions;
 
 export default i18nSlice.reducer;
