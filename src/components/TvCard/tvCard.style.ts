@@ -53,6 +53,5 @@ export const styles = StyleSheet.create({
   fullContentPageImageWrapper: {
     width: '100%',
     height: metrics.scale(225),
-    justifyContent: 'space-between',
   },
 });
