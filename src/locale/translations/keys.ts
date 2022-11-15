@@ -27,6 +27,7 @@ export enum TranslationKeys {
   ALSO_IN = 'ALSO_IN',
   TAB_NAME_MOVIES = 'MOVIES',
   TAB_NAME_TV_SHOWS = 'TV_SHOWS',
+  EPISODES = 'EPISODES',
 }
 
 export type TranslationResource = {

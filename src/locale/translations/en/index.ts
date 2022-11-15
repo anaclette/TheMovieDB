@@ -38,6 +38,7 @@ const translation: TranslationResource = {
   ALSO_IN: 'Also played in',
   MOVIES: 'Movies',
   TV_SHOWS: 'Tv shows',
+  EPISODES: 'episodes',
 };
 
 export default translation;

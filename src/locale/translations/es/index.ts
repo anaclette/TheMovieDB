@@ -38,6 +38,7 @@ const translation: TranslationResource = {
   ALSO_IN: 'También actuó en',
   MOVIES: 'Pelis',
   TV_SHOWS: 'Series',
+  EPISODES: 'episodios',
 };
 
 export default translation;
