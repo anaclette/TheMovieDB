@@ -43,7 +43,8 @@ export const styles = StyleSheet.create({
     zIndex: 1,
     left: metrics.scale(5),
     backgroundColor: colors.palePink,
-    borderRadius: metrics.scale(10),
+    paddingLeft: metrics.scale(1),
+    borderRadius: metrics.scale(20),
   },
   closeModalButton: {
     marginTop: metrics.scale(10),

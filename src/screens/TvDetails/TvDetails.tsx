@@ -44,7 +44,7 @@ export const TvDetails = ({route}: Props) => {
               wrapperStyle={styles.backButton}
               icon="chevron-back-circle-outline"
               onPress={() => navigation.goBack()}
-              color={colors.brown}
+              color={colors.petroleum}
             />
             <Image
               style={styles.posterImage}

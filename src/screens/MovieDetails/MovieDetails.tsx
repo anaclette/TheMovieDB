@@ -50,7 +50,7 @@ export const MovieDetails = ({route, navigation}: Props) => {
     <View style={styles.container}>
       <View style={styles.imgContainer}>
         <Button
-          color={colors.palePink}
+          color={colors.petroleum}
           size={metrics.scale(20)}
           icon="chevron-back-circle-outline"
           wrapperStyle={styles.backButton}

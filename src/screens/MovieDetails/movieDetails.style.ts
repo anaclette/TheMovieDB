@@ -39,11 +39,12 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   backButton: {
-    backgroundColor: colors.petroleum,
+    backgroundColor: colors.palePink,
     top: metrics.scale(40),
     position: 'absolute',
     zIndex: 1,
     left: metrics.scale(5),
-    borderRadius: metrics.scale(10),
+    borderRadius: metrics.scale(20),
+    paddingLeft: metrics.scale(1),
   },
 });

@@ -70,6 +70,7 @@ export const styles = StyleSheet.create({
     zIndex: 1,
     left: metrics.scale(5),
     backgroundColor: colors.petroleum,
-    borderRadius: metrics.scale(10),
+    borderRadius: metrics.scale(20),
+    paddingLeft: metrics.scale(1),
   },
 });
