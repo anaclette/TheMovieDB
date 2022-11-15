@@ -25,6 +25,8 @@ export enum TranslationKeys {
   FIND = 'FIND',
   NO_FURTHER_INFO = 'NO_FURTHER_INFO',
   ALSO_IN = 'ALSO_IN',
+  TAB_NAME_MOVIES = 'MOVIES',
+  TAB_NAME_TV_SHOWS = 'TV_SHOWS',
 }
 
 export type TranslationResource = {

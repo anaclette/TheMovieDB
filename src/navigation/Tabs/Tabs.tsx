@@ -7,10 +7,13 @@ import TabIcon from '../../components/TabIcon';
 import Tv from '../../screens/Tv';
 import fonts from '../../themes/fonts';
 import metrics from '../../themes/metrics';
+import {useTranslation} from 'react-i18next';
+import {TranslationKeys} from '../../locale/translations/keys';
 
 const Tab = createMaterialTopTabNavigator();
 
 export const Tabs = () => {
+  const {t} = useTranslation();
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
@@ -47,11 +50,15 @@ export const Tabs = () => {
       tabBarPosition={'bottom'}>
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen
-        options={{title: 'Pelis'}}
+        options={{title: t(TranslationKeys.TAB_NAME_MOVIES)}}
         name="Movies"
         component={MoviesCarousel}
       />
-      <Tab.Screen options={{title: 'Series'}} name="Tv" component={Tv} />
+      <Tab.Screen
+        options={{title: t(TranslationKeys.TAB_NAME_TV_SHOWS)}}
+        name="Tv"
+        component={Tv}
+      />
     </Tab.Navigator>
   );
 };

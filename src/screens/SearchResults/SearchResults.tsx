@@ -22,14 +22,20 @@ import {useGetSearchResultQuery} from '../../state/search';
 import {SearchResult} from '../../types/multiSearch';
 import {imageURL} from '../../common/constants';
 import CombinedCreditsCard from '../../components/CombinedCreditsCard';
+import {useAppSelector} from '../../state/hooks';
+import {useTranslation} from 'react-i18next';
+import {TranslationKeys} from '../../locale/translations/keys';
 
 export const SearchResults = ({
   navigation,
 }: StackScreenProps<RootStackParamList, 'SearchResults'>) => {
   const [userInput, setUserInput] = useState('');
+  const {t} = useTranslation();
+  const currentLanguage = useAppSelector(state => state.i18nSlice.lang);
   const {data: searchResults} = useGetSearchResultQuery({
     keyword: userInput,
     page: 1,
+    currentLanguage: currentLanguage,
   });
 
   const debouncedSave = useRef(
@@ -103,7 +109,7 @@ export const SearchResults = ({
                       : metrics.scale(40),
                 },
               ]}
-              placeholder="Encuentra"
+              placeholder={t(TranslationKeys.FIND)}
               placeholderTextColor={colors.petroleum}
               onChangeText={debouncedSave}
               onSubmitEditing={input => setUserInput(input.nativeEvent.text)}

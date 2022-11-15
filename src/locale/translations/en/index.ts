@@ -36,6 +36,8 @@ const translation: TranslationResource = {
   FIND: 'Find',
   NO_FURTHER_INFO: 'No further information.',
   ALSO_IN: 'Also played in',
+  MOVIES: 'Movies',
+  TV_SHOWS: 'Tv shows',
 };
 
 export default translation;

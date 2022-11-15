@@ -36,6 +36,8 @@ const translation: TranslationResource = {
   FIND: 'Encuentra',
   NO_FURTHER_INFO: 'No hay más información.',
   ALSO_IN: 'También actuó en',
+  MOVIES: 'Pelis',
+  TV_SHOWS: 'Series',
 };
 
 export default translation;
