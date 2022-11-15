@@ -9,7 +9,6 @@ import {styles} from './fullCategoryContent.style';
 import MovieCard from '../../components/MovieCard';
 import Rating from '../../components/Rating';
 import TvCard from '../../components/TvCard';
-
 interface Props
   extends StackScreenProps<RootStackParamList, 'FullCategoryContent'> {}
 
@@ -27,7 +26,7 @@ export const FullCategoryContent = ({route, navigation}: Props) => {
         onPress={() => navigation.goBack()}
         color={colors.palePink}
       />
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.container}>
           {movie &&
             movie?.map((item, index) => (

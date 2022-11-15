@@ -18,6 +18,7 @@ export const CategoryAccordion = ({title, data}: Props) => {
   const navigation = useNavigation<NavProp>();
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const isAndroid = Platform.OS === 'android';
+  const [pageNumber, setPageNumber] = useState(1);
 
   if (isAndroid) {
     if (UIManager.setLayoutAnimationEnabledExperimental) {
@@ -50,13 +51,13 @@ export const CategoryAccordion = ({title, data}: Props) => {
           <Button
             moreButton
             wrapperStyle={styles.moreButton}
-            onPress={() =>
+            onPress={() => {
               navigation.navigate('FullCategoryContent', {
                 tvShow: data,
                 movie: undefined,
-                page: 1,
-              })
-            }
+                page: pageNumber,
+              });
+            }}
             icon="arrow-forward"
           />
           {data?.map((dataItem, index) => {
