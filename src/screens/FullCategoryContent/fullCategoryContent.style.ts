@@ -31,4 +31,8 @@ export const styles = StyleSheet.create({
     marginHorizontal: metrics.scale(10),
     alignItems: 'center',
   },
+  activityIndicatorWrapper: {
+    height: metrics.screenHeight / 3 - metrics.scaleVertical(100),
+    justifyContent: 'center',
+  },
 });

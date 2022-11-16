@@ -1,5 +1,11 @@
 import React, {useState, useCallback} from 'react';
-import {FlatList, RefreshControl, Text, View} from 'react-native';
+import {
+  ActivityIndicator,
+  FlatList,
+  RefreshControl,
+  Text,
+  View,
+} from 'react-native';
 import Button from '../../components/Button';
 import {StackScreenProps} from '@react-navigation/stack';
 import {RootStackParamList} from '../../navigation/NavigationController';
@@ -18,7 +24,8 @@ export const FullCategoryContent = ({route, navigation}: Props) => {
   const [refreshing, setRefreshing] = useState(false);
   const movie = route.params.movie;
   const tvShow = route.params.tvShow;
-  // const page = route.params.page;
+  const page = route.params.page;
+  const [pageNumber, setPageNumber] = useState(page);
 
   const onRefresh = useCallback(() => {
     setRefreshing(true);
@@ -26,6 +33,12 @@ export const FullCategoryContent = ({route, navigation}: Props) => {
       setRefreshing(false);
     }, 2000);
   }, []);
+
+  const loadMore = () => {
+    setTimeout(() => {
+      setPageNumber(pageNumber + 1);
+    }, 500);
+  };
 
   const contentData: ContentData[] = [
     {
@@ -77,6 +90,7 @@ export const FullCategoryContent = ({route, navigation}: Props) => {
         <Loader />
       ) : (
         <FlatList
+          onEndReached={loadMore}
           columnWrapperStyle={styles.container}
           numColumns={2}
           keyExtractor={(_, index) => index.toString()}
@@ -84,6 +98,14 @@ export const FullCategoryContent = ({route, navigation}: Props) => {
           renderItem={renderItem}
           refreshControl={
             <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+          }
+          ListFooterComponent={
+            <View style={styles.activityIndicatorWrapper}>
+              <ActivityIndicator
+                size={metrics.scale(20)}
+                color={colors.palePink}
+              />
+            </View>
           }
         />
       )}
