@@ -16,14 +16,14 @@ export const tvShowsApi = createApi({
     TvShowsTagTypes.TV_SHOW,
     TvShowsTagTypes.TV_SHOW_CAST,
   ],
-  baseQuery: fetchBaseQuery({baseUrl: baseURL}),
+  baseQuery: fetchBaseQuery({baseUrl: `${baseURL}tv/`}),
   endpoints: builder => ({
     getAiringTodayByPage: builder.query<
       TvDetails[],
       {page: number | void; currentLanguage: string}
     >({
       query: ({page, currentLanguage}) =>
-        customQuery(`tv/${TV_ENDPOINTS.AIRING_TODAY}`, currentLanguage, page),
+        customQuery(`${TV_ENDPOINTS.AIRING_TODAY}`, currentLanguage, page),
       providesTags: [TvShowsTagTypes.AIRING_TODAY],
       transformResponse: (response: TvResponse) => response.results,
     }),
@@ -32,7 +32,7 @@ export const tvShowsApi = createApi({
       {page: number | void; currentLanguage: string}
     >({
       query: ({page, currentLanguage}) =>
-        customQuery(`tv/${TV_ENDPOINTS.TOP_RATED}`, currentLanguage, page),
+        customQuery(`${TV_ENDPOINTS.TOP_RATED}`, currentLanguage, page),
       providesTags: [TvShowsTagTypes.TOP_RATED_TV_SHOWS],
       transformResponse: (response: TvResponse) => response.results,
     }),
@@ -41,7 +41,7 @@ export const tvShowsApi = createApi({
       {page: number | void; currentLanguage: string}
     >({
       query: ({page, currentLanguage}) =>
-        customQuery(`tv/${TV_ENDPOINTS.POPULAR}`, currentLanguage, page),
+        customQuery(`${TV_ENDPOINTS.POPULAR}`, currentLanguage, page),
       providesTags: [TvShowsTagTypes.POPULAR_TV_SHOWS],
       transformResponse: (response: TvResponse) => response.results,
     }),
@@ -50,7 +50,7 @@ export const tvShowsApi = createApi({
       {page: number | void; currentLanguage: string}
     >({
       query: ({page, currentLanguage}) =>
-        customQuery(`tv/${TV_ENDPOINTS.ON_THE_AIR}`, currentLanguage, page),
+        customQuery(`${TV_ENDPOINTS.ON_THE_AIR}`, currentLanguage, page),
       providesTags: [TvShowsTagTypes.ON_THE_AIR],
       transformResponse: (response: TvResponse) => response.results,
     }),
@@ -58,8 +58,7 @@ export const tvShowsApi = createApi({
       FullTvDetails,
       {id: number | void; currentLanguage: string}
     >({
-      query: ({id, currentLanguage}) =>
-        customQuery(`tv/${id}`, currentLanguage),
+      query: ({id, currentLanguage}) => customQuery(`${id}`, currentLanguage),
       providesTags: [TvShowsTagTypes.TV_SHOW],
       transformResponse: (response: FullTvDetails) => response,
     }),
@@ -68,7 +67,7 @@ export const tvShowsApi = createApi({
       {id: number | void; currentLanguage: string}
     >({
       query: ({id, currentLanguage}) =>
-        customQuery(`tv/${id}/credits`, currentLanguage),
+        customQuery(`${id}/credits`, currentLanguage),
       providesTags: [TvShowsTagTypes.TV_SHOW_CAST],
       transformResponse: (response: TvCredits) => response.cast,
     }),
