@@ -23,11 +23,12 @@ export const CastMemberDetails = ({route, navigation}: Props) => {
   const {t} = useTranslation();
   const params = route.params;
   const chosenLanguage = useAppSelector(state => state.i18nSlice.lang);
-  const {data: castMemberData} = useGetMemberDetailsQuery({
-    id: params.id,
-    currentLanguage: chosenLanguage,
-  });
-  const {data: castMemberCombinedCredits, isLoading} =
+  const {data: castMemberData, isLoading: loadingMemberData} =
+    useGetMemberDetailsQuery({
+      id: params.id,
+      currentLanguage: chosenLanguage,
+    });
+  const {data: castMemberCombinedCredits, isLoading: loadingCombinedCredits} =
     useGetCombinedCreditsQuery({
       id: params.id,
       currentLanguage: chosenLanguage,
@@ -43,43 +44,51 @@ export const CastMemberDetails = ({route, navigation}: Props) => {
         color={colors.palePink}
       />
       <ScrollView>
-        <View style={styles.personalInfoWrapper}>
-          <View style={styles.personalInfoDetails}>
-            <Text style={styles.name}>{castMemberData?.name}</Text>
-            {castMemberData?.birthday && (
-              <Text style={styles.secondaryDetailsText}>
-                {castMemberData?.birthday}
+        {loadingMemberData ? (
+          <Loader />
+        ) : (
+          <>
+            <View style={styles.personalInfoWrapper}>
+              <View style={styles.personalInfoDetails}>
+                <Text style={styles.name}>{castMemberData?.name}</Text>
+                {castMemberData?.birthday && (
+                  <Text style={styles.secondaryDetailsText}>
+                    {castMemberData?.birthday}
+                  </Text>
+                )}
+                {castMemberData?.place_of_birth && (
+                  <Text style={styles.secondaryDetailsText}>
+                    {castMemberData?.place_of_birth}
+                  </Text>
+                )}
+              </View>
+
+              <View style={styles.profileImageWrapper}>
+                <Image
+                  source={{uri: `${imageURL}${castMemberData?.profile_path}`}}
+                  style={[styles.image, styles.profileImage]}
+                />
+              </View>
+            </View>
+
+            <View style={styles.biographyWrapper}>
+              {castMemberData?.biography ? (
+                <Text style={styles.biography}>
+                  {castMemberData?.biography}
+                </Text>
+              ) : (
+                <Text style={styles.biography}>
+                  {t(TranslationKeys.NO_FURTHER_INFO)}
+                </Text>
+              )}
+              <Text style={styles.otherCreditsTitle}>
+                {t(TranslationKeys.ALSO_IN)}
               </Text>
-            )}
-            {castMemberData?.place_of_birth && (
-              <Text style={styles.secondaryDetailsText}>
-                {castMemberData?.place_of_birth}
-              </Text>
-            )}
-          </View>
+            </View>
+          </>
+        )}
 
-          <View style={styles.profileImageWrapper}>
-            <Image
-              source={{uri: `${imageURL}${castMemberData?.profile_path}`}}
-              style={[styles.image, styles.profileImage]}
-            />
-          </View>
-        </View>
-
-        <View style={styles.biographyWrapper}>
-          {castMemberData?.biography ? (
-            <Text style={styles.biography}>{castMemberData?.biography}</Text>
-          ) : (
-            <Text style={styles.biography}>
-              {t(TranslationKeys.NO_FURTHER_INFO)}
-            </Text>
-          )}
-          <Text style={styles.otherCreditsTitle}>
-            {t(TranslationKeys.ALSO_IN)}
-          </Text>
-        </View>
-
-        {isLoading ? (
+        {loadingCombinedCredits ? (
           <Loader />
         ) : (
           <View style={styles.combinedCreditsWrapper}>
