@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {useTranslation} from 'react-i18next';
 
 import {
@@ -32,12 +32,21 @@ const renderItem = ({
 export const Home = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const [refreshing, setRefreshing] = useState(false);
-  const chosenLanguage = useAppSelector(state => state.i18nSlice.lang);
+  const languageOptions = useAppSelector(
+    state => state.i18nSlice.supportedLangs,
+  );
   const {data: trendyData, isSuccess} = useGetTrendyContentQuery({
     page: pageNumber,
-    currentLanguage: chosenLanguage,
+    currentLanguage: languageOptions.en,
   });
-  const {t} = useTranslation();
+
+  const {t, i18n} = useTranslation();
+
+  useEffect(() => {
+    i18n.changeLanguage(languageOptions.en);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const onRefresh = useCallback(() => {
     setRefreshing(true);

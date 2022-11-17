@@ -31,7 +31,7 @@ export const Tv = () => {
     page: pageNumber,
     currentLanguage: chosenLanguage,
   });
-  const {t} = useTranslation();
+  const {t, i18n} = useTranslation();
 
   const tvData: TvData[] = [
     {
@@ -54,6 +54,8 @@ export const Tv = () => {
 
   useEffect(() => {
     setPageNumber(1);
+    i18n.changeLanguage(chosenLanguage);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const renderItem = ({item, index}: {item: TvData; index: number}) => (
