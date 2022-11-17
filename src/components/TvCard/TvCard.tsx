@@ -6,6 +6,8 @@ import {styles} from './tvCard.style';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
 import {RootStackParamList} from '../../navigation/NavigationController';
 import Button from '../Button';
+import {t} from 'i18next';
+import {TranslationKeys} from '../../locale/translations/keys';
 interface Props {
   item: TvDetails;
   isFullContentPage?: boolean;
@@ -40,7 +42,7 @@ export const TvCard = ({item, isFullContentPage}: Props) => {
                 <Text style={styles.overview} numberOfLines={15}>
                   {item.overview
                     ? item.overview
-                    : 'No se encontró descripción 😞'}
+                    : t(TranslationKeys.NO_OVERVIEW_TV_SHOW)}
                 </Text>
               )}
             </View>
