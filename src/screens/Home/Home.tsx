@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import Loader from '../../components/Loader';
 import TrendyContentBlock from '../../components/TrendyContentBlock';
-import {useGetTrendyContentQuery} from '../../state/trendy';
+import {useGetTrendyContentQuery} from '../../state/themoviedb';
 import {TrendyContentResult} from '../../types/trendyContentInterface';
 
 import {styles} from './home.style';

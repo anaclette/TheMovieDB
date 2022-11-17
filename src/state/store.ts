@@ -10,31 +10,17 @@ import {
   REGISTER,
   REHYDRATE,
 } from 'redux-persist';
-import {moviesApi} from '../state/movies';
-import {tvShowsApi} from '../state/tvshows';
+import {theMovieDBApi} from './themoviedb';
 import i18nSlice from '../services/i18n/i18nSlice';
-import {trendyContentApi} from './trendy';
-import {castMemberApi} from './cast';
-import {searchApi} from './search';
 
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  blacklist: [
-    moviesApi.reducerPath,
-    tvShowsApi.reducerPath,
-    trendyContentApi.reducerPath,
-    castMemberApi.reducerPath,
-    searchApi.reducerPath,
-  ],
+  blacklist: [theMovieDBApi.reducerPath],
 };
 
 const rootReducer = combineReducers({
-  [moviesApi.reducerPath]: moviesApi.reducer,
-  [tvShowsApi.reducerPath]: tvShowsApi.reducer,
-  [trendyContentApi.reducerPath]: trendyContentApi.reducer,
-  [castMemberApi.reducerPath]: castMemberApi.reducer,
-  [searchApi.reducerPath]: searchApi.reducer,
+  [theMovieDBApi.reducerPath]: theMovieDBApi.reducer,
   i18nSlice,
 });
 
@@ -49,14 +35,7 @@ const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat([
-      moviesApi.middleware,
-      tvShowsApi.middleware,
-      trendyContentApi.middleware,
-      castMemberApi.middleware,
-      searchApi.middleware,
-      reduxDebugger,
-    ]),
+    }).concat([theMovieDBApi.middleware, reduxDebugger]),
 });
 
 const persistor = persistStore(store);

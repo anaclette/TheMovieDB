@@ -13,7 +13,7 @@ import metrics from '../../themes/metrics';
 import Loader from '../../components/Loader';
 import {useAnimation} from '../../hooks/useAnimation';
 import Button from '../../components/Button';
-import {useGetMovieCastQuery, useGetMovieQuery} from '../../state/movies';
+import {useGetMovieCastQuery, useGetMovieQuery} from '../../state/themoviedb';
 import {useTranslation} from 'react-i18next';
 import {TranslationKeys} from '../../locale/translations/keys';
 import {useAppSelector} from '../../state/hooks';

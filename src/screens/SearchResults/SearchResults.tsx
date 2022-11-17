@@ -18,7 +18,7 @@ import metrics from '../../themes/metrics';
 import {styles} from './searchResults.style';
 
 import Button from '../../components/Button';
-import {useGetSearchResultQuery} from '../../state/search';
+import {useGetSearchResultQuery} from '../../state/themoviedb';
 import {SearchResult} from '../../types/multiSearch';
 import {imageURL} from '../../common/constants';
 import CombinedCreditsCard from '../../components/CombinedCreditsCard';

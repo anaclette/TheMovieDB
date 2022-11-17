@@ -22,7 +22,7 @@ import {
   useGetPopularByPageQuery,
   useGetTopRatedByPageQuery,
   useGetUpcomingByPageQuery,
-} from '../../state/movies';
+} from '../../state/themoviedb';
 import {useNavigation, NavigationProp} from '@react-navigation/native';
 import {MovieData} from '../../types/mediaContentTypes';
 import {useAppSelector} from '../../state/hooks';

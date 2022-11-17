@@ -11,7 +11,7 @@ import {RootStackParamList} from '../../navigation/NavigationController';
 import {
   useGetCombinedCreditsQuery,
   useGetMemberDetailsQuery,
-} from '../../state/cast';
+} from '../../state/themoviedb';
 import {useAppSelector} from '../../state/hooks';
 import colors from '../../themes/colors';
 import metrics from '../../themes/metrics';

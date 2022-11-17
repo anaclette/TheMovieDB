@@ -9,7 +9,7 @@ import {
   useGetOnTheAirByPageQuery,
   useGetPopularTvShowsByPageQuery,
   useGetTopRatedTvShowsByPageQuery,
-} from '../../state/tvshows';
+} from '../../state/themoviedb';
 import {TvData} from '../../types/mediaContentTypes';
 
 export const Tv = () => {

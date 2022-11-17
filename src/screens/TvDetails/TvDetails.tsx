@@ -14,7 +14,7 @@ import {SafeAreaView} from 'react-native';
 import Button from '../../components/Button';
 import {useTranslation} from 'react-i18next';
 import {TranslationKeys} from '../../locale/translations/keys';
-import {useGetTvShowCastQuery, useGetTvShowQuery} from '../../state/tvshows';
+import {useGetTvShowCastQuery, useGetTvShowQuery} from '../../state/themoviedb';
 import {useAppSelector} from '../../state/hooks';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'TvDetails'>;
