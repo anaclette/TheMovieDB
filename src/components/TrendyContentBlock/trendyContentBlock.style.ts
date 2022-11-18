@@ -24,7 +24,6 @@ export const styles = StyleSheet.create({
     fontSize: metrics.scale(18),
     color: colors.palePink,
     paddingLeft: metrics.scale(10),
-    fontWeight: 'bold',
   },
   movieTitle: {
     ...fonts.HindSiliguri,

@@ -34,7 +34,9 @@ export const CastMemberDetails = ({route, navigation}: Props) => {
       currentLanguage: chosenLanguage,
     });
 
-  return (
+  return loadingMemberData || loadingCombinedCredits ? (
+    <Loader />
+  ) : (
     <SafeAreaView style={styles.safeAreaView}>
       <Button
         size={metrics.scale(20)}
@@ -44,72 +46,60 @@ export const CastMemberDetails = ({route, navigation}: Props) => {
         color={colors.palePink}
       />
       <ScrollView>
-        {loadingMemberData ? (
-          <Loader />
-        ) : (
-          <>
-            <View style={styles.personalInfoWrapper}>
-              <View style={styles.personalInfoDetails}>
-                <Text style={styles.name}>{castMemberData?.name}</Text>
-                {castMemberData?.birthday && (
-                  <Text style={styles.secondaryDetailsText}>
-                    {castMemberData?.birthday}
-                  </Text>
-                )}
-                {castMemberData?.place_of_birth && (
-                  <Text style={styles.secondaryDetailsText}>
-                    {castMemberData?.place_of_birth}
-                  </Text>
-                )}
-              </View>
-
-              <View style={styles.profileImageWrapper}>
-                <Image
-                  source={{uri: `${imageURL}${castMemberData?.profile_path}`}}
-                  style={[styles.image, styles.profileImage]}
-                />
-              </View>
-            </View>
-
-            <View style={styles.biographyWrapper}>
-              {castMemberData?.biography ? (
-                <Text style={styles.biography}>
-                  {castMemberData?.biography}
-                </Text>
-              ) : (
-                <Text style={styles.biography}>
-                  {t(TranslationKeys.NO_FURTHER_INFO)}
-                </Text>
-              )}
-              <Text style={styles.otherCreditsTitle}>
-                {t(TranslationKeys.ALSO_IN)}
+        <View style={styles.personalInfoWrapper}>
+          <View style={styles.personalInfoDetails}>
+            <Text style={styles.name}>{castMemberData?.name}</Text>
+            {castMemberData?.birthday && (
+              <Text style={styles.secondaryDetailsText}>
+                {castMemberData?.birthday}
               </Text>
-            </View>
-          </>
-        )}
-
-        {loadingCombinedCredits ? (
-          <Loader />
-        ) : (
-          <View style={styles.combinedCreditsWrapper}>
-            {castMemberCombinedCredits?.map((item, index) => {
-              const isMovie = item.media_type === 'movie';
-              return (
-                <Button
-                  key={index}
-                  wrapperStyle={styles.cardWrappingButton}
-                  onPress={() =>
-                    navigation.navigate(
-                      isMovie ? 'MovieDetails' : 'TvDetails',
-                      item,
-                    )
-                  }
-                  children={<CombinedCreditsCard item={item} index={index} />}
-                />
-              );
-            })}
+            )}
+            {castMemberData?.place_of_birth && (
+              <Text style={styles.secondaryDetailsText}>
+                {castMemberData?.place_of_birth}
+              </Text>
+            )}
           </View>
-        )}
+
+          <View style={styles.profileImageWrapper}>
+            <Image
+              source={{uri: `${imageURL}${castMemberData?.profile_path}`}}
+              style={[styles.image, styles.profileImage]}
+            />
+          </View>
+        </View>
+
+        <View style={styles.biographyWrapper}>
+          {castMemberData?.biography ? (
+            <Text style={styles.biography}>{castMemberData?.biography}</Text>
+          ) : (
+            <Text style={styles.biography}>
+              {t(TranslationKeys.NO_FURTHER_INFO)}
+            </Text>
+          )}
+          <Text style={styles.otherCreditsTitle}>
+            {t(TranslationKeys.ALSO_IN)}
+          </Text>
+        </View>
+
+        <View style={styles.combinedCreditsWrapper}>
+          {castMemberCombinedCredits?.map((item, index) => {
+            const isMovie = item.media_type === 'movie';
+            return (
+              <Button
+                key={index}
+                wrapperStyle={styles.cardWrappingButton}
+                onPress={() =>
+                  navigation.navigate(
+                    isMovie ? 'MovieDetails' : 'TvDetails',
+                    item,
+                  )
+                }
+                children={<CombinedCreditsCard item={item} index={index} />}
+              />
+            );
+          })}
+        </View>
       </ScrollView>
     </SafeAreaView>
   );

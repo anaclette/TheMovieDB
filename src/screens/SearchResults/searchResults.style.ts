@@ -28,6 +28,7 @@ export const styles = StyleSheet.create({
   input: {
     fontSize: metrics.scaledFontSize(12),
     ...fonts.HindSiliguri,
+    color: colors.black,
   },
   backButton: {
     left: metrics.scale(8),
