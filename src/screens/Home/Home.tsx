@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import {useTranslation} from 'react-i18next';
 
 import {
@@ -40,13 +40,7 @@ export const Home = () => {
     currentLanguage: languageOptions.en,
   });
 
-  const {t, i18n} = useTranslation();
-
-  useEffect(() => {
-    i18n.changeLanguage(languageOptions.en);
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const {t} = useTranslation();
 
   const onRefresh = useCallback(() => {
     setRefreshing(true);
