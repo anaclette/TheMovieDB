@@ -22,34 +22,52 @@ For basic structure:
 - react-native-screens
 - react-native-safe-area-context
 - react-native-size-matters
-  For state handling and api requests:
+
+For state handling and api requests:
+
 - reduxjs/toolkit
 - react-native-async-storage/async-storage
 - redux-persist
-  For carousel feature:
+
+For carousel feature:
+
 - react-native-snap-carousel@4.0.0-beta.6
 - @types/react-native-snap-carousel
 - deprecated-react-native-prop-types
-  For icons:
+
+For icons:
+
 - react-native-vector-icons
 - @types/react-native-vector-icons
-  For currency conversion:
+
+For currency conversion:
+
 - currency-formatter
 - @types/currency-formatter
-  For tabs:
+
+For tabs:
+
 - @react-navigation/material-top-tabs
 - react-native-tab-view
 - react-native-pager-view
-  For linear gradient animation:
+
+For linear gradient animation:
+
 - react-native-linear-gradient
 - react-native-image-colors
-  For locale language translations:
+
+For locale language translations:
+
 - i18next
 - react-i18next
-  For debugging:
+
+For debugging:
+
 - react-native-flipper
 - redux-flipper
-  For debouncing api requests:
+
+For debouncing api requests:
+
 - lodash
 - @types/lodash.debounce
 
