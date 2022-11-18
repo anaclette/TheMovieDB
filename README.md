@@ -1,6 +1,6 @@
 # Movies app [WIP]
 
-Movies app using The Movie DB API. It will be under construction for a few weeks from now. For this app I mean to enhance design patterns and to achieve the implementation of a carousel as well as other common features such as pagination, modal and animated layout. And I finally aim to try RTK query for data fetching.
+Movies and tv shows app using The Movie DB API. It has been made with practising purposes and I've implemented features such as carousel, accordion, modal, search bar, language switching buttons, animated layout and RTK query for the very first time. It still has some features ahead to be taken care of along with some warnings and issues that need to be tackled. Thus it is still a work in progress.
 
 ## Built with
 
@@ -11,47 +11,48 @@ Movies app using The Movie DB API. It will be under construction for a few weeks
 <img src="/src/assets/images/JS_logo.png" width="70" alt="Javascript logo"/>
 </div>
 </br>
-cause practice makes perfect!
 
-<!-- ### Implemented libraries
+### Implemented libraries
 
 For basic structure:
+
 - react-navigation/stack
 - react-native-gesture-handler
 - react-navigation/native
 - react-native-screens
 - react-native-safe-area-context
 - react-native-size-matters
-For API calls:
-- axios
-For state handling:
+  For state handling and api requests:
 - reduxjs/toolkit
 - react-native-async-storage/async-storage
 - redux-persist
-For carousel feature:
+  For carousel feature:
 - react-native-snap-carousel@4.0.0-beta.6
 - @types/react-native-snap-carousel
 - deprecated-react-native-prop-types
-For icons:
+  For icons:
 - react-native-vector-icons
 - @types/react-native-vector-icons
-For conversion feature:
+  For currency conversion:
 - currency-formatter
 - @types/currency-formatter
-For tabs:
+  For tabs:
 - @react-navigation/material-top-tabs
 - react-native-tab-view
 - react-native-pager-view
-For linear gradient animation:
+  For linear gradient animation:
 - react-native-linear-gradient
 - react-native-image-colors
-For locale language translations:
+  For locale language translations:
 - i18next
 - react-i18next
-- react-native-localize
-For debugging:
+  For debugging:
 - react-native-flipper
 - redux-flipper
-For debouncing api requests:
+  For debouncing api requests:
 - lodash
-- @types/lodash.debounce -->
+- @types/lodash.debounce
+
+### How to launch
+
+Clone the repo. Once in its local path, run `yarn` and then `cd ios ; pod install ; cd ..`. You should be fine then to launch it with either `yarn ios` or `yarn android` according to your device.
