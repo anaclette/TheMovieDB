@@ -14,7 +14,6 @@ export const styles = StyleSheet.create({
   moreText: {
     ...fonts.HindSiliguri,
     color: colors.palePink,
-    fontWeight: 'bold',
     fontSize: metrics.scaledFontSize(12),
   },
 });

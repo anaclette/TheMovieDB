@@ -9,7 +9,14 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     marginVertical: metrics.scale(25),
     color: colors.palePink,
-    fontWeight: 'bold',
+    shadowOpacity: 1,
+    shadowColor: colors.blackChocolate,
+    shadowOffset: {
+      height: metrics.scale(1),
+      width: metrics.scale(1),
+    },
+    shadowRadius: metrics.scale(1),
+    elevation: 4,
   },
   moreButton: {
     borderBottomWidth: StyleSheet.hairlineWidth,
