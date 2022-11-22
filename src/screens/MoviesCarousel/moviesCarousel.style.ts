@@ -4,11 +4,9 @@ import fonts from '../../themes/fonts';
 import metrics from '../../themes/metrics';
 
 export const styles = StyleSheet.create({
-  scrollView: {
-    alignItems: 'center',
-  },
   carousel: {
     flex: 1,
+    alignItems: 'center',
   },
   loaderContainer: {
     flex: 1,
@@ -45,6 +43,5 @@ export const styles = StyleSheet.create({
   flatlistContainer: {
     flex: 1,
     marginHorizontal: metrics.scale(10),
-    alignItems: 'center',
   },
 });

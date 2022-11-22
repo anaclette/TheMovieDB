@@ -88,9 +88,8 @@ export const MoviesCarousel = () => {
   const showCategoryMovies = ({data}: {data: MovieData[]}) => {
     return data.map((items, index) => {
       return (
-        <>
+        <View key={index.toString()} style={styles.carousel}>
           <Button
-            key={`${items.data}_title_${index}`}
             onPress={() =>
               navigation.navigate('FullCategoryContent', {
                 movie: items.data,
@@ -116,33 +115,26 @@ export const MoviesCarousel = () => {
           />
 
           {items.type === 'NOW_PLAYING_MOVIES' ? (
-            <View
-              style={styles.carousel}
-              key={`${items.type}_carousel_${index}`}>
-              <Carousel
-                vertical={false}
-                onSnapToItem={carouselIndex =>
-                  defineBackgroundColor(carouselIndex)
-                }
-                data={nowPlayingData as Movie[]}
-                renderItem={renderItem}
-                sliderWidth={SLIDER_WIDTH}
-                itemWidth={ITEM_WIDTH}
-                layout="stack"
-              />
-            </View>
+            <Carousel
+              vertical={false}
+              onSnapToItem={carouselIndex =>
+                defineBackgroundColor(carouselIndex)
+              }
+              data={nowPlayingData as Movie[]}
+              renderItem={renderItem}
+              sliderWidth={SLIDER_WIDTH}
+              itemWidth={ITEM_WIDTH}
+              layout="stack"
+            />
           ) : (
-            <View
-              style={styles.flatlistContainer}
-              key={`${items.type}_flatlist_${index}`}>
+            <View style={styles.flatlistContainer}>
               <HorizontalFlatlist
-                key={index}
                 movies={items.data}
                 categoryTitle={t(TranslationKeys[items.type])}
               />
             </View>
           )}
-        </>
+        </View>
       );
     });
   };
@@ -202,7 +194,7 @@ export const MoviesCarousel = () => {
               <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
             }
             showsVerticalScrollIndicator={false}
-            contentContainerStyle={[styles.scrollView, {paddingTop: top + 20}]}>
+            contentContainerStyle={{paddingTop: top + 20}}>
             {isSuccess && showCategoryMovies({data: movieData})}
           </ScrollView>
         </LinearGradient>
