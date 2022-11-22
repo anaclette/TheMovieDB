@@ -16,6 +16,8 @@ import {useAppSelector} from '../../state/hooks';
 import colors from '../../themes/colors';
 import metrics from '../../themes/metrics';
 import {styles} from './castMemberDetails.style';
+import {Movie} from '../../types/moviesInterface';
+import {TvDetails} from '../../types/tvInterface';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'CastMemberDetails'>;
 
@@ -85,15 +87,18 @@ export const CastMemberDetails = ({route, navigation}: Props) => {
         <View style={styles.combinedCreditsWrapper}>
           {castMemberCombinedCredits?.map((item, index) => {
             const isMovie = item.media_type === 'movie';
+
             return (
               <Button
                 key={index}
                 wrapperStyle={styles.cardWrappingButton}
                 onPress={() =>
-                  navigation.navigate(
-                    isMovie ? 'MovieDetails' : 'TvDetails',
-                    item,
-                  )
+                  isMovie
+                    ? navigation.navigate(
+                        'MovieDetails',
+                        item as unknown as Movie,
+                      )
+                    : navigation.navigate('TvDetails', item as TvDetails)
                 }
                 children={<CombinedCreditsCard item={item} index={index} />}
               />

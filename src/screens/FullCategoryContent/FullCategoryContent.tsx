@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from 'react';
+import React, {useState, useCallback, useMemo} from 'react';
 import {
   ActivityIndicator,
   FlatList,
@@ -40,42 +40,58 @@ export const FullCategoryContent = ({route, navigation}: Props) => {
     }, 500);
   };
 
-  const contentData: ContentData[] = [
-    {
-      movie: movie,
-      type: 'movie',
-      tvShow: undefined,
-    },
-    {
-      tvShow: tvShow,
-      type: 'tv_show',
-      movie: undefined,
-    },
-  ];
+  const contentData = useMemo<ContentData[]>(
+    () => [
+      {
+        movie: movie,
+        type: 'movie',
+        tvShow: [],
+      },
+      {
+        tvShow: tvShow,
+        type: 'tv_show',
+        movie: [],
+      },
+    ],
+    [movie, tvShow],
+  );
 
-  const renderItem = ({item, index}: {item: ContentData; index: number}) =>
-    item.type === 'movie'
-      ? item.movie?.map(props => (
-          <View
-            style={styles.cardWrapper}
-            key={`${props.id}_movie_index_${index}`}>
-            <Text style={styles.title}>{props.title}</Text>
-            <View style={styles.innerContainer}>
-              <MovieCard isFullContentPage key={index} movie={props} />
-              <Rating rating={props.vote_average} color={colors.lightBlue} />
+  const renderItem = useCallback(({item}: {item: ContentData}) => {
+    if (item.type === 'movie') {
+      return (
+        <>
+          {item.movie?.map((props, index) => (
+            <View
+              style={styles.cardWrapper}
+              key={`${props.id}_movie_index_${index}`}>
+              <Text style={styles.title}>{props.title}</Text>
+              <View style={styles.innerContainer}>
+                <MovieCard isFullContentPage key={index} movie={props} />
+                <Rating rating={props.vote_average} color={colors.lightBlue} />
+              </View>
             </View>
-          </View>
-        ))
-      : item.tvShow?.map(props => (
-          <View
-            style={styles.cardWrapper}
-            key={`${props.id}_tvShow_index_${index}`}>
-            <View style={styles.tvShowInnerContainer}>
-              <TvCard isFullContentPage item={props} />
-              <Rating rating={props.vote_average} color={colors.lightBlue} />
+          ))}
+        </>
+      );
+    }
+    if (item.type === 'tv_show') {
+      return (
+        <>
+          {item.tvShow?.map((props, index) => (
+            <View
+              style={styles.cardWrapper}
+              key={`${props.id}_tvShow_index_${index}`}>
+              <View style={styles.tvShowInnerContainer}>
+                <TvCard isFullContentPage item={props} />
+                <Rating rating={props.vote_average} color={colors.lightBlue} />
+              </View>
             </View>
-          </View>
-        ));
+          ))}
+        </>
+      );
+    }
+    return null;
+  }, []);
 
   return (
     <>

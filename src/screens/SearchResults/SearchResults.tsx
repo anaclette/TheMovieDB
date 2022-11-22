@@ -1,5 +1,5 @@
 import {StackScreenProps} from '@react-navigation/stack';
-import React, {useRef, useState} from 'react';
+import React, {useCallback, useRef, useState} from 'react';
 import debounce from 'lodash.debounce';
 import {
   Text,
@@ -25,10 +25,13 @@ import CombinedCreditsCard from '../../components/CombinedCreditsCard';
 import {useAppSelector} from '../../state/hooks';
 import {useTranslation} from 'react-i18next';
 import {TranslationKeys} from '../../locale/translations/keys';
+import {CastMember} from '../../types/castMemberInterface';
+import {TvDetails} from '../../types/tvInterface';
+import {Movie} from '../../types/moviesInterface';
 
-export const SearchResults = ({
-  navigation,
-}: StackScreenProps<RootStackParamList, 'SearchResults'>) => {
+type NavProp = StackScreenProps<RootStackParamList, 'SearchResults'>;
+
+export const SearchResults = ({navigation}: NavProp) => {
   const [userInput, setUserInput] = useState('');
   const {t} = useTranslation();
   const chosenLanguage = useAppSelector(state => state.i18nSlice.lang);
@@ -44,44 +47,54 @@ export const SearchResults = ({
     }, 1000),
   ).current;
 
-  const renderItem = ({item, index}: {item: SearchResult; index: number}) => {
-    const isPerson = item.media_type === 'person';
-    const isTv = item.media_type === 'tv';
+  const renderItem = useCallback(
+    ({item, index}: {item: SearchResult; index: number}) => {
+      const isPerson = item.media_type === 'person';
+      const isTv = item.media_type === 'tv';
 
-    return !isPerson ? (
-      <Button
-        onPress={() =>
-          navigation.navigate(isTv ? 'TvDetails' : 'MovieDetails', item)
-        }
-        children={
-          <View key={index} style={styles.cardWrapper}>
-            <CombinedCreditsCard item={item} index={index} />
-          </View>
-        }
-      />
-    ) : (
-      <Button
-        onPress={() => navigation.navigate('CastMemberDetails', item)}
-        children={
-          <View key={index} style={styles.cardWrapper}>
-            <View style={styles.imageWrapper}>
-              <Image
-                style={!item.poster_path && styles.noImage}
-                source={
-                  item.poster_path
-                    ? {
-                        uri: `${imageURL}${item.poster_path}`,
-                      }
-                    : require('../../assets/images/No-img-available.png')
-                }
-              />
+      return !isPerson ? (
+        <Button
+          onPress={() => {
+            isTv
+              ? navigation.navigate('TvDetails', item as TvDetails)
+              : navigation.navigate('MovieDetails', item as Movie);
+          }}
+          children={
+            <View key={index} style={styles.cardWrapper}>
+              <CombinedCreditsCard item={item} index={index} />
             </View>
-            <Text style={styles.title}>{item.name}</Text>
-          </View>
-        }
-      />
-    );
-  };
+          }
+        />
+      ) : (
+        <Button
+          onPress={() =>
+            navigation.navigate(
+              'CastMemberDetails',
+              item as unknown as CastMember,
+            )
+          }
+          children={
+            <View key={index} style={styles.cardWrapper}>
+              <View style={styles.imageWrapper}>
+                <Image
+                  style={!item.poster_path && styles.noImage}
+                  source={
+                    item.poster_path
+                      ? {
+                          uri: `${imageURL}${item.poster_path}`,
+                        }
+                      : require('../../assets/images/No-img-available.png')
+                  }
+                />
+              </View>
+              <Text style={styles.title}>{item.name}</Text>
+            </View>
+          }
+        />
+      );
+    },
+    [navigation],
+  );
 
   return (
     <SafeAreaView>

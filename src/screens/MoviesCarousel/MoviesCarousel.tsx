@@ -34,6 +34,10 @@ type ImageColors = {
   addOn: string;
 };
 
+const renderItem = ({item}: {item: Movie}) => {
+  return <MovieCard movie={item} bigCard />;
+};
+
 export const MoviesCarousel = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const navigation = useNavigation<NavProps>();
@@ -63,9 +67,28 @@ export const MoviesCarousel = () => {
     page: pageNumber,
     currentLanguage: chosenLanguage,
   });
+  const [imageColors, setImageColors] = useState<ImageColors>({
+    primary: colors.transparent,
+    secondary: colors.transparent,
+    addOn: colors.transparent,
+  });
 
-  const movieData: MovieData[] = useMemo(() => {
-    return [
+  const setMainColors = (mainColors: ImageColors) => {
+    setImageColors(mainColors);
+  };
+
+  const defineBackgroundColor = useCallback(
+    async (index: number) => {
+      const movie = nowPlayingData?.[index];
+      const movieImage = `${imageURL}${movie?.poster_path}`;
+      const [primary, secondary, addOn] = await getImageColors(movieImage);
+      setMainColors({primary, secondary, addOn} as ImageColors);
+    },
+    [nowPlayingData],
+  );
+
+  const movieData = useMemo<MovieData[]>(
+    () => [
       {
         data: nowPlayingData,
         type: 'NOW_PLAYING_MOVIES',
@@ -82,83 +105,74 @@ export const MoviesCarousel = () => {
         data: upcomingData,
         type: 'UPCOMING_MOVIES',
       },
-    ];
-  }, [nowPlayingData, popularData, topRatedData, upcomingData]);
+    ],
+    [nowPlayingData, popularData, topRatedData, upcomingData],
+  );
 
-  const showCategoryMovies = ({data}: {data: MovieData[]}) => {
-    return data.map((items, index) => {
-      return (
-        <View key={index.toString()} style={styles.carousel}>
-          <Button
-            onPress={() =>
-              navigation.navigate('FullCategoryContent', {
-                movie: items.data,
-                tvShow: undefined,
-                page: pageNumber,
-              })
-            }
-            children={
-              <>
-                <View style={styles.buttonContentWrapper}>
-                  <Text style={styles.title}>
-                    {t(TranslationKeys[items.type])}
-                  </Text>
-
-                  <Icon
-                    name="arrow-forward-outline"
-                    size={metrics.scale(20)}
-                    color={colors.palePink}
-                  />
-                </View>
-              </>
-            }
-          />
-
-          {items.type === 'NOW_PLAYING_MOVIES' ? (
-            <Carousel
-              vertical={false}
-              onSnapToItem={carouselIndex =>
-                defineBackgroundColor(carouselIndex)
+  const showCategoryMovies = useCallback(
+    ({data}: {data: MovieData[]}) => {
+      return data.map((items, index) => {
+        return (
+          <View key={index.toString()} style={styles.carousel}>
+            <Button
+              onPress={() =>
+                navigation.navigate('FullCategoryContent', {
+                  movie: items.data,
+                  tvShow: undefined,
+                  page: pageNumber,
+                })
               }
-              data={nowPlayingData as Movie[]}
-              renderItem={renderItem}
-              sliderWidth={SLIDER_WIDTH}
-              itemWidth={ITEM_WIDTH}
-              layout="stack"
+              children={
+                <>
+                  <View style={styles.buttonContentWrapper}>
+                    <Text style={styles.title}>
+                      {t(TranslationKeys[items.type])}
+                    </Text>
+
+                    <Icon
+                      name="arrow-forward-outline"
+                      size={metrics.scale(20)}
+                      color={colors.palePink}
+                    />
+                  </View>
+                </>
+              }
             />
-          ) : (
-            <View style={styles.flatlistContainer}>
-              <HorizontalFlatlist
-                movies={items.data}
-                categoryTitle={t(TranslationKeys[items.type])}
+
+            {items.type === 'NOW_PLAYING_MOVIES' ? (
+              <Carousel
+                vertical={false}
+                onSnapToItem={carouselIndex =>
+                  defineBackgroundColor(carouselIndex)
+                }
+                data={nowPlayingData as Movie[]}
+                renderItem={renderItem}
+                sliderWidth={SLIDER_WIDTH}
+                itemWidth={ITEM_WIDTH}
+                layout="stack"
               />
-            </View>
-          )}
-        </View>
-      );
-    });
-  };
-
-  const [imageColors, setImageColors] = useState<ImageColors>({
-    primary: colors.transparent,
-    secondary: colors.transparent,
-    addOn: colors.transparent,
-  });
-
-  const setMainColors = (mainColors: ImageColors) => {
-    setImageColors(mainColors);
-  };
-
-  const renderItem = ({item}: {item: Movie}) => {
-    return <MovieCard movie={item} bigCard />;
-  };
-
-  const defineBackgroundColor = async (index: number) => {
-    const movie = nowPlayingData?.[index];
-    const movieImage = `${imageURL}${movie?.poster_path}`;
-    const [primary, secondary, addOn] = await getImageColors(movieImage);
-    setMainColors({primary, secondary, addOn} as ImageColors);
-  };
+            ) : (
+              <View style={styles.flatlistContainer}>
+                <HorizontalFlatlist
+                  movies={items.data}
+                  categoryTitle={t(TranslationKeys[items.type])}
+                />
+              </View>
+            )}
+          </View>
+        );
+      });
+    },
+    [
+      ITEM_WIDTH,
+      SLIDER_WIDTH,
+      defineBackgroundColor,
+      navigation,
+      nowPlayingData,
+      pageNumber,
+      t,
+    ],
+  );
 
   useEffect(() => {
     if (nowPlayingData && nowPlayingData.length > 0) {

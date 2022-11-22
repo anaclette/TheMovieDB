@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useMemo, useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {FlatList, ImageBackground} from 'react-native';
 import CategoryAccordion from '../../components/CategoryAccordion';
@@ -33,24 +33,27 @@ export const Tv = () => {
   });
   const {t, i18n} = useTranslation();
 
-  const tvData: TvData[] = [
-    {
-      data: onTheAir,
-      type: 'ON_THE_AIR_TV_SHOWS',
-    },
-    {
-      data: airingToday,
-      type: 'AIRING_TODAY_TV_SHOWS',
-    },
-    {
-      data: popular,
-      type: 'POPULAR_TV_SHOWS',
-    },
-    {
-      data: topRated,
-      type: 'TOP_RATED_TV_SHOWS',
-    },
-  ];
+  const tvData = useMemo<TvData[]>(
+    () => [
+      {
+        data: onTheAir,
+        type: 'ON_THE_AIR_TV_SHOWS',
+      },
+      {
+        data: airingToday,
+        type: 'AIRING_TODAY_TV_SHOWS',
+      },
+      {
+        data: popular,
+        type: 'POPULAR_TV_SHOWS',
+      },
+      {
+        data: topRated,
+        type: 'TOP_RATED_TV_SHOWS',
+      },
+    ],
+    [airingToday, onTheAir, popular, topRated],
+  );
 
   useEffect(() => {
     setPageNumber(1);
@@ -58,12 +61,15 @@ export const Tv = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const renderItem = ({item, index}: {item: TvData; index: number}) => (
-    <CategoryAccordion
-      key={index.toString()}
-      title={t(TvCategoryTranslationKeys[item.type])}
-      data={item?.data?.slice(0, 6)}
-    />
+  const renderItem = useCallback(
+    ({item, index}: {item: TvData; index: number}) => (
+      <CategoryAccordion
+        key={index.toString()}
+        title={t(TvCategoryTranslationKeys[item.type])}
+        data={item?.data?.slice(0, 6)}
+      />
+    ),
+    [t],
   );
 
   return (

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {Text, View, FlatList, Image} from 'react-native';
 import {imageURL} from '../../common/constants';
 import {CastResp} from '../../types/creditsInterface';
@@ -14,44 +14,47 @@ import {CastMember} from '../../types/castMemberInterface';
 interface Props {
   cast: CastResp[] | TvCast[];
   isTv?: boolean;
-  setIsVisible?: (value: boolean) => void;
+  setIsVisible: (value: boolean) => void;
 }
 
 type NavProps = NavigationProp<RootStackParamList, 'CastMemberDetails'>;
 
 export const Cast = ({cast, isTv, setIsVisible}: Props) => {
   const {t} = useTranslation();
-  const navigation = useNavigation<NavProps>();
+  const {navigate} = useNavigation<NavProps>();
 
-  const renderItem = ({item}: {item: CastResp | TvCast | CastMember}) => {
-    const source = `${imageURL}${item.profile_path}`;
+  const renderItem = useCallback(
+    ({item}: {item: CastResp | TvCast | CastMember}) => {
+      const source = `${imageURL}${item.profile_path}`;
 
-    return (
-      <Button
-        onPress={() => {
-          isTv && setIsVisible(false);
-          navigation.navigate('CastMemberDetails', item as CastMember);
-        }}
-        children={
-          <>
-            <View style={styles.memberDetailsWrapper}>
-              <Text style={styles.name}>{item.name}</Text>
-              <View style={styles.imageWrapper}>
-                {item.profile_path ? (
-                  <Image source={{uri: source}} style={styles.image} />
-                ) : (
-                  <Image
-                    source={require('../../assets/images/No-img-available.png')}
-                    style={[styles.image, styles.noImageAsset]}
-                  />
-                )}
+      return (
+        <Button
+          onPress={() => {
+            isTv && setIsVisible(false);
+            navigate('CastMemberDetails', item as CastMember);
+          }}
+          children={
+            <>
+              <View style={styles.memberDetailsWrapper}>
+                <Text style={styles.name}>{item.name}</Text>
+                <View style={styles.imageWrapper}>
+                  {item.profile_path ? (
+                    <Image source={{uri: source}} style={styles.image} />
+                  ) : (
+                    <Image
+                      source={require('../../assets/images/No-img-available.png')}
+                      style={[styles.image, styles.noImageAsset]}
+                    />
+                  )}
+                </View>
               </View>
-            </View>
-          </>
-        }
-      />
-    );
-  };
+            </>
+          }
+        />
+      );
+    },
+    [isTv, navigate, setIsVisible],
+  );
   return (
     <View style={styles.container}>
       <Text style={styles.castTitle}>{t(TranslationKeys.CAST_TITLE)} </Text>

@@ -87,7 +87,9 @@ export const MovieDetails = ({route, navigation}: Props) => {
               </Text>
             )}
           </View>
-          {castIsSuccess && cast?.length !== 0 && <Cast cast={cast} />}
+          {castIsSuccess && cast?.length !== 0 && (
+            <Cast setIsVisible={() => undefined} cast={cast} />
+          )}
         </ScrollView>
       ) : (
         <Loader />
