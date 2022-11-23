@@ -1,6 +1,6 @@
-# Movies app [WIP]
+# Movies app
 
-Movies and tv shows app using The Movie DB API. It has been made with practising purposes and I've implemented features such as carousel, accordion, modal, search bar, language switching buttons, animated layout and RTK query for the very first time. It still has some features ahead to be taken care of along with some warnings and issues that need to be tackled. Thus it is still a work in progress.
+Movies and tv shows app using The Movie DB API. It has been made with practising purposes and I've implemented features such as carousel, accordion, modal, search bar, language switching buttons, animated layout and RTK query.
 
 ## Built with
 
