@@ -64,6 +64,10 @@ export const Home = () => {
       </Text>
 
       <FlatList
+        removeClippedSubviews
+        maxToRenderPerBatch={5}
+        updateCellsBatchingPeriod={30}
+        initialNumToRender={7}
         keyExtractor={(_, index) => index.toString()}
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />

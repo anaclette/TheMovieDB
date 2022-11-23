@@ -59,6 +59,9 @@ export const Cast = ({cast, isTv, setIsVisible}: Props) => {
     <View style={styles.container}>
       <Text style={styles.castTitle}>{t(TranslationKeys.CAST_TITLE)} </Text>
       <FlatList
+        removeClippedSubviews
+        maxToRenderPerBatch={5}
+        initialNumToRender={5}
         horizontal
         data={cast as TvCast[]}
         renderItem={renderItem}

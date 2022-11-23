@@ -204,6 +204,7 @@ export const MoviesCarousel = () => {
             imageColors.addOn,
           ]}>
           <ScrollView
+            removeClippedSubviews
             refreshControl={
               <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
             }

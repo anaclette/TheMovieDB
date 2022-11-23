@@ -106,7 +106,10 @@ export const FullCategoryContent = ({route, navigation}: Props) => {
         <Loader />
       ) : (
         <FlatList
+          initialNumToRender={6}
+          removeClippedSubviews
           onEndReached={loadMore}
+          onEndReachedThreshold={0.3}
           columnWrapperStyle={styles.container}
           numColumns={2}
           keyExtractor={(_, index) => index.toString()}

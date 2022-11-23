@@ -143,6 +143,8 @@ export const SearchResults = ({navigation}: NavProp) => {
       </KeyboardAvoidingView>
       {!!userInput && (
         <FlatList
+          initialNumToRender={5}
+          removeClippedSubviews
           numColumns={2}
           data={searchResults}
           renderItem={renderItem}
