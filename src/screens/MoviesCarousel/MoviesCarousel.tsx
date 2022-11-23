@@ -182,12 +182,12 @@ export const MoviesCarousel = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nowPlayingData]);
 
-  const onRefresh = useCallback(() => {
+  const onRefresh = () => {
     setRefreshing(true);
     setTimeout(() => {
       setRefreshing(false);
-    }, 2000);
-  }, []);
+    }, 500);
+  };
 
   return (
     <>

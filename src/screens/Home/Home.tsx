@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 
 import {
@@ -42,12 +42,12 @@ export const Home = () => {
 
   const {t} = useTranslation();
 
-  const onRefresh = useCallback(() => {
+  const onRefresh = () => {
     setRefreshing(true);
     setTimeout(() => {
       setRefreshing(false);
-    }, 1000);
-  }, []);
+    }, 500);
+  };
 
   const loadMore = () => {
     setTimeout(() => {

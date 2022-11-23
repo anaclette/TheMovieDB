@@ -27,12 +27,12 @@ export const FullCategoryContent = ({route, navigation}: Props) => {
   const page = route.params.page;
   const [pageNumber, setPageNumber] = useState(page);
 
-  const onRefresh = useCallback(() => {
+  const onRefresh = () => {
     setRefreshing(true);
     setTimeout(() => {
       setRefreshing(false);
-    }, 2000);
-  }, []);
+    }, 500);
+  };
 
   const loadMore = () => {
     setTimeout(() => {
