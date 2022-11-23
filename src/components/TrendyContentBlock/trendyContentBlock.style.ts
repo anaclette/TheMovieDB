@@ -6,27 +6,22 @@ import metrics from '../../themes/metrics';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: metrics.scaleVertical(35),
+    marginTop: metrics.scaleVertical(8),
   },
   imageWrapper: {
     width: metrics.screenWidth,
-    height: metrics.scaleVertical(200),
-    opacity: 0.8,
+    height: metrics.scaleVertical(177),
   },
   image: {
     flex: 1,
-  },
-  sectionTitle: {
-    ...fonts.Amatic,
   },
   title: {
     ...fonts.InconsolataMedium,
     fontSize: metrics.scale(18),
     color: colors.palePink,
-    paddingLeft: metrics.scale(10),
-  },
-  movieTitle: {
-    ...fonts.HindSiliguri,
+    paddingHorizontal: metrics.scale(10),
+    flex: 1,
+    paddingVertical: metrics.scaleVertical(5),
   },
   mediaType: {
     ...fonts.HindSiliguri,
@@ -38,22 +33,15 @@ export const styles = StyleSheet.create({
   absolute: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
-    marginTop: metrics.scaleVertical(5),
     position: 'absolute',
-    left: 0,
-    top: metrics.scale(-27),
-    height: '16%',
     backgroundColor: colors.transparentTeal,
-    width: '100%',
   },
 
   ratingWrapper: {
     position: 'absolute',
-    right: 0,
     justifyContent: 'center',
     alignItems: 'flex-end',
-    bottom: metrics.scale(13),
+    bottom: 0,
     backgroundColor: colors.transparentLightTeal,
     height: '15%',
     borderTopLeftRadius: metrics.scale(10),
@@ -63,6 +51,9 @@ export const styles = StyleSheet.create({
   },
 
   shadow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: colors.transparentTeal,
     shadowColor: colors.palePink,
     shadowOpacity: 0.7,
     shadowOffset: {

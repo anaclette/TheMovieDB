@@ -39,6 +39,17 @@ export const TrendyContentBlock = ({item}: Props) => {
       }
       children={
         <View style={styles.container}>
+          <View style={styles.shadow}>
+            {item.name && <Text style={styles.title}>{item.name}</Text>}
+            {item.title && <Text style={styles.title}>{item.title}</Text>}
+            <Text style={styles.mediaType}>
+              <Icon
+                name={isMovie ? 'movie' : 'tv'}
+                size={metrics.scale(20)}
+                color={colors.blueGreen}
+              />
+            </Text>
+          </View>
           <View style={[styles.imageWrapper]}>
             <Animated.Image
               blurRadius={0.6}
@@ -48,31 +59,6 @@ export const TrendyContentBlock = ({item}: Props) => {
               source={item.backdrop_path ? {uri: source} : noImage}
               style={[styles.image, {opacity}]}
             />
-          </View>
-          <View style={[styles.absolute, styles.shadow]}>
-            <>
-              {item.name && <Text style={styles.title}>{item.name}</Text>}
-              {item.title && <Text style={styles.title}>{item.title}</Text>}
-            </>
-            <>
-              {isMovie ? (
-                <Text style={styles.mediaType}>
-                  <Icon
-                    name="movie"
-                    size={metrics.scale(20)}
-                    color={colors.blueGreen}
-                  />
-                </Text>
-              ) : (
-                <Text style={styles.mediaType}>
-                  <Icon
-                    name="tv"
-                    size={metrics.scale(20)}
-                    color={colors.blueGreen}
-                  />
-                </Text>
-              )}
-            </>
           </View>
           <View style={styles.ratingWrapper}>
             <Rating rating={item.vote_average} color={colors.palePink} />
