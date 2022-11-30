@@ -38,3 +38,7 @@ export enum CastMemberTagTypes {
   PERSONAL_INFO = 'PERSONAL_INFO',
   COMBINED_CREDITS = 'COMBINED_CREDITS',
 }
+
+export enum FullContentTagType {
+  FULL_CONTENT = 'FULL_CONTENT',
+}

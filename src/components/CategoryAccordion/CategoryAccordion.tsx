@@ -6,15 +6,17 @@ import {TvDetails} from '../../types/tvInterface';
 import {styles} from './categoryAccordion.style';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
 import {RootStackParamList} from '../../navigation/NavigationController';
+import {TvTypes} from '../../types/mediaContentTypes';
 
 interface Props {
   title: string;
   data: TvDetails[] | undefined;
+  type: TvTypes;
 }
 
 type NavProp = NavigationProp<RootStackParamList, 'FullCategoryContent'>;
 
-export const CategoryAccordion = ({title, data}: Props) => {
+export const CategoryAccordion = ({title, data, type}: Props) => {
   const navigation = useNavigation<NavProp>();
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const isAndroid = Platform.OS === 'android';
@@ -52,9 +54,7 @@ export const CategoryAccordion = ({title, data}: Props) => {
             wrapperStyle={styles.moreButton}
             onPress={() => {
               navigation.navigate('FullCategoryContent', {
-                tvShow: data,
-                movie: undefined,
-                page: 2,
+                type: type,
               });
             }}
             icon="arrow-forward"

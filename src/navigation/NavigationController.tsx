@@ -13,15 +13,15 @@ import {CastMember} from '../types/castMemberInterface';
 import colors from '../themes/colors';
 import SearchResults from '../screens/SearchResults';
 import {SearchResult} from '../types/multiSearch';
+import {MovieTypes, TvTypes} from '../types/mediaContentTypes';
 
 export type RootStackParamList = {
   MovieDetails: Movie;
   TvDetails: TvDetailsType;
   Tabs: () => JSX.Element;
   FullCategoryContent: {
-    movie?: Movie[] | undefined;
-    tvShow?: TvDetailsType[] | undefined;
-    page: number;
+    isMovie?: boolean;
+    type: MovieTypes | TvTypes;
   };
   CastMemberDetails: CastMember;
   SearchResults: SearchResult[] | undefined;

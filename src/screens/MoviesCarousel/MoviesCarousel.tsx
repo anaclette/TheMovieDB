@@ -18,10 +18,10 @@ import LinearGradient from 'react-native-linear-gradient';
 import Loader from '../../components/Loader';
 import Button from '../../components/Button';
 import {
-  useGetNowPlayingByPageQuery,
-  useGetPopularByPageQuery,
-  useGetTopRatedByPageQuery,
-  useGetUpcomingByPageQuery,
+  useGetPopularMoviesQuery,
+  useGetTopRatedMoviesQuery,
+  useGetNowPlayingMoviesQuery,
+  useGetUpcomingMoviesQuery,
 } from '../../state/themoviedb';
 import {useNavigation, NavigationProp} from '@react-navigation/native';
 import {MovieData} from '../../types/mediaContentTypes';
@@ -39,7 +39,7 @@ const renderItem = ({item}: {item: Movie}) => {
 };
 
 export const MoviesCarousel = () => {
-  const [pageNumber, setPageNumber] = useState(1);
+  // const [pageNumber, setPageNumber] = useState(1);
   const navigation = useNavigation<NavProps>();
   const {t} = useTranslation();
   const chosenLanguage = useAppSelector(state => state.i18nSlice.lang);
@@ -51,22 +51,10 @@ export const MoviesCarousel = () => {
     data: nowPlayingData,
     isLoading,
     isSuccess,
-  } = useGetNowPlayingByPageQuery({
-    page: pageNumber,
-    currentLanguage: chosenLanguage,
-  });
-  const {data: popularData} = useGetPopularByPageQuery({
-    page: pageNumber,
-    currentLanguage: chosenLanguage,
-  });
-  const {data: topRatedData} = useGetTopRatedByPageQuery({
-    page: pageNumber,
-    currentLanguage: chosenLanguage,
-  });
-  const {data: upcomingData} = useGetUpcomingByPageQuery({
-    page: pageNumber,
-    currentLanguage: chosenLanguage,
-  });
+  } = useGetNowPlayingMoviesQuery(chosenLanguage);
+  const {data: popularData} = useGetPopularMoviesQuery(chosenLanguage);
+  const {data: topRatedData} = useGetTopRatedMoviesQuery(chosenLanguage);
+  const {data: upcomingData} = useGetUpcomingMoviesQuery(chosenLanguage);
   const [imageColors, setImageColors] = useState<ImageColors>({
     primary: colors.transparent,
     secondary: colors.transparent,
@@ -117,9 +105,8 @@ export const MoviesCarousel = () => {
             <Button
               onPress={() =>
                 navigation.navigate('FullCategoryContent', {
-                  movie: items.data,
-                  tvShow: undefined,
-                  page: pageNumber,
+                  isMovie: true,
+                  type: items.type,
                 })
               }
               children={
@@ -169,7 +156,6 @@ export const MoviesCarousel = () => {
       defineBackgroundColor,
       navigation,
       nowPlayingData,
-      pageNumber,
       t,
     ],
   );
@@ -177,7 +163,6 @@ export const MoviesCarousel = () => {
   useEffect(() => {
     if (nowPlayingData && nowPlayingData.length > 0) {
       defineBackgroundColor(0);
-      setPageNumber(1);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nowPlayingData]);

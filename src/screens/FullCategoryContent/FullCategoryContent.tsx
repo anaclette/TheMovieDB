@@ -6,6 +6,7 @@ import {
   Text,
   View,
 } from 'react-native';
+
 import Button from '../../components/Button';
 import {StackScreenProps} from '@react-navigation/stack';
 import {RootStackParamList} from '../../navigation/NavigationController';
@@ -16,16 +17,48 @@ import MovieCard from '../../components/MovieCard';
 import Rating from '../../components/Rating';
 import TvCard from '../../components/TvCard';
 import Loader from '../../components/Loader';
-import {ContentData} from '../../types/mediaContentTypes';
+import {ContentData, MovieTypes, TvTypes} from '../../types/mediaContentTypes';
+import {useAppSelector} from '../../state/hooks';
+import {useGetFullContentQuery} from '../../state/themoviedb';
+import {MOVIE_ENDPOINTS, TV_ENDPOINTS} from '../../common/constants';
+import {Movie} from '../../types/moviesInterface';
+import {TvDetails} from '../../types/tvInterface';
 interface Props
   extends StackScreenProps<RootStackParamList, 'FullCategoryContent'> {}
 
 export const FullCategoryContent = ({route, navigation}: Props) => {
+  const [pageNumber, setPageNumber] = useState(1);
   const [refreshing, setRefreshing] = useState(false);
-  const movie = route.params.movie;
-  const tvShow = route.params.tvShow;
-  const page = route.params.page;
-  const [pageNumber, setPageNumber] = useState(page);
+  const language = useAppSelector(state => state.i18nSlice.lang);
+  const isMovie = route.params.isMovie;
+  const type = route.params.type;
+  const retrieveEndpoint = (mediaType: MovieTypes | TvTypes) => {
+    switch (mediaType) {
+      case 'NOW_PLAYING_MOVIES':
+        return MOVIE_ENDPOINTS.NOW_PLAYING;
+      case 'UPCOMING_MOVIES':
+        return MOVIE_ENDPOINTS.UPCOMING;
+      case 'TOP_RATED_MOVIES':
+        return MOVIE_ENDPOINTS.TOP_RATED;
+      case 'POPULAR_MOVIES':
+        return MOVIE_ENDPOINTS.POPULAR;
+      case 'ON_THE_AIR_TV_SHOWS':
+        return TV_ENDPOINTS.ON_THE_AIR;
+      case 'AIRING_TODAY_TV_SHOWS':
+        return TV_ENDPOINTS.AIRING_TODAY;
+      case 'POPULAR_TV_SHOWS':
+        return TV_ENDPOINTS.POPULAR;
+      case 'TOP_RATED_TV_SHOWS':
+        return TV_ENDPOINTS.TOP_RATED;
+    }
+  };
+
+  const {data, isLoading} = useGetFullContentQuery({
+    mediaType: isMovie ? 'movie' : 'tv',
+    endpoint: retrieveEndpoint(type),
+    page: pageNumber,
+    currentLanguage: language,
+  });
 
   const onRefresh = () => {
     setRefreshing(true);
@@ -35,25 +68,23 @@ export const FullCategoryContent = ({route, navigation}: Props) => {
   };
 
   const loadMore = () => {
-    setTimeout(() => {
-      setPageNumber(pageNumber + 1);
-    }, 500);
+    setPageNumber(prevPage => prevPage + 1);
   };
 
   const contentData = useMemo<ContentData[]>(
     () => [
       {
-        movie: movie,
+        movie: data as Movie[],
         type: 'movie',
         tvShow: [],
       },
       {
-        tvShow: tvShow,
+        tvShow: data as TvDetails[],
         type: 'tv_show',
         movie: [],
       },
     ],
-    [movie, tvShow],
+    [data],
   );
 
   const renderItem = useCallback(({item}: {item: ContentData}) => {

@@ -42,12 +42,8 @@ export const getIconName = (route: {name: string}) => {
   return {iconName};
 };
 
-export const customQuery = (
-  endpoint: string,
-  language: string,
-  page: number | void = 1,
-) => {
-  return `/${endpoint}?api_key=${API_KEY}&language=${language}&page=${page}`;
+export const customQuery = (endpoint: string, language: string) => {
+  return `/${endpoint}?api_key=${API_KEY}&language=${language}`;
 };
 
 export const getYear = (str: string) => str.slice(0, 4);

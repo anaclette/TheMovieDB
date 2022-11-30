@@ -1,36 +1,23 @@
-import React, {useCallback, useEffect, useMemo, useState} from 'react';
+import React, {useCallback, useEffect, useMemo} from 'react';
 import {useTranslation} from 'react-i18next';
 import {FlatList, ImageBackground} from 'react-native';
 import CategoryAccordion from '../../components/CategoryAccordion';
 import {TvCategoryTranslationKeys} from '../../locale/translations/keys';
 import {useAppSelector} from '../../state/hooks';
 import {
-  useGetAiringTodayByPageQuery,
-  useGetOnTheAirByPageQuery,
-  useGetPopularTvShowsByPageQuery,
-  useGetTopRatedTvShowsByPageQuery,
+  useGetAiringTodayTvShowsQuery,
+  useGetOnTheAirTvShowsQuery,
+  useGetPopularTvShowsQuery,
+  useGetTopRatedTvShowsQuery,
 } from '../../state/themoviedb';
 import {TvData} from '../../types/mediaContentTypes';
 
 export const Tv = () => {
-  const [pageNumber, setPageNumber] = useState(1);
   const chosenLanguage = useAppSelector(state => state.i18nSlice.lang);
-  const {data: airingToday} = useGetAiringTodayByPageQuery({
-    page: pageNumber,
-    currentLanguage: chosenLanguage,
-  });
-  const {data: onTheAir} = useGetOnTheAirByPageQuery({
-    page: pageNumber,
-    currentLanguage: chosenLanguage,
-  });
-  const {data: popular} = useGetPopularTvShowsByPageQuery({
-    page: pageNumber,
-    currentLanguage: chosenLanguage,
-  });
-  const {data: topRated} = useGetTopRatedTvShowsByPageQuery({
-    page: pageNumber,
-    currentLanguage: chosenLanguage,
-  });
+  const {data: airingToday} = useGetAiringTodayTvShowsQuery(chosenLanguage);
+  const {data: onTheAir} = useGetOnTheAirTvShowsQuery(chosenLanguage);
+  const {data: popular} = useGetPopularTvShowsQuery(chosenLanguage);
+  const {data: topRated} = useGetTopRatedTvShowsQuery(chosenLanguage);
   const {t, i18n} = useTranslation();
 
   const tvData = useMemo<TvData[]>(
@@ -56,7 +43,6 @@ export const Tv = () => {
   );
 
   useEffect(() => {
-    setPageNumber(1);
     i18n.changeLanguage(chosenLanguage);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -67,6 +53,7 @@ export const Tv = () => {
         key={index.toString()}
         title={t(TvCategoryTranslationKeys[item.type])}
         data={item?.data?.slice(0, 6)}
+        type={item.type}
       />
     ),
     [t],

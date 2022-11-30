@@ -27,11 +27,14 @@ import type {
   MovieFullDetails,
 } from '../../types/moviesInterface';
 import {customQuery} from '../../utils/helpers';
+import {FullContentTagType} from '../../common/constants';
 
 const THE_MOVIE_DB_API_REDUCER_KEY = 'theMovieDBApi';
 
 const emptyApi = createApi({
-  baseQuery: fetchBaseQuery({baseUrl: baseURL}),
+  baseQuery: fetchBaseQuery({
+    baseUrl: baseURL,
+  }),
   reducerPath: THE_MOVIE_DB_API_REDUCER_KEY,
   endpoints: () => ({}),
 });
@@ -52,52 +55,33 @@ const apiWithTag = emptyApi.enhanceEndpoints({
     TvShowsTagTypes.TV_SHOW_CAST,
     CastMemberTagTypes.COMBINED_CREDITS,
     CastMemberTagTypes.PERSONAL_INFO,
+    FullContentTagType.FULL_CONTENT,
   ],
 });
 
 export const theMovieDBApi = apiWithTag.injectEndpoints({
   endpoints: build => ({
-    getNowPlayingByPage: build.query<
-      Movie[],
-      {page: number | void; currentLanguage: string}
-    >({
-      query: ({page, currentLanguage}) =>
-        customQuery(
-          `movie/${MOVIE_ENDPOINTS.NOW_PLAYING}`,
-          currentLanguage,
-          page,
-        ),
+    getNowPlayingMovies: build.query<Movie[], string>({
+      query: currentLanguage =>
+        customQuery(`movie/${MOVIE_ENDPOINTS.NOW_PLAYING}`, currentLanguage),
       providesTags: [MoviesTagTypes.NOW_PLAYING],
       transformResponse: (response: MovieDBMoviesResponse) => response.results,
     }),
-    getTopRatedByPage: build.query<
-      Movie[],
-      {page: number | void; currentLanguage: string}
-    >({
-      query: ({page, currentLanguage}) =>
-        customQuery(
-          `movie/${MOVIE_ENDPOINTS.TOP_RATED}`,
-          currentLanguage,
-          page,
-        ),
+    getTopRatedMovies: build.query<Movie[], string>({
+      query: currentLanguage =>
+        customQuery(`movie/${MOVIE_ENDPOINTS.TOP_RATED}`, currentLanguage),
       providesTags: [MoviesTagTypes.TOP_RATED],
       transformResponse: (response: MovieDBMoviesResponse) => response.results,
     }),
-    getUpcomingByPage: build.query<
-      Movie[],
-      {page: number | void; currentLanguage: string}
-    >({
-      query: ({page, currentLanguage}) =>
-        customQuery(`movie/${MOVIE_ENDPOINTS.UPCOMING}`, currentLanguage, page),
+    getUpcomingMovies: build.query<Movie[], string>({
+      query: currentLanguage =>
+        customQuery(`movie/${MOVIE_ENDPOINTS.UPCOMING}`, currentLanguage),
       providesTags: [MoviesTagTypes.UPCOMING],
       transformResponse: (response: MovieDBMoviesResponse) => response.results,
     }),
-    getPopularByPage: build.query<
-      Movie[],
-      {page: number | void; currentLanguage: string}
-    >({
-      query: ({page, currentLanguage}) =>
-        customQuery(`movie/${MOVIE_ENDPOINTS.POPULAR}`, currentLanguage, page),
+    getPopularMovies: build.query<Movie[], string>({
+      query: currentLanguage =>
+        customQuery(`movie/${MOVIE_ENDPOINTS.POPULAR}`, currentLanguage),
       providesTags: [MoviesTagTypes.POPULAR],
       transformResponse: (response: MovieDBMoviesResponse) => response.results,
     }),
@@ -119,39 +103,27 @@ export const theMovieDBApi = apiWithTag.injectEndpoints({
       providesTags: [MoviesTagTypes.CAST],
       transformResponse: (response: Credits) => response.cast,
     }),
-    getAiringTodayByPage: build.query<
-      TvDetails[],
-      {page: number | void; currentLanguage: string}
-    >({
-      query: ({page, currentLanguage}) =>
-        customQuery(`tv/${TV_ENDPOINTS.AIRING_TODAY}`, currentLanguage, page),
+    getAiringTodayTvShows: build.query<TvDetails[], string>({
+      query: currentLanguage =>
+        customQuery(`tv/${TV_ENDPOINTS.AIRING_TODAY}`, currentLanguage),
       providesTags: [TvShowsTagTypes.AIRING_TODAY],
       transformResponse: (response: TvResponse) => response.results,
     }),
-    getTopRatedTvShowsByPage: build.query<
-      TvDetails[],
-      {page: number | void; currentLanguage: string}
-    >({
-      query: ({page, currentLanguage}) =>
-        customQuery(`tv/${TV_ENDPOINTS.TOP_RATED}`, currentLanguage, page),
+    getTopRatedTvShows: build.query<TvDetails[], string>({
+      query: currentLanguage =>
+        customQuery(`tv/${TV_ENDPOINTS.TOP_RATED}`, currentLanguage),
       providesTags: [TvShowsTagTypes.TOP_RATED_TV_SHOWS],
       transformResponse: (response: TvResponse) => response.results,
     }),
-    getPopularTvShowsByPage: build.query<
-      TvDetails[],
-      {page: number | void; currentLanguage: string}
-    >({
-      query: ({page, currentLanguage}) =>
-        customQuery(`tv/${TV_ENDPOINTS.POPULAR}`, currentLanguage, page),
+    getPopularTvShows: build.query<TvDetails[], string>({
+      query: currentLanguage =>
+        customQuery(`tv/${TV_ENDPOINTS.POPULAR}`, currentLanguage),
       providesTags: [TvShowsTagTypes.POPULAR_TV_SHOWS],
       transformResponse: (response: TvResponse) => response.results,
     }),
-    getOnTheAirByPage: build.query<
-      TvDetails[],
-      {page: number | void; currentLanguage: string}
-    >({
-      query: ({page, currentLanguage}) =>
-        customQuery(`tv/${TV_ENDPOINTS.ON_THE_AIR}`, currentLanguage, page),
+    getOnTheAirTvShows: build.query<TvDetails[], string>({
+      query: currentLanguage =>
+        customQuery(`tv/${TV_ENDPOINTS.ON_THE_AIR}`, currentLanguage),
       providesTags: [TvShowsTagTypes.ON_THE_AIR],
       transformResponse: (response: TvResponse) => response.results,
     }),
@@ -186,7 +158,7 @@ export const theMovieDBApi = apiWithTag.injectEndpoints({
       {page: number | void; currentLanguage: string}
     >({
       query: ({page, currentLanguage}) =>
-        customQuery('trending/all/day', currentLanguage, page),
+        `/trending/all/day?api_key=${API_KEY}&language=${currentLanguage}&page=${page}`,
       transformResponse: (response: TrendyContent) => response.results,
     }),
     getMemberDetails: build.query<
@@ -206,24 +178,40 @@ export const theMovieDBApi = apiWithTag.injectEndpoints({
       providesTags: [CastMemberTagTypes.COMBINED_CREDITS],
       transformResponse: (response: CombinedCredits) => response.cast,
     }),
+    getFullContent: build.query<
+      Movie[] | TvDetails[],
+      {
+        mediaType: string | void;
+        endpoint: string | void;
+        page: number | void;
+        currentLanguage: string | void;
+      }
+    >({
+      query: ({mediaType, endpoint, page, currentLanguage}) =>
+        `${mediaType}/${endpoint}?api_key=${API_KEY}&language=${currentLanguage}&page=${page}`,
+      providesTags: [FullContentTagType.FULL_CONTENT],
+      transformResponse: (response: MovieDBMoviesResponse | TvResponse) =>
+        response.results,
+    }),
   }),
 });
 
 export const {
-  useGetNowPlayingByPageQuery,
-  useGetPopularByPageQuery,
-  useGetTopRatedByPageQuery,
-  useGetUpcomingByPageQuery,
+  useGetNowPlayingMoviesQuery,
+  useGetPopularMoviesQuery,
+  useGetTopRatedMoviesQuery,
+  useGetUpcomingMoviesQuery,
   useGetMovieCastQuery,
   useGetMovieQuery,
-  useGetAiringTodayByPageQuery,
-  useGetOnTheAirByPageQuery,
-  useGetPopularTvShowsByPageQuery,
-  useGetTopRatedTvShowsByPageQuery,
+  useGetAiringTodayTvShowsQuery,
+  useGetOnTheAirTvShowsQuery,
+  useGetPopularTvShowsQuery,
+  useGetTopRatedTvShowsQuery,
   useGetTvShowCastQuery,
   useGetTvShowQuery,
   useGetSearchResultQuery,
   useGetTrendyContentQuery,
   useGetCombinedCreditsQuery,
   useGetMemberDetailsQuery,
+  useGetFullContentQuery,
 } = theMovieDBApi;
