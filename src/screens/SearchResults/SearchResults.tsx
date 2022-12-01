@@ -7,7 +7,6 @@ import {
   Keyboard,
   KeyboardAvoidingView,
   Platform,
-  SafeAreaView,
   TextInput,
   FlatList,
   Image,
@@ -97,7 +96,7 @@ export const SearchResults = ({navigation}: NavProp) => {
   );
 
   return (
-    <SafeAreaView>
+    <View>
       <KeyboardAvoidingView
         style={styles.keyBoardAvoidingView}
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
@@ -143,6 +142,7 @@ export const SearchResults = ({navigation}: NavProp) => {
       </KeyboardAvoidingView>
       {!!userInput && (
         <FlatList
+          contentContainerStyle={styles.resultsContainer}
           initialNumToRender={5}
           removeClippedSubviews
           numColumns={2}
@@ -151,6 +151,6 @@ export const SearchResults = ({navigation}: NavProp) => {
           keyExtractor={(_, index) => index.toString()}
         />
       )}
-    </SafeAreaView>
+    </View>
   );
 };

@@ -59,4 +59,7 @@ export const styles = StyleSheet.create({
     color: colors.palePink,
     ...fonts.HindSiliguri,
   },
+  resultsContainer: {
+    paddingBottom: metrics.scale(100),
+  },
 });
