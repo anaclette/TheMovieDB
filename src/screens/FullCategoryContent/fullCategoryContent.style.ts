@@ -10,13 +10,6 @@ export const styles = StyleSheet.create({
   container: {
     flexWrap: 'wrap',
   },
-  title: {
-    ...fonts.InconsolataMedium,
-    color: colors.palePink,
-    textAlign: 'center',
-    flexGrow: 20,
-    fontSize: metrics.scaledFontSize(18),
-  },
   cardWrapper: {
     justifyContent: 'center',
     width: '50%',
@@ -34,5 +27,16 @@ export const styles = StyleSheet.create({
   activityIndicatorWrapper: {
     height: metrics.screenHeight / 3 - metrics.scaleVertical(100),
     justifyContent: 'center',
+  },
+  pageButtonsWrapper: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    height: metrics.scaleVertical(35),
+    marginBottom: metrics.scale(10),
+  },
+  buttonText: {
+    ...fonts.HindSiliguri,
+    color: colors.lightBlue,
   },
 });

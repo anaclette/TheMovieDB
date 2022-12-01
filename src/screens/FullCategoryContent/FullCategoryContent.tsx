@@ -1,11 +1,5 @@
-import React, {useState, useCallback, useMemo} from 'react';
-import {
-  ActivityIndicator,
-  FlatList,
-  RefreshControl,
-  Text,
-  View,
-} from 'react-native';
+import React, {useState, useCallback, useMemo, useEffect} from 'react';
+import {FlatList, RefreshControl, View} from 'react-native';
 
 import Button from '../../components/Button';
 import {StackScreenProps} from '@react-navigation/stack';
@@ -23,6 +17,8 @@ import {useGetFullContentQuery} from '../../state/themoviedb';
 import {MOVIE_ENDPOINTS, TV_ENDPOINTS} from '../../common/constants';
 import {Movie} from '../../types/moviesInterface';
 import {TvDetails} from '../../types/tvInterface';
+import {useTranslation} from 'react-i18next';
+import {TranslationKeys} from '../../locale/translations/keys';
 interface Props
   extends StackScreenProps<RootStackParamList, 'FullCategoryContent'> {}
 
@@ -30,10 +26,11 @@ export const FullCategoryContent = ({route, navigation}: Props) => {
   const [pageNumber, setPageNumber] = useState(1);
   const [refreshing, setRefreshing] = useState(false);
   const language = useAppSelector(state => state.i18nSlice.lang);
+  const {t} = useTranslation();
   const isMovie = route.params.isMovie;
   const type = route.params.type;
-  const retrieveEndpoint = (mediaType: MovieTypes | TvTypes) => {
-    switch (mediaType) {
+  const retrieveEndpoint = (mediaTypeEndpoints: MovieTypes | TvTypes) => {
+    switch (mediaTypeEndpoints) {
       case 'NOW_PLAYING_MOVIES':
         return MOVIE_ENDPOINTS.NOW_PLAYING;
       case 'UPCOMING_MOVIES':
@@ -52,13 +49,18 @@ export const FullCategoryContent = ({route, navigation}: Props) => {
         return TV_ENDPOINTS.TOP_RATED;
     }
   };
+  const [mediaType, setMediaType] = useState('');
 
   const {data, isLoading} = useGetFullContentQuery({
-    mediaType: isMovie ? 'movie' : 'tv',
+    mediaType: mediaType,
     endpoint: retrieveEndpoint(type),
     page: pageNumber,
     currentLanguage: language,
   });
+
+  useEffect(() => {
+    isMovie ? setMediaType('movie') : setMediaType('tv');
+  }, [isMovie]);
 
   const onRefresh = () => {
     setRefreshing(true);
@@ -67,8 +69,11 @@ export const FullCategoryContent = ({route, navigation}: Props) => {
     }, 500);
   };
 
-  const loadMore = () => {
+  const loadNextPage = () => {
     setPageNumber(prevPage => prevPage + 1);
+  };
+  const loadPreviousPage = () => {
+    setPageNumber(prevPage => prevPage - 1);
   };
 
   const contentData = useMemo<ContentData[]>(
@@ -76,12 +81,12 @@ export const FullCategoryContent = ({route, navigation}: Props) => {
       {
         movie: data as Movie[],
         type: 'movie',
-        tvShow: [],
+        tvShow: null,
       },
       {
         tvShow: data as TvDetails[],
-        type: 'tv_show',
-        movie: [],
+        type: 'tv',
+        movie: null,
       },
     ],
     [data],
@@ -95,7 +100,6 @@ export const FullCategoryContent = ({route, navigation}: Props) => {
             <View
               style={styles.cardWrapper}
               key={`${props.id}_movie_index_${index}`}>
-              <Text style={styles.title}>{props.title}</Text>
               <View style={styles.innerContainer}>
                 <MovieCard isFullContentPage key={index} movie={props} />
                 <Rating rating={props.vote_average} color={colors.lightBlue} />
@@ -105,7 +109,7 @@ export const FullCategoryContent = ({route, navigation}: Props) => {
         </>
       );
     }
-    if (item.type === 'tv_show') {
+    if (item.type === 'tv') {
       return (
         <>
           {item.tvShow?.map((props, index) => (
@@ -133,31 +137,38 @@ export const FullCategoryContent = ({route, navigation}: Props) => {
         onPress={() => navigation.goBack()}
         color={colors.palePink}
       />
-      {refreshing ? (
+      {refreshing || isLoading ? (
         <Loader />
       ) : (
-        <FlatList
-          initialNumToRender={6}
-          removeClippedSubviews
-          onEndReached={loadMore}
-          onEndReachedThreshold={0.3}
-          columnWrapperStyle={styles.container}
-          numColumns={2}
-          keyExtractor={(_, index) => index.toString()}
-          data={contentData}
-          renderItem={renderItem}
-          refreshControl={
-            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-          }
-          ListFooterComponent={
-            <View style={styles.activityIndicatorWrapper}>
-              <ActivityIndicator
-                size={metrics.scale(20)}
-                color={colors.palePink}
-              />
-            </View>
-          }
-        />
+        <>
+          <FlatList
+            initialNumToRender={6}
+            removeClippedSubviews
+            onEndReachedThreshold={0.3}
+            columnWrapperStyle={styles.container}
+            numColumns={2}
+            keyExtractor={(_, index) => index.toString()}
+            data={contentData}
+            renderItem={renderItem}
+            refreshControl={
+              <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+            }
+          />
+          <View style={styles.pageButtonsWrapper}>
+            <Button
+              text={t(TranslationKeys.SHOW_PREVIOUS_PAGE)}
+              onPress={loadPreviousPage}
+              disabled={pageNumber === 1}
+              textStyle={styles.buttonText}
+            />
+            <Button
+              text={t(TranslationKeys.SHOW_NEXT_PAGE)}
+              onPress={loadNextPage}
+              textStyle={styles.buttonText}
+              disabled={pageNumber === data!.length - 20}
+            />
+          </View>
+        </>
       )}
     </>
   );
