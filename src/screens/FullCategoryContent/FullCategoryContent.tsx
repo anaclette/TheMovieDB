@@ -81,12 +81,7 @@ export const FullCategoryContent = ({route, navigation}: Props) => {
       {
         movie: data as Movie[],
         type: 'movie',
-        tvShow: null,
-      },
-      {
         tvShow: data as TvDetails[],
-        type: 'tv',
-        movie: null,
       },
     ],
     [data],
