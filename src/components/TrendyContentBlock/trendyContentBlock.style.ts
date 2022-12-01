@@ -46,7 +46,6 @@ export const styles = StyleSheet.create({
   shadow: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: colors.transparentTeal,
     shadowColor: colors.palePink,
     shadowOpacity: 0.7,
     shadowOffset: {

@@ -1,5 +1,12 @@
 import React, {useState, useEffect, useCallback, useMemo} from 'react';
-import {Text, ScrollView, View, Dimensions, RefreshControl} from 'react-native';
+import {
+  Text,
+  ScrollView,
+  View,
+  Dimensions,
+  RefreshControl,
+  Platform,
+} from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import {Movie} from '../../types/moviesInterface';
 import {styles} from './moviesCarousel.style';
@@ -39,7 +46,7 @@ const renderItem = ({item}: {item: Movie}) => {
 };
 
 export const MoviesCarousel = () => {
-  // const [pageNumber, setPageNumber] = useState(1);
+  const isIOS = Platform.OS === 'ios';
   const navigation = useNavigation<NavProps>();
   const {t} = useTranslation();
   const chosenLanguage = useAppSelector(state => state.i18nSlice.lang);
@@ -111,8 +118,18 @@ export const MoviesCarousel = () => {
               }
               children={
                 <>
-                  <View style={styles.buttonContentWrapper}>
-                    <Text style={styles.title}>
+                  <View
+                    style={[
+                      styles.buttonWrapper,
+                      isIOS
+                        ? styles.iOSbuttonContentWrapper
+                        : styles.androidButtonContentWrapper,
+                    ]}>
+                    <Text
+                      style={[
+                        styles.title,
+                        isIOS ? styles.iOStitle : styles.androidTitle,
+                      ]}>
                       {t(TranslationKeys[items.type])}
                     </Text>
 
@@ -154,6 +171,7 @@ export const MoviesCarousel = () => {
       ITEM_WIDTH,
       SLIDER_WIDTH,
       defineBackgroundColor,
+      isIOS,
       navigation,
       nowPlayingData,
       t,

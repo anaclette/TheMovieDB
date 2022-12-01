@@ -6,7 +6,6 @@ import metrics from '../../themes/metrics';
 export const styles = StyleSheet.create({
   carousel: {
     flex: 1,
-    alignItems: 'center',
   },
   loaderContainer: {
     flex: 1,
@@ -17,6 +16,8 @@ export const styles = StyleSheet.create({
     ...fonts.Amatic,
     marginRight: metrics.scale(20),
     color: colors.palePink,
+  },
+  iOStitle: {
     letterSpacing: 3,
     shadowOpacity: 1,
     shadowColor: colors.blackChocolate,
@@ -25,12 +26,16 @@ export const styles = StyleSheet.create({
       width: metrics.scale(1),
     },
     shadowRadius: metrics.scale(1),
-    elevation: 4,
   },
-  buttonContentWrapper: {
-    marginVertical: metrics.scale(10),
+  androidTitle: {
+    alignSelf: 'flex-start',
+  },
+  buttonWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  iOSbuttonContentWrapper: {
+    justifyContent: 'center',
     shadowOpacity: 1,
     shadowColor: colors.blackChocolate,
     shadowOffset: {
@@ -38,7 +43,13 @@ export const styles = StyleSheet.create({
       width: metrics.scale(1),
     },
     shadowRadius: metrics.scale(1),
-    elevation: 4,
+  },
+  androidButtonContentWrapper: {
+    paddingHorizontal: metrics.scale(10),
+    justifyContent: 'space-around',
+    backgroundColor: colors.petroleum,
+    borderRadius: metrics.scale(30),
+    marginHorizontal: metrics.scale(20),
   },
   flatlistContainer: {
     flex: 1,
