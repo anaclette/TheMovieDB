@@ -16,4 +16,7 @@ export const styles = StyleSheet.create({
     color: colors.palePink,
     fontSize: metrics.scaledFontSize(12),
   },
+  disabledText: {
+    color: colors.gray,
+  },
 });

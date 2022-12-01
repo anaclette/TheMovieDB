@@ -17,6 +17,7 @@ interface Props {
   size?: number;
   color?: string;
   children?: JSX.Element;
+  disabled?: boolean;
 }
 
 export const Button = ({
@@ -29,6 +30,7 @@ export const Button = ({
   size,
   wrapperStyle,
   onPress,
+  disabled,
 }: Props) => {
   const {t} = useTranslation();
   return (
@@ -39,12 +41,14 @@ export const Button = ({
       {moreButton && (
         <Text style={styles.moreText}>{t(TranslationKeys.BUTTON_MORE)}</Text>
       )}
-      {text && <Text style={textStyle}>{text}</Text>}
+      {text && (
+        <Text style={[textStyle, disabled && styles.disabledText]}>{text}</Text>
+      )}
       {icon && (
         <Icon
           name={icon}
           size={size ? size : metrics.scale(15)}
-          color={color ? color : colors.palePink}
+          color={color ? color : disabled ? colors.gray : colors.palePink}
         />
       )}
       {children && children}
