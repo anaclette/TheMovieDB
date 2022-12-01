@@ -28,6 +28,8 @@ export enum TranslationKeys {
   TAB_NAME_MOVIES = 'MOVIES',
   TAB_NAME_TV_SHOWS = 'TV_SHOWS',
   EPISODES = 'EPISODES',
+  SHOW_NEXT_PAGE = 'SHOW_NEXT_PAGE',
+  SHOW_PREVIOUS_PAGE = 'SHOW_PREVIOUS_PAGE',
 }
 
 export type TranslationResource = {

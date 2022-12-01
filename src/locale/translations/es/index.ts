@@ -39,6 +39,8 @@ const translation: TranslationResource = {
   MOVIES: 'Pelis',
   TV_SHOWS: 'Series',
   EPISODES: 'episodios',
+  SHOW_NEXT_PAGE: 'Siguiente',
+  SHOW_PREVIOUS_PAGE: 'Anterior',
 };
 
 export default translation;
