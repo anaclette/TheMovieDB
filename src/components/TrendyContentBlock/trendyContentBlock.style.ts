@@ -30,13 +30,6 @@ export const styles = StyleSheet.create({
     color: colors.palePink,
     paddingRight: metrics.scale(5),
   },
-  absolute: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    position: 'absolute',
-    backgroundColor: colors.transparentTeal,
-  },
-
   ratingWrapper: {
     position: 'absolute',
     justifyContent: 'center',
