@@ -160,7 +160,6 @@ export const FullCategoryContent = ({route, navigation}: Props) => {
               text={t(TranslationKeys.SHOW_NEXT_PAGE)}
               onPress={loadNextPage}
               textStyle={styles.buttonText}
-              disabled={!(data!.length + 20)}
             />
           </View>
         </>
