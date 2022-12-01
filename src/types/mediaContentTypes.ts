@@ -23,10 +23,10 @@ export type TvData = {
   data: TvDetails[] | undefined;
 };
 
-export type ContentType = 'movie' | 'tv_show';
+export type ContentType = 'movie' | 'tv';
 
 export type ContentData = {
   type: ContentType;
-  movie: Movie[] | undefined;
-  tvShow: TvDetails[] | undefined;
+  movie: Movie[] | null;
+  tvShow: TvDetails[] | null;
 };
