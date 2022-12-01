@@ -28,6 +28,7 @@ export const styles = StyleSheet.create({
   poster: {
     borderRadius: metrics.scale(20),
     flex: 1,
+    width: '100%',
   },
   smallCardContainer: {
     marginVertical: metrics.scale(25),

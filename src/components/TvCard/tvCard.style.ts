@@ -43,6 +43,7 @@ export const styles = StyleSheet.create({
   image: {
     flex: 1,
     borderRadius: metrics.scale(10),
+    width: '100%',
   },
   overview: {
     width: '50%',

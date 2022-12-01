@@ -16,7 +16,10 @@ interface Props {
 type NavProps = NavigationProp<RootStackParamList, 'MovieDetails'>;
 
 export const MovieCard = ({movie, bigCard, isFullContentPage}: Props) => {
-  const source = `${imageURL}${movie.poster_path}`;
+  const noImage = require('../../assets/images/No-img-available.png');
+  const source = movie.poster_path
+    ? {uri: `${imageURL}${movie.poster_path}`}
+    : noImage;
   const navigation = useNavigation<NavProps>();
   return (
     <Button
@@ -34,7 +37,7 @@ export const MovieCard = ({movie, bigCard, isFullContentPage}: Props) => {
             style={
               bigCard ? styles.imageContainer : styles.smallCardImageContainer
             }>
-            <Image source={{uri: source}} style={styles.poster} />
+            <Image source={source} style={styles.poster} />
           </View>
         </>
       }

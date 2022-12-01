@@ -17,6 +17,10 @@ type NavProps = NavigationProp<RootStackParamList, 'TvDetails'>;
 
 export const TvCard = ({item, isFullContentPage}: Props) => {
   const navigation = useNavigation<NavProps>();
+  const noImage = require('../../assets/images/No-img-available.png');
+  const source = item.poster_path
+    ? {uri: `${imageURL}${item.poster_path}`}
+    : noImage;
   return (
     <>
       <Button
@@ -24,7 +28,7 @@ export const TvCard = ({item, isFullContentPage}: Props) => {
         wrapperStyle={!isFullContentPage ? styles.container : {}}
         children={
           <>
-            <Text style={styles.name}>{item.name}</Text>
+            {!isFullContentPage && <Text style={styles.name}>{item.name}</Text>}
 
             <View style={styles.innerContainer}>
               <View
@@ -33,10 +37,7 @@ export const TvCard = ({item, isFullContentPage}: Props) => {
                     ? styles.imageWrapper
                     : styles.fullContentPageImageWrapper
                 }>
-                <Image
-                  source={{uri: `${imageURL}${item.poster_path}`}}
-                  style={styles.image}
-                />
+                <Image source={source} style={styles.image} />
               </View>
               {!isFullContentPage && (
                 <Text style={styles.overview} numberOfLines={15}>
